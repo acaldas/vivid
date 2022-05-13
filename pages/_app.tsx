@@ -1,8 +1,21 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import "../styles/globals.css";
+import type { AppProps } from "next/app";
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <div className="h-full">
+      <Head>
+        <title>Vivid</title>
+        <meta
+          name="description"
+          content="Vivid is a new brand for the new culture. The web3 FUBU."
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Component {...pageProps} />
+    </div>
+  );
 }
 
-export default MyApp
+export default MyApp;

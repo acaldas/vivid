@@ -1,16 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: Vivid;
+  src: url("/fonts/Vivid.otf");
+}
+
+@font-face {
+  font-family: Exo2;
+  src: url("/fonts/Exo2-Regular.ttf");
+}
+
+@font-face {
+  font-family: Exo2;
+  font-weight: 500;
+  src: url("/fonts/Exo2-Regular.ttf");
+}
+
+@font-face {
+  font-family: Exo2;
+  font-style: bold;
+  src: url("/fonts/Exo2-Bold.ttf");
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Vivid, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  height: 100vh;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+#__next {
+  height: 100%;
 }
 
 * {
   box-sizing: border-box;
+}
+
+.font-exo {
+  letter-spacing: -0.04em;
+  line-height: 1.2em;
+}
+
+@layer utilities {
+  button.button {
+    @apply border border-black min-w-[200px] py-[14px] px-[24px] text-left font-bold text-[18px] hover:opacity-40 transition-opacity;
+  }
 }
