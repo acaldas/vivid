@@ -36,11 +36,15 @@ const Home: NextPage = () => {
               alt="Mico"
               layout="fill"
               objectFit="contain"
+              objectPosition="bottom"
             />
           </div>
           <Logo />
           <div className="max-w-[722px] mt-[40px] z-10 relative">
-            <Text className="text-[64px] font-bold" delay={LOADING_TIME * 1.1}>
+            <Text
+              className="text-[64px] font-bold max-h-[160px]"
+              delay={LOADING_TIME * 1.1}
+            >
               before we knew it we were hitting the ground...
             </Text>
             <Text
