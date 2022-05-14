@@ -3,16 +3,18 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import Background from "../components/background";
 import Header from "../components/header";
+import Logo from "../components/logo";
 import Text from "../components/text";
-import Logo from "../public/images/logo.png";
 import MicoImg from "../public/images/mico.png";
+
+const LOADING_TIME = 4000;
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, LOADING_TIME);
   }, [loading]);
 
   return (
@@ -28,23 +30,44 @@ const Home: NextPage = () => {
           style={{ opacity: loading ? 0 : 1 }}
         >
           <div className="absolute bottom-0 right-0 h-full w-1/2">
-            <Image src={MicoImg} alt="Mico" layout="fill" objectFit="contain" />
+            <Image
+              src={MicoImg}
+              priority
+              alt="Mico"
+              layout="fill"
+              objectFit="contain"
+            />
           </div>
-          <Image src={Logo} width="600" height="161" alt="Vivid logo" />
+          <Logo />
           <div className="max-w-[722px] mt-[40px] z-10 relative">
-            <Text className="text-[64px] font-bold font-exo">
+            <Text className="text-[64px] font-bold" delay={LOADING_TIME * 1.1}>
               before we knew it we were hitting the ground...
             </Text>
-            <Text className="text-[40px] font-medium font-exo">
+            <Text
+              className="text-[40px] font-medium pr-[10px]"
+              delay={LOADING_TIME}
+            >
               The story starts in the year 2305 when all stars have darknened
               and the last life.
             </Text>
             <div className="mt-[24px]">
               <button className="button mr-[26px]">
-                <Text className="font-exo font-bold">Gallery</Text>
+                <Text
+                  className="font-bold flex items-center"
+                  fontsOffset={0}
+                  delay={LOADING_TIME}
+                >
+                  Gallery
+                </Text>
               </button>
               <button className="button">
-                <Text className="font-exo font-bold">Mint</Text>
+                <Text
+                  className="font-bold flex items-center"
+                  fontsOffset={0}
+                  delay={LOADING_TIME}
+                >
+                  Mint
+                </Text>
               </button>
             </div>
           </div>

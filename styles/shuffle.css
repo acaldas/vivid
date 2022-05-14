@@ -1,0 +1,54 @@
+.text-shuffle {
+}
+
+.text-shuffle-letter.is-changing {
+  animation: changing 0.1s infinite;
+  text-shadow: 0 0 10px #000;
+}
+
+.text-shuffle-letter {
+  transition: all 0.1s;
+  position: relative;
+  will-change: transform, opacity;
+}
+
+.text-shuffle-letter:after {
+  content: attr(data-txt);
+  color: #eee;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.el-sp.is-changing:after {
+  animation: changingAfter 0.4s infinite alternate;
+}
+
+@keyframes changing {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes changingAfter {
+  0% {
+    opacity: 0.3;
+    transform: translateX(10px) scaleX(2);
+  }
+  50% {
+    opacity: 0;
+    transform: translateX(0) scaleX(2);
+  }
+  100% {
+    opacity: 0.3;
+    transform: translateX(-10px) scaleX(2);
+  }
+}

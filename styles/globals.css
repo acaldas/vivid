@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "./glitch";
+@import "./loading";
+@import "./shuffle";
+
 @font-face {
   font-family: Vivid;
   src: url("/fonts/Vivid.otf");
@@ -41,7 +45,8 @@ body {
   box-sizing: border-box;
 }
 
-.font-exo {
+.font-exo,
+.font-vivid {
   letter-spacing: -0.04em;
   line-height: 1.2em;
 }
