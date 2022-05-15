@@ -18,7 +18,7 @@ const Header: React.FC<IProps> = ({ className, ...props }) => {
           href="https://twitter.com/vividcojp"
           target="_blank"
           rel="noopener noreferrer"
-          className="px-2 active:opacity-40 transition-opacity select-none"
+          className="px-2  header-button select-none"
         >
           <Image
             src={TwitterIcon}
@@ -32,7 +32,7 @@ const Header: React.FC<IProps> = ({ className, ...props }) => {
           href="https://discord.com/invite/vividcojp"
           target="_blank"
           rel="noopener noreferrer"
-          className="px-2 ml-[16px] active:opacity-40 transition-opacity"
+          className="px-2 ml-[16px] header-button select-none"
         >
           <Image
             src={DiscordIcon}
@@ -42,12 +42,8 @@ const Header: React.FC<IProps> = ({ className, ...props }) => {
             draggable={false}
           />
         </a>
-        <button className="ml-[32px] font-exo font-bold text-lg leading-tight active:opacity-40 transition-opacity">
-          Menu item 1
-        </button>
-        <button className="ml-[32px] font-exo font-bold text-lg leading-tight active:opacity-40 transition-opacity">
-          Menu item 2
-        </button>
+        <button className="header-button ml-[32px]">Menu item 1</button>
+        <button className="header-button ml-[32px]">Menu item 2</button>
       </div>
     </div>
   );

@@ -23,8 +23,8 @@ const Home: NextPage = () => {
         className="transition-opacity duration-1000 delay-700"
         style={{ opacity: loading ? 0 : 1 }}
       />
+      <Background loading={loading} />
       <div className="px-[5.6vw] py-[10.5vh] relative flex-grow">
-        <Background loading={loading} />
         <div
           className="transition-opacity duration-1000 delay-700"
           style={{ opacity: loading ? 0 : 1 }}
@@ -40,22 +40,23 @@ const Home: NextPage = () => {
             />
           </div>
           <Logo />
-          <div className="max-w-[722px] mt-[40px] z-10 relative">
+          <div className="max-w-[660px] mt-[40px] z-10 relative">
             <Text
-              className="text-[64px] font-bold max-h-[160px]"
+              className="text-[56px] font-bold max-h-[160px] mb-[8px]"
               delay={LOADING_TIME * 1.1}
             >
               before we knew it we were hitting the ground...
             </Text>
             <Text
-              className="text-[40px] font-medium pr-[10px]"
+              className="text-[32px] font-medium pr-[30px]"
               delay={LOADING_TIME}
+              fontsOffset={8}
             >
               The story starts in the year 2305 when all stars have darknened
               and the last life.
             </Text>
             <div className="mt-[24px]">
-              <button className="button mr-[26px]">
+              <button className="button glitch-hover mr-[26px]">
                 <Text
                   className="font-bold flex items-center"
                   fontsOffset={0}
@@ -64,7 +65,7 @@ const Home: NextPage = () => {
                   Gallery
                 </Text>
               </button>
-              <button className="button">
+              <button className="button glitch-hover">
                 <Text
                   className="font-bold flex items-center"
                   fontsOffset={0}

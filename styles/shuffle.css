@@ -1,9 +1,6 @@
-.text-shuffle {
-}
-
 .text-shuffle-letter.is-changing {
   animation: changing 0.1s infinite;
-  text-shadow: 0 0 10px #000;
+  /* text-shadow: 0 0 10px #000; */
 }
 
 .text-shuffle-letter {

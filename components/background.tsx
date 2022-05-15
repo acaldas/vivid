@@ -8,7 +8,7 @@ interface IProps {
   loading: boolean;
 }
 
-const MAX_DELTA = 40;
+const MAX_DELTA = 10;
 
 const Background: React.FC<IProps> = ({ loading }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -35,16 +35,9 @@ const Background: React.FC<IProps> = ({ loading }) => {
       ref={ref}
       className="pointer-events-none absolute top-0 bottom-0 z-0 flex flex-col justify-center items-center left-0 right-0 overflow-hidden transition-opacity"
     >
-      <h2
-        className="h-[86px] mb-[40px] text-[64px] leading-[0.95em] transition-opacity duration-700"
-        style={{ opacity: loading ? 1 : 0 }}
-      >
-        <Text delay={0} duration={1500} finishClassName="loading">
-          Loading
-        </Text>
-      </h2>
+      <h2 className="h-[86px] mb-[40px]"></h2>
       <div
-        className={loading ? "animate-pulse" : "duration-1000"}
+        className={loading ? "" : "duration-1000"}
         style={{
           transition:
             "opacity 150ms cubic-bezier(0.4, 0, 0.2, 1), transform 2s ease-out",
@@ -54,7 +47,14 @@ const Background: React.FC<IProps> = ({ loading }) => {
       >
         <Image src={VImg} width="600" height="400" alt="V" />
       </div>
-      <h2 className="h-[86px] mb-[40px]"></h2>
+      <h2
+        className="h-[86px] mt-[40px] text-[64px] leading-[0.95em] transition-opacity duration-700"
+        style={{ opacity: loading ? 1 : 0 }}
+      >
+        <Text delay={0} finishClassName="loading">
+          Loading
+        </Text>
+      </h2>
     </div>
   );
 };

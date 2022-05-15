@@ -48,11 +48,27 @@ body {
 .font-exo,
 .font-vivid {
   letter-spacing: -0.04em;
-  line-height: 1.2em;
+  line-height: 1em;
 }
 
 @layer utilities {
   button.button {
     @apply border border-black min-w-[200px] py-[14px] px-[24px] text-left font-bold text-[18px] hover:opacity-40 transition-opacity;
+  }
+
+  button.header-button,
+  a.header-button {
+    @apply font-exo font-bold text-lg leading-tight relative;
+  }
+
+  button.header-button:after,
+  a.header-button:after {
+    content: "";
+    @apply bg-black mt-[1px] h-[2px] block absolute left-0 w-0 transition-all;
+  }
+
+  button.header-button:hover:after,
+  a.header-button:hover:after {
+    width: 102%;
   }
 }
