@@ -35,7 +35,7 @@ const Header: React.FC<IProps> = ({ className, ...props }) => {
       href="https://twitter.com/vividcojp"
       target="_blank"
       rel="noopener noreferrer"
-      className="px-2  header-button select-none"
+      className="px-2 header-button select-none"
     >
       <Image
         src={TwitterIcon}

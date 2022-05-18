@@ -33,7 +33,7 @@ const Background: React.FC<IProps> = ({ loading }) => {
   return (
     <div
       ref={ref}
-      className={`pointer-events-none absolute top-0 bottom-0 z-0 flex-col justify-center items-center left-0 right-0 overflow-hidden transition-opacity flex ${
+      className={`pointer-events-none fixed top-0 bottom-0 z-0 flex-col justify-center items-center left-0 right-0 overflow-hidden transition-opacity flex ${
         loading ? "" : "lg:opacity-100 opacity-0"
       }`}
     >
@@ -50,7 +50,7 @@ const Background: React.FC<IProps> = ({ loading }) => {
         <Image src={VImg} width="600" height="400" alt="V" />
       </div>
       <h2
-        className="h-[86px] mt-[40px] text-[64px] leading-[0.95em] transition-opacity duration-700"
+        className="overflow-hidden px-[40px] h-[86px] mt-[40px] lg:text-[56px] text-[40px] font-bold leading-[0.95em] transition-opacity duration-700"
         style={{ opacity: loading ? 1 : 0 }}
       >
         <Text delay={0} finishClassName="loading">

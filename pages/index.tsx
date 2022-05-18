@@ -34,7 +34,7 @@ const Home: NextPage = () => {
           className="transition-opacity duration-1000 delay-700"
           style={{ opacity: loading ? 0 : 1 }}
         >
-          <div className="lg:block hidden absolute bottom-0 right-0 h-full w-1/2">
+          <div className="lg:block hidden absolute bottom-0 right-0 h-full w-1/2 pointer-events-none">
             <Image
               src={MicoImg}
               priority
@@ -44,7 +44,7 @@ const Home: NextPage = () => {
               objectPosition="bottom"
             />
           </div>
-          <div className="lg:hidden block absolute bottom-0 right-0 h-full w-full opacity-50">
+          <div className="lg:hidden block fixed bottom-[3px] right-0 h-full w-full opacity-50 pointer-events-none">
             <Image
               src={MicoMobileImg}
               priority

@@ -28,7 +28,7 @@ function getLetter() {
 const Text: React.FC<IProps> = ({
   delay = 1000,
   duration = 1500,
-  fontsOffset = 14,
+  fontsOffset = 0,
   refreshRate = 50,
   className,
   style,
@@ -59,7 +59,7 @@ const Text: React.FC<IProps> = ({
         const wordEnd = i === text.length - 1 || text.charAt(i + 1) === " ";
         const letter = text[i];
         const isInt = !isNaN(parseInt(letter));
-        const letterSpan = `<span class="text-shuffle-letter text-shuffle-letter-${0}-span-${i}" data-txt="${letter}">${
+        const letterSpan = `<span class="text-shuffle-letter text-shuffle-letter-${0}-span-${i} font-vivid" data-txt="${letter}">${
           isInt ? getLetter() : letter
         }</span>`;
         if (wordStart) {
@@ -101,7 +101,7 @@ const Text: React.FC<IProps> = ({
   };
 
   const resetLetter = (letter: HTMLSpanElement, value: string) => {
-    letter.classList.remove("is-changing");
+    letter.classList.remove("is-changing", "font-vivid");
     letter.classList.add("font-exo");
     letter.textContent = value;
   };
@@ -148,7 +148,7 @@ const Text: React.FC<IProps> = ({
       originalStrings: props.children as string,
     };
 
-    setHeight(ref.current?.clientHeight);
+    // setHeight(ref.current?.clientHeight);
     setData(newData);
 
     divideLetters(newData);
@@ -164,18 +164,11 @@ const Text: React.FC<IProps> = ({
   }, [ref.current]);
 
   return (
-    <div style={{ paddingBottom: done ? 0 : fontsOffset }}>
+    <div>
       <p
-        className={`font-vivid text-shuffle overflow-hidden ${className} ${
-          done && finishClassName
-        }`}
-        style={{
-          ...style,
-          maxHeight: height
-            ? `${done ? height + fontsOffset : height}px`
-            : undefined,
-          paddingTop: height ? `${done ? 0 : fontsOffset}px` : undefined,
-        }}
+        className={`text-shuffle overflow-hidden
+        ${className} ${done && finishClassName}`}
+        style={style}
         {...props}
         ref={ref}
       />
