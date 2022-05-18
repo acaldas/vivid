@@ -1,6 +1,5 @@
-.text-shuffle-letter.is-changing {
-  animation: changing 0.1s infinite;
-  /* text-shadow: 0 0 10px #000; */
+.text-shuffle-word {
+  white-space: nowrap;
 }
 
 .text-shuffle-letter {
@@ -10,16 +9,20 @@
 }
 
 .text-shuffle-letter:after {
-  content: attr(data-txt);
   color: #eee;
+  content: attr(data-txt);
   position: absolute;
   top: 0;
   left: 0;
-  opacity: 0;
   will-change: transform, opacity;
+  opacity: 0;
 }
 
-.el-sp.is-changing:after {
+.text-shuffle-letter.is-changing {
+  animation: changing 0.1s infinite;
+}
+
+.text-shuffle-letter.is-changing:after {
   animation: changingAfter 0.4s infinite alternate;
 }
 

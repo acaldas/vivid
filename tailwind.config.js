@@ -8,7 +8,11 @@ module.exports = {
       vivid: ["Vivid", "sans-serif"],
       exo: ["Exo2", "sans-serif"],
     },
-    extend: {},
+    extend: {
+      colors: {
+        overlay: "rgba(0,0,0,0.15)",
+      },
+    },
   },
   plugins: [],
 };

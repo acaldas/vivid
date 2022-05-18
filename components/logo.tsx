@@ -4,7 +4,7 @@ import LogoImg from "../public/images/logo.png";
 
 const Logo: React.FC = () => {
   return (
-    <div className="glitch">
+    <div className="glitch lg:max-w-full max-w-[92%] overflow-hidden">
       <Image
         src={LogoImg}
         width="600"

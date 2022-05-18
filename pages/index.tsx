@@ -6,8 +6,9 @@ import Header from "../components/header";
 import Logo from "../components/logo";
 import Text from "../components/text";
 import MicoImg from "../public/images/mico.png";
+import MicoMobileImg from "../public/images/mico_mobile.png";
 
-const LOADING_TIME = 4000;
+const LOADING_TIME = 5000;
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(true);
@@ -18,7 +19,11 @@ const Home: NextPage = () => {
   }, [loading]);
 
   return (
-    <div className="border-[5px] border-black h-full relative overflow-auto flex flex-col">
+    <div
+      className={`lg:[5px] border-[3px] border-black h-full relative ${
+        loading ? "overflow-hidden" : "overflow-auto"
+      } flex flex-col`}
+    >
       <Header
         className="transition-opacity duration-1000 delay-700"
         style={{ opacity: loading ? 0 : 1 }}
@@ -29,7 +34,7 @@ const Home: NextPage = () => {
           className="transition-opacity duration-1000 delay-700"
           style={{ opacity: loading ? 0 : 1 }}
         >
-          <div className="absolute bottom-0 right-0 h-full w-1/2">
+          <div className="lg:block hidden absolute bottom-0 right-0 h-full w-1/2">
             <Image
               src={MicoImg}
               priority
@@ -39,24 +44,34 @@ const Home: NextPage = () => {
               objectPosition="bottom"
             />
           </div>
+          <div className="lg:hidden block absolute bottom-0 right-0 h-full w-full opacity-50">
+            <Image
+              src={MicoMobileImg}
+              priority
+              alt="Mico"
+              layout="fill"
+              objectFit="contain"
+              objectPosition="bottom"
+            />
+          </div>
           <Logo />
-          <div className="max-w-[660px] mt-[40px] z-10 relative">
+          <div className="lg:w-2/3 lg:max-w-[620px] mt-[40px] z-10 relative">
             <Text
-              className="text-[56px] font-bold max-h-[160px] mb-[8px]"
+              className="lg:text-[56px] text-[40px] font-bold mb-[8px] lg:pr-0 pr-6"
               delay={LOADING_TIME * 1.1}
             >
               before we knew it we were hitting the ground...
             </Text>
             <Text
-              className="text-[32px] font-medium pr-[30px]"
+              className="lg:text-[32px] text-[24px] font-medium lg:pr-[10%]"
               delay={LOADING_TIME}
               fontsOffset={8}
             >
-              The story starts in the year 2305 when all stars have darknened
-              and the last life.
+              The story starts in the year 2305 when all stars have darkened and
+              the last life.
             </Text>
-            <div className="mt-[24px]">
-              <button className="button glitch-hover mr-[26px]">
+            <div className="mt-[24px] lg:static flex w-full">
+              <button className="button glitch-hover mr-[26px] lg:w-auto w-1/2">
                 <Text
                   className="font-bold flex items-center"
                   fontsOffset={0}
@@ -65,7 +80,7 @@ const Home: NextPage = () => {
                   Gallery
                 </Text>
               </button>
-              <button className="button glitch-hover">
+              <button className="button glitch-hover lg:w-auto w-1/2">
                 <Text
                   className="font-bold flex items-center"
                   fontsOffset={0}

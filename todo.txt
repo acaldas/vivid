@@ -1,2 +1,0 @@
-- header buttons - underline on hover (left to right)
-- button - glitch on hover

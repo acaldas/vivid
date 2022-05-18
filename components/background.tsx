@@ -15,7 +15,7 @@ const Background: React.FC<IProps> = ({ loading }) => {
   const mousePos = useMouseMove();
 
   const target = useMemo(() => {
-    if (!ref.current || !mousePos) {
+    if (!ref.current || !mousePos || loading) {
       return [0, 0];
     }
 
@@ -28,21 +28,23 @@ const Background: React.FC<IProps> = ({ loading }) => {
       parse(mousePos[0] - ref.current.clientWidth / 2),
       parse(mousePos[1] - ref.current.clientHeight / 2),
     ];
-  }, [ref, mousePos]);
+  }, [ref, mousePos, loading]);
 
   return (
     <div
       ref={ref}
-      className="pointer-events-none absolute top-0 bottom-0 z-0 flex flex-col justify-center items-center left-0 right-0 overflow-hidden transition-opacity"
+      className={`pointer-events-none absolute top-0 bottom-0 z-0 flex-col justify-center items-center left-0 right-0 overflow-hidden transition-opacity flex ${
+        loading ? "" : "lg:opacity-100 opacity-0"
+      }`}
     >
       <h2 className="h-[86px] mb-[40px]"></h2>
       <div
-        className={loading ? "" : "duration-1000"}
+        className={loading ? "max-w-[90%]" : "duration-1000"}
         style={{
           transition:
-            "opacity 150ms cubic-bezier(0.4, 0, 0.2, 1), transform 2s ease-out",
+            "opacity 150ms cubic-bezier(0.4, 0, 0.2, 1), transform 6s ease-out",
           opacity: loading ? 1 : 0.5,
-          transform: `translate(${target[0]}px,${target[1]}px)`,
+          transform: `translate(${target[0]}px,0px)`,
         }}
       >
         <Image src={VImg} width="600" height="400" alt="V" />

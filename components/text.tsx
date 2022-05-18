@@ -55,12 +55,20 @@ const Text: React.FC<IProps> = ({
 
     if (element.childNodes.length === 1) {
       for (var i = 0; i < text.length; i++) {
+        const wordStart = i === 0 || text.charAt(i - 1) === " ";
+        const wordEnd = i === text.length - 1 || text.charAt(i + 1) === " ";
         const letter = text[i];
         const isInt = !isNaN(parseInt(letter));
-        const letterSpan = `<span class="text-shuffle-letter text-shuffle-letter-${0}-span-${i}" data-aaa="${letter}">${
+        const letterSpan = `<span class="text-shuffle-letter text-shuffle-letter-${0}-span-${i}" data-txt="${letter}">${
           isInt ? getLetter() : letter
         }</span>`;
+        if (wordStart) {
+          textDivided += `<span class="text-shuffle-word">`;
+        }
         textDivided += letterSpan;
+        if (wordEnd) {
+          textDivided += "</span>";
+        }
       }
       element.innerHTML = textDivided;
     }
@@ -68,7 +76,7 @@ const Text: React.FC<IProps> = ({
     setData((data) => ({
       ...data,
       singleLetters: Array.from(
-        ref.current!.childNodes as any as HTMLSpanElement[]
+        ref.current!.querySelectorAll(".text-shuffle-letter")
       ),
     }));
   };
@@ -113,7 +121,6 @@ const Text: React.FC<IProps> = ({
           data.originalStrings.substring(el, el + 1)
         );
       }, index * 5 * (Math.random() * 5));
-      console.log(index * 4 * (Math.random() * 50));
     });
   };
 
@@ -164,7 +171,7 @@ const Text: React.FC<IProps> = ({
         }`}
         style={{
           ...style,
-          height: height
+          maxHeight: height
             ? `${done ? height + fontsOffset : height}px`
             : undefined,
           paddingTop: height ? `${done ? 0 : fontsOffset}px` : undefined,

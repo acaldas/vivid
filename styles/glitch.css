@@ -9,7 +9,7 @@
 
 .glitch-hover:hover {
   transform: skewX(0deg) scaleY(1);
-  animation: tr-bag 4s linear infinite;
+  animation: tr-bag 2s linear infinite;
 }
 
 @keyframes tr-bag {

@@ -24,7 +24,7 @@
 
 @font-face {
   font-family: Exo2;
-  font-style: bold;
+  font-style: 700;
   src: url("/fonts/Exo2-Bold.ttf");
 }
 
@@ -53,12 +53,12 @@ body {
 
 @layer utilities {
   button.button {
-    @apply border border-black min-w-[200px] py-[14px] px-[24px] text-left font-bold text-[18px] hover:opacity-40 transition-opacity;
+    @apply bg-white border border-black lg:min-w-[200px] py-[14px] px-[24px] text-left font-bold text-[18px];
   }
 
   button.header-button,
   a.header-button {
-    @apply font-exo font-bold text-lg leading-tight relative;
+    @apply font-exo text-lg leading-tight relative;
   }
 
   button.header-button:after,
