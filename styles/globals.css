@@ -61,7 +61,7 @@ body {
 
 @layer utilities {
   button.button {
-    @apply bg-white border border-black lg:min-w-[200px] py-[14px] px-[24px] text-left font-bold text-[18px];
+    @apply bg-white border border-black lg:min-w-[200px] lg:max-w-none max-w-[200px] lg:py-[14px] py-[9px] px-[24px] text-left font-bold text-[18px];
   }
 
   button.header-button,

@@ -4,6 +4,7 @@ import { Menu } from "@headlessui/react";
 import LogoSmall from "../public/images/logo_small.svg";
 import TwitterIcon from "../public/images/twitter.svg";
 import DiscordIcon from "../public/images/discord.svg";
+import CloseIcon from "../public/images/close.svg";
 import { useWeb3React } from "@web3-react/core";
 import { CHAIN_ID } from "../config";
 import { metaMaskHooks } from "../hooks/useMetamask";
@@ -86,9 +87,15 @@ const Header: React.FC<IProps> = ({ className, ...props }) => {
         <Menu>
           <Menu.Button onClick={() => setOpen((open) => !open)}>
             <div className="w-[16px]">
-              <div className="bg-black h-[2px] w-full mb-[4px]"></div>
-              <div className="bg-black h-[2px] w-full mb-[4px]"></div>
-              <div className="bg-black h-[2px] w-full"></div>
+              {open ? (
+                <span className="text-[24px] leading-tight">&times;</span>
+              ) : (
+                <>
+                  <div className="bg-black h-[2px] w-full mb-[4px]"></div>
+                  <div className="bg-black h-[2px] w-full mb-[4px]"></div>
+                  <div className="bg-black h-[2px] w-full"></div>
+                </>
+              )}
             </div>
           </Menu.Button>
           {open ? (

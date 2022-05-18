@@ -12,6 +12,9 @@ module.exports = {
       colors: {
         overlay: "rgba(0,0,0,0.15)",
       },
+      screens: {
+        lg: "860px",
+      },
     },
   },
   plugins: [],

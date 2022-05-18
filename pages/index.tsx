@@ -29,7 +29,7 @@ const Home: NextPage = () => {
         style={{ opacity: loading ? 0 : 1 }}
       />
       <Background loading={loading} />
-      <div className="px-[5.6vw] py-[10.5vh] relative flex-grow">
+      <div className="lg:px-[5.6vw] px-[3.5vh] lg:py-[10.5vh] py-[7vh] relative flex-grow">
         <div
           className="transition-opacity duration-1000 delay-700"
           style={{ opacity: loading ? 0 : 1 }}
@@ -44,7 +44,7 @@ const Home: NextPage = () => {
               objectPosition="bottom"
             />
           </div>
-          <div className="lg:hidden block fixed bottom-[3px] right-0 h-full w-full opacity-50 pointer-events-none">
+          <div className="lg:hidden block fixed bottom-[3px] right-0 h-[82vh] w-full opacity-50 pointer-events-none">
             <Image
               src={MicoMobileImg}
               priority
@@ -55,9 +55,9 @@ const Home: NextPage = () => {
             />
           </div>
           <Logo />
-          <div className="lg:w-2/3 lg:max-w-[620px] mt-[40px] z-10 relative">
+          <div className="lg:w-2/3 lg:max-w-[620px] lg:mt-[40px] mt-[14px] z-10 relative">
             <Text
-              className="lg:text-[56px] text-[40px] font-bold mb-[8px] lg:pr-0 pr-6"
+              className="lg:text-[56px] text-[40px] sm:mb-[8px] mb-1 lg:pr-0 pr-1 lg:leading-none leading-[1.1em]"
               delay={LOADING_TIME * 1.1}
             >
               before we knew it we were hitting the ground...

@@ -6,7 +6,7 @@
 .loading:after {
   content: "";
   position: absolute;
-  left: 100%;
+  left: 101%;
   bottom: -6px;
   animation: dots 2s infinite;
   font-size: 0.7em;
