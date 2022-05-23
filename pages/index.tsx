@@ -74,7 +74,7 @@ const Home: NextPage = () => {
                 href="https://twitter.com/vividcojp"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="button glitch-hover mr-[26px] lg:w-auto w-1/2 border-gradient drop-gradient"
+                className="button glitch-hover mr-[26px] lg:w-auto w-1/2 border-gradient drop-gradient text-gradient-hover"
               >
                 <Text
                   className="font-bold flex items-center"
@@ -88,7 +88,7 @@ const Home: NextPage = () => {
                 href="https://discord.com/invite/vividcojp"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="button glitch-hover lg:w-auto w-1/2 border-gradient drop-gradient"
+                className="button glitch-hover lg:w-auto w-1/2 border-gradient drop-gradient text-gradient-hover"
               >
                 <Text
                   className="font-bold flex items-center"
