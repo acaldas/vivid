@@ -82,8 +82,9 @@ const Header: React.FC<IProps> = ({ className, ...props }) => {
       <div className="lg:w-auto w-[75px]">
         <Image src={LogoSmall} alt="Vivid logo" width="100" height="18" />
       </div>
-      <div className="lg:flex hidden">{options}</div>
-      <div className="lg:hidden">
+      <div className="flex">{options}</div>
+      {/* <div className="lg:flex hidden">{options}</div> */}
+      {/* <div className="lg:hidden">
         <Menu>
           <Menu.Button onClick={() => setOpen((open) => !open)}>
             <div className="w-[16px]">
@@ -124,7 +125,7 @@ const Header: React.FC<IProps> = ({ className, ...props }) => {
             <></>
           )}
         </Menu>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -44,7 +44,7 @@ const Home: NextPage = () => {
               objectPosition="bottom"
             />
           </div>
-          <div className="lg:hidden block fixed bottom-[3px] right-0 h-[82vh] w-full opacity-50 pointer-events-none">
+          <div className="lg:hidden block fixed bottom-[3px] right-0 h-[82vh] w-full pointer-events-none">
             <Image
               src={MicoMobileImg}
               priority
