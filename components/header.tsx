@@ -61,16 +61,16 @@ const Header: React.FC<IProps> = ({ className, ...props }) => {
         draggable={false}
       />
     </a>,
-    <button key="item 1" className="header-button ml-[32px]">
-      Menu item 1
-    </button>,
-    <button
-      key="item 2"
-      className="header-button ml-[32px]"
-      onClick={connectWallet}
-    >
-      {isActive && account ? `${account.substring(0, 7)}...` : "Connect wallet"}
-    </button>,
+    // <button key="item 1" className="header-button ml-[32px]">
+    //   Menu item 1
+    // </button>,
+    // <button
+    //   key="item 2"
+    //   className="header-button ml-[32px]"
+    //   onClick={connectWallet}
+    // >
+    //   {isActive && account ? `${account.substring(0, 7)}...` : "Connect wallet"}
+    // </button>,
   ];
   const optionsMobile = [options[2], options[3], options[0], options[1]];
 

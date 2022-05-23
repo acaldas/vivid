@@ -55,7 +55,7 @@ body {
 }
 
 .font-vivid {
-  font-size: 0.6em;
+  font-size: 0.66em;
   line-height: 1.4em;
 }
 
@@ -74,14 +74,15 @@ body {
   filter: drop-shadow(0px 8px 12px rgba(208, 79, 145, 0.15));
 }
 
-.text-gradient-hover:hover {
+.text-gradient-hover:hover .text-gradient-item {
   background: -webkit-linear-gradient(#2bb6dd, #d14d90);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 @layer utilities {
-  button.button {
+  button.button,
+  a.button {
     @apply bg-white border border-black lg:min-w-[200px] lg:max-w-none max-w-[200px] lg:py-[14px] py-[9px] px-[24px] text-left font-bold text-[18px];
   }
 

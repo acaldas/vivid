@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 interface IProps extends React.HTMLProps<HTMLParagraphElement> {
   delay?: number;
   duration?: number;
-  fontsOffset?: number;
+  textGradient?: boolean;
   refreshRate?: number;
   finishClassName?: string;
 }
@@ -30,6 +30,7 @@ const Text: React.FC<IProps> = ({
   duration = 1500,
   refreshRate = 50,
   className,
+  textGradient,
   style,
   finishClassName,
   ...props
@@ -58,7 +59,9 @@ const Text: React.FC<IProps> = ({
         const wordEnd = i === text.length - 1 || text.charAt(i + 1) === " ";
         const letter = text[i];
         const isInt = !isNaN(parseInt(letter));
-        const letterSpan = `<span class="text-shuffle-letter text-shuffle-letter-${0}-span-${i} font-vivid" data-txt="${letter}">${
+        const letterSpan = `<span class="text-shuffle-letter ${
+          textGradient ? "text-gradient-item" : ""
+        } text-shuffle-letter-${0}-span-${i} font-vivid" data-txt="${letter}">${
           isInt ? getLetter() : letter
         }</span>`;
         if (wordStart) {
@@ -166,7 +169,9 @@ const Text: React.FC<IProps> = ({
     <div>
       <p
         className={`text-shuffle overflow-hidden
-        ${className} ${done && finishClassName}`}
+          ${className}
+          ${done ? finishClassName : ""}
+          ${textGradient ? "text-gradient-hover" : ""}`}
         style={style}
         {...props}
         ref={ref}

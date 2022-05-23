@@ -70,22 +70,34 @@ const Home: NextPage = () => {
               Bright
             </Text>
             <div className="mt-[24px] lg:static flex w-full">
-              <button className="button glitch-hover mr-[26px] lg:w-auto w-1/2 border-gradient drop-gradient">
-                <Text
-                  className="font-bold flex items-center text-gradient-hover"
-                  delay={LOADING_TIME}
-                >
-                  Gallery
-                </Text>
-              </button>
-              <button className="button glitch-hover lg:w-auto w-1/2 border-gradient drop-gradient">
+              <a
+                href="https://twitter.com/vividcojp"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="button glitch-hover mr-[26px] lg:w-auto w-1/2 border-gradient drop-gradient"
+              >
                 <Text
                   className="font-bold flex items-center"
                   delay={LOADING_TIME}
+                  textGradient
                 >
-                  Mint
+                  Twitter
                 </Text>
-              </button>
+              </a>
+              <a
+                href="https://discord.com/invite/vividcojp"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="button glitch-hover lg:w-auto w-1/2 border-gradient drop-gradient"
+              >
+                <Text
+                  className="font-bold flex items-center"
+                  delay={LOADING_TIME}
+                  textGradient
+                >
+                  Discord
+                </Text>
+              </a>
             </div>
           </div>
         </div>
