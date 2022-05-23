@@ -64,9 +64,8 @@ body {
 }
 
 .border-gradient {
-  border: 10px solid;
   border-image-slice: 1;
-  border-width: 5px;
+  border-width: 1px;
   border-image-source: linear-gradient(to bottom, #2bb6dd, #d14d90);
 }
 
