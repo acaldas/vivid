@@ -28,7 +28,6 @@ function getLetter() {
 const Text: React.FC<IProps> = ({
   delay = 1000,
   duration = 1500,
-  fontsOffset = 0,
   refreshRate = 50,
   className,
   style,

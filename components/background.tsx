@@ -1,6 +1,6 @@
 import React, { useMemo, useRef } from "react";
 import Image from "next/image";
-import VImg from "../public/images/v.png";
+import VImg from "../public/images/vivid_loader.png";
 import Text from "./text";
 import useMouseMove from "../hooks/useMouseMove";
 
@@ -45,12 +45,13 @@ const Background: React.FC<IProps> = ({ loading }) => {
             "opacity 150ms cubic-bezier(0.4, 0, 0.2, 1), transform 6s ease-out",
           opacity: loading ? 1 : 0.5,
           transform: `translate(${target[0]}px,0px)`,
+          paddingLeft: "70px",
         }}
       >
         <Image src={VImg} width="600" height="400" alt="V" />
       </div>
       <h2
-        className="overflow-hidden px-[40px] h-[86px] mt-[40px] lg:text-[56px] text-[40px] font-bold leading-[0.95em] transition-opacity duration-700"
+        className="loading-text overflow-hidden px-[40px] h-[86px] mt-[40px] lg:text-[56px] text-[40px] font-bold leading-[0.95em] transition-opacity duration-700"
         style={{ opacity: loading ? 1 : 0 }}
       >
         <Text delay={0} finishClassName="loading">

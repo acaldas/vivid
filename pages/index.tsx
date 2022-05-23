@@ -5,8 +5,8 @@ import Background from "../components/background";
 import Header from "../components/header";
 import Logo from "../components/logo";
 import Text from "../components/text";
-import MicoImg from "../public/images/mico.png";
-import MicoMobileImg from "../public/images/mico_mobile.png";
+import MicoImg from "../public/images/front_image.png";
+import MicoMobileImg from "../public/images/front_image_mobile.png";
 
 const LOADING_TIME = 5000;
 
@@ -60,30 +60,27 @@ const Home: NextPage = () => {
               className="lg:text-[56px] text-[40px] sm:mb-[8px] mb-1 lg:pr-0 pr-1 lg:leading-none leading-[1.1em]"
               delay={LOADING_TIME * 1.1}
             >
-              before we knew it we were hitting the ground...
+              Vivid: a manga fashion lifestyle brand
             </Text>
             <Text
               className="lg:text-[32px] text-[24px] font-medium lg:pr-[10%]"
               delay={LOADING_TIME}
-              fontsOffset={8}
             >
-              The story starts in the year 2305 when all stars have darkened and
-              the last life.
+              Set in the kawakakkoii (cool and cute) cyberpunk universe of Acky
+              Bright
             </Text>
             <div className="mt-[24px] lg:static flex w-full">
-              <button className="button glitch-hover mr-[26px] lg:w-auto w-1/2">
+              <button className="button glitch-hover mr-[26px] lg:w-auto w-1/2 border-gradient drop-gradient">
                 <Text
-                  className="font-bold flex items-center"
-                  fontsOffset={0}
+                  className="font-bold flex items-center text-gradient-hover"
                   delay={LOADING_TIME}
                 >
                   Gallery
                 </Text>
               </button>
-              <button className="button glitch-hover lg:w-auto w-1/2">
+              <button className="button glitch-hover lg:w-auto w-1/2 border-gradient drop-gradient">
                 <Text
                   className="font-bold flex items-center"
-                  fontsOffset={0}
                   delay={LOADING_TIME}
                 >
                   Mint
