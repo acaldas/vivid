@@ -48,7 +48,7 @@ const Background: React.FC<IProps> = ({ loading }) => {
           paddingLeft: "70px",
         }}
       >
-        <Image src={VImg} width="600" height="400" alt="V" />
+        <Image src={VImg} width="600" height="400" alt="V" priority />
       </div>
       <h2
         className="loading-text overflow-hidden px-[40px] h-[86px] mt-[40px] lg:text-[56px] text-[40px] font-bold leading-[0.95em] transition-opacity duration-700"
