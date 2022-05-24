@@ -45,7 +45,6 @@ const Background: React.FC<IProps> = ({ loading }) => {
             "opacity 150ms cubic-bezier(0.4, 0, 0.2, 1), transform 6s ease-out",
           opacity: loading ? 1 : 0.5,
           transform: `translate(${target[0]}px,0px)`,
-          paddingLeft: "70px",
         }}
       >
         <Image src={VImg} width="600" height="400" alt="V" priority />
