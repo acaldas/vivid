@@ -1,9 +1,12 @@
+import { NextPage } from "next";
+import { PropsWithChildren } from "react";
 import Header from "../components/header";
 
 interface IProps {
   loading?: boolean;
 }
-const Page: NextPage = ({ loading, children }) => {
+
+const Page: NextPage<PropsWithChildren<IProps>> = ({ loading, children }) => {
   return (
     <div
       className={`lg:[5px] border-[3px] border-black h-full relative ${
