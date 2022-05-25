@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { Menu } from "@headlessui/react";
 import LogoSmall from "../public/images/logo_small.svg";
@@ -61,30 +62,35 @@ const Header: React.FC<IProps> = ({ className, ...props }) => {
         draggable={false}
       />
     </a>,
-    // <button key="item 1" className="header-button ml-[32px]">
-    //   Menu item 1
-    // </button>,
-    // <button
-    //   key="item 2"
-    //   className="header-button ml-[32px]"
-    //   onClick={connectWallet}
-    // >
-    //   {isActive && account ? `${account.substring(0, 7)}...` : "Connect wallet"}
-    // </button>,
+    <button key="fashion" className="header-button ml-[32px]">
+      Fashion
+    </button>,
+    <button key="nft" className="header-button ml-[32px]">
+      NFT
+    </button>,
+    <button
+      key="wallet"
+      className="header-button ml-[32px]"
+      onClick={connectWallet}
+    >
+      {isActive && account ? `${account.substring(0, 7)}...` : "CONNECT WALLET"}
+    </button>,
   ];
-  const optionsMobile = [options[2], options[3], options[0], options[1]];
+  const [twitterOption, discordOption, ...restOptions] = options;
+  const optionsMobile = [twitterOption, discordOption, ...restOptions];
 
   return (
     <div
       className={`flex justify-between relative lg:p-[40px] lg:pl-[75px] p-[24px] items-center ${className}`}
       {...props}
     >
-      <div className="lg:w-auto w-[75px]">
-        <Image src={LogoSmall} alt="Vivid logo" width="100" height="18" />
-      </div>
-      <div className="flex">{options}</div>
-      {/* <div className="lg:flex hidden">{options}</div> */}
-      {/* <div className="lg:hidden">
+      <Link as="a" href="/" className="block lg:w-auto w-[75px]">
+        <>
+          <Image src={LogoSmall} alt="Vivid logo" width="100" height="18" />
+        </>
+      </Link>
+      <div className="lg:flex hidden">{options}</div>
+      <div className="lg:hidden">
         <Menu>
           <Menu.Button onClick={() => setOpen((open) => !open)}>
             <div className="w-[16px]">
@@ -125,7 +131,7 @@ const Header: React.FC<IProps> = ({ className, ...props }) => {
             <></>
           )}
         </Menu>
-      </div> */}
+      </div>
     </div>
   );
 };
