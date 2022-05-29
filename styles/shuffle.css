@@ -26,6 +26,10 @@
   animation: changingAfter 0.4s infinite alternate;
 }
 
+.button .text-shuffle-letter[data-txt=" "] {
+  width: 0.25em;
+}
+
 @keyframes changing {
   0% {
     opacity: 1;

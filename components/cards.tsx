@@ -89,7 +89,7 @@ const Cards: React.FC = () => {
       <div
         className={`cards ${
           active ? "cards--active" : ""
-        } w-[496px] h-[570px] ml-[120px] mr-[100px]`}
+        } ml-[120px] mr-[110px]`}
       >
         {Object.keys(CardImages).map((key, index) => (
           <div
@@ -103,7 +103,7 @@ const Cards: React.FC = () => {
                 ref.current[index] = r;
               }
             }}
-            className="card w-[496px] h-[570px]"
+            className="card w-[342px] h-[384px]"
           >
             <div className="flex flex-col justify-between h-full border border-black bg-white">
               <div className="border-b border-black px-[14px] py-[10px]">

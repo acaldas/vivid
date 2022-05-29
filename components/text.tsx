@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-interface IProps extends React.HTMLProps<HTMLParagraphElement> {
+export interface IProps extends React.HTMLProps<HTMLParagraphElement> {
   delay?: number;
   duration?: number;
   textGradient?: boolean;
@@ -147,10 +147,8 @@ const Text: React.FC<IProps> = ({
     const newData = {
       ...data,
       target: ref.current,
-      originalStrings: props.children as string,
+      originalStrings: props.children?.toString() || "",
     };
-
-    // setHeight(ref.current?.clientHeight);
     setData(newData);
 
     divideLetters(newData);

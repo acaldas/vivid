@@ -19,6 +19,12 @@
 
 @font-face {
   font-family: Exo2;
+  font-weight: 300;
+  src: url("/fonts/Exo2-Light.ttf");
+}
+
+@font-face {
+  font-family: Exo2;
   font-weight: 500;
   src: url("/fonts/Exo2-Regular.ttf");
 }
@@ -74,6 +80,12 @@ body {
   filter: drop-shadow(0px 8px 12px rgba(208, 79, 145, 0.15));
 }
 
+.text-gradient {
+  background: -webkit-linear-gradient(#2bb6dd, #d14d90);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .text-gradient-hover:hover .text-gradient-item {
   background: -webkit-linear-gradient(#2bb6dd, #d14d90);
   -webkit-background-clip: text;
@@ -101,4 +113,29 @@ body {
   a.header-button:hover:after {
     width: 102%;
   }
+}
+
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-active {
+  opacity: 1;
+}
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit-active {
+  opacity: 0;
+}
+.fade-enter-active,
+.fade-exit-active {
+  transition: opacity 500ms;
+}
+
+.long.fade-enter-active {
+  transition: opacity 1000ms;
+}
+
+.long.fade-exit-active {
+  transition: opacity 500ms;
 }
