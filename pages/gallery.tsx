@@ -7,7 +7,7 @@ import Text from "../components/text";
 const Gallery: NextPage = () => {
   return (
     <Page>
-      <div className="overflow-hidden fixed w-full h-full">
+      <div className="overflow-hidden fixed w-full h-full pointer-events-none">
         <Mico desktopClassName="!right-[-210px] opacity-30" />
       </div>
       <div className="flex flex-1 w-full lg:pl-[75px] p-[24px]">

@@ -9,6 +9,7 @@ import WalletDialog from "../components/wallet-dialog";
 import { useEffect, useMemo, useRef, useState } from "react";
 import useWallet from "../hooks/useWallet";
 import { Transition } from "@headlessui/react";
+import ErrorDialog from "../components/error-dialog";
 
 const FormatDate = new Intl.DateTimeFormat("en-GB", { dateStyle: "full" })
   .format;
@@ -19,6 +20,7 @@ const Mint: NextPage = () => {
     "INITIAL"
   );
   const [mintClicked, setMintClicked] = useState(false);
+  const [showError, setShowError] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
   const { account } = useWallet();
   const availableMints = "3456";
@@ -31,6 +33,9 @@ const Mint: NextPage = () => {
 
   const mint = () => {
     setStep("MINTING");
+    // setTimeout(() => {
+    //   setShowError(true);
+    // }, 4000);
     setTimeout(() => setStep("SUCCESS"), 14000);
   };
 
@@ -42,7 +47,7 @@ const Mint: NextPage = () => {
   return (
     <Page>
       <div className="flex w-full h-full">
-        <div className="flex flex-0 lg:pl-[75px] p-[24px] w-[500px] overflow-visible">
+        <div className="flex flex-0 md:pl-[75px] p-[24px] w-[500px] overflow-visible relative z-10">
           <SwitchTransition>
             <CSSTransition
               key={step}
@@ -56,15 +61,15 @@ const Mint: NextPage = () => {
                 {step === "INITIAL" ? (
                   <div>
                     <div className="mb-[5vh]">
-                      <Text className="block lg:text-[56px] text-[40px] lg:pr-0 pr-1 leading-[1.1em]">
+                      <Text className="block md:text-[56px] text-[40px] md:pr-0 pr-1 leading-[1.1em]">
                         NFT collection
                       </Text>
                       <div className="flex">
-                        <Text className="lg:text-[32px] text-[24px]">
+                        <Text className="md:text-[32px] text-[24px]">
                           {availableMints}
                         </Text>
                         <span className="w-3"> </span>
-                        <Text className="whitespace-nowrap lg:text-[32px] text-[24px] font-medium">
+                        <Text className="whitespace-nowrap md:text-[32px] text-[24px] font-medium">
                           Available
                         </Text>
                       </div>
@@ -96,22 +101,22 @@ const Mint: NextPage = () => {
                 ) : step === "MINTING" ? (
                   <div>
                     <Text
-                      className="block lg:text-[56px] text-[40px] lg:pr-0 pr-1 leading-[1.1em]"
+                      className="block md:text-[56px] text-[40px] md:pr-0 pr-1 leading-[1.1em]"
                       finishClassName="inline-block loading"
                     >
                       Connecting
                     </Text>
                     <div className="flex">
-                      <Text className="lg:text-[32px] text-[24px]">You</Text>
+                      <Text className="md:text-[32px] text-[24px]">You</Text>
                       <span className="w-2"> </span>
-                      <Text className="whitespace-nowrap lg:text-[32px] text-[24px] font-medium">
+                      <Text className="whitespace-nowrap md:text-[32px] text-[24px] font-medium">
                         are being connected
                       </Text>
                     </div>
-                    <Text className="whitespace-nowrap lg:text-[32px] text-[24px] font-medium">
+                    <Text className="whitespace-nowrap md:text-[32px] text-[24px] font-medium">
                       to the Vivid universe
                     </Text>
-                    <div className="mt-[5vh]">
+                    <div className="mt-[5vh] pl-1">
                       <Transition show={step === "MINTING"} appear>
                         <Transition.Child
                           enter="transition-opacity duration-1000 delay-[3000ms]"
@@ -166,15 +171,15 @@ const Mint: NextPage = () => {
                 ) : step === "SUCCESS" ? (
                   <div>
                     <Text
-                      className="block lg:text-[56px] text-[40px] lg:pr-0 pr-1 leading-[1.1em]"
+                      className="block md:text-[56px] text-[40px] md:pr-0 pr-1 leading-[1.1em]"
                       finishClassName="inline-block loading"
                     >
                       Congratulations
                     </Text>
                     <div className="flex">
-                      <Text className="lg:text-[32px] text-[24px]">You</Text>
+                      <Text className="md:text-[32px] text-[24px]">You</Text>
                       <span className="w-2"> </span>
-                      <Text className="whitespace-nowrap lg:text-[32px] text-[24px] font-medium">
+                      <Text className="whitespace-nowrap md:text-[32px] text-[24px] font-medium">
                         are a collector
                       </Text>
                     </div>
@@ -190,18 +195,33 @@ const Mint: NextPage = () => {
             </CSSTransition>
           </SwitchTransition>
         </div>
-        <div className="overflow-hidden flex-1 relative">
+        <div className="md:block hidden overflow-hidden flex-1 relative">
           <Image
             priority
             src={BackgroundMint}
             alt="background"
             layout="fill"
             objectFit="contain"
-            objectPosition="position"
+            objectPosition="bottom"
+          />
+        </div>
+        <div className="md:hidden fixed left-0 bottom-[3px] w-full h-full opacity-25">
+          <Image
+            priority
+            src={BackgroundMint}
+            alt="background"
+            layout="fill"
+            objectFit="scale-down"
+            objectPosition="bottom"
           />
         </div>
       </div>
       <WalletDialog open={showDialog} setOpen={setShowDialog} />
+      <ErrorDialog
+        open={showError}
+        setOpen={setShowError}
+        onTryAgain={() => mint()}
+      />
     </Page>
   );
 };
