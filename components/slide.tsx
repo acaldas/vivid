@@ -1,15 +1,25 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { SwitchTransition, CSSTransition } from "react-transition-group";
-import LooksImages from "../public/images/fashion";
+import _LooksImages from "../public/images/fashion";
 import Arrow from "../public/images/arrow.png";
 
-const Looks = new Array(10).fill("").map((key, index) => ({
+const LooksImages = _LooksImages as string[];
+const photosCount = 4;
+const LooksCount = Object.keys(LooksImages).length / photosCount;
+const Looks = new Array(LooksCount).fill("").map((_, index) => ({
   id: index,
   title: "BUTTON SHIRT",
   description: "100% HIGH QUALITY METAL",
-  photos: LooksImages as String[],
+  photos: new Array(photosCount)
+    .fill("")
+    .map(
+      (_, photo) =>
+        (LooksImages[`${index + 1}/${photo + 1}.png` as any] as any).default.src
+    ),
 }));
+
+console.log(Looks[0].photos[0]);
 
 const SLIDE_DURATION = 5000;
 
@@ -23,13 +33,13 @@ const Slide: React.FC = () => {
     if (!play) {
       return;
     }
-    const timeout = setInterval(
+    const timeout = setTimeout(
       () => setCurrent((current) => (current + 1) % Looks.length),
       SLIDE_DURATION
     );
 
-    return () => clearInterval(timeout);
-  }, [play]);
+    return () => clearTimeout(timeout);
+  }, [play, current]);
 
   return (
     <div className="px-[6vw]">
@@ -87,33 +97,31 @@ const Slide: React.FC = () => {
           <div className="flex justify-between" ref={ref}>
             <div className="w-[43%]">
               <Image
-                src={(LooksImages as any)["look-1"]}
+                src={currentLook.photos[0]}
                 alt="photo 1"
                 layout="responsive"
+                width={200}
+                height={400}
               />
             </div>
             <div className="w-[28%] flex flex-col justify-between">
               <div className="w-full h-[67%] mb-[1%] relative">
                 <Image
-                  src={(LooksImages as any)["look-2"]}
+                  src={currentLook.photos[1]}
                   alt="photo 2"
                   layout="fill"
                 />
               </div>
               <div className="w-full h-[32%] relative">
                 <Image
-                  src={(LooksImages as any)["look-3"]}
+                  src={currentLook.photos[2]}
                   alt="photo 3"
                   layout="fill"
                 />
               </div>
             </div>
             <div className="w-[28%] relative">
-              <Image
-                src={(LooksImages as any)["look-4"]}
-                alt="photo 4"
-                layout="fill"
-              />
+              <Image src={currentLook.photos[3]} alt="photo 4" layout="fill" />
             </div>
           </div>
         </CSSTransition>

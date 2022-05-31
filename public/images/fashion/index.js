@@ -6,6 +6,6 @@ function importAll(r) {
   return images;
 }
 
-const Looks = importAll(require.context(".", false, /\.jpg$/));
+const Looks = importAll(require.context(".", true, /\.png$/));
 
 export default Looks;

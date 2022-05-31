@@ -10,9 +10,16 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import useWallet from "../hooks/useWallet";
 import { Transition } from "@headlessui/react";
 import ErrorDialog from "../components/error-dialog";
+import { BigNumber, ethers } from "ethers";
+import { CONTRACT_ADDRESS } from "../config";
+import { Vivid } from "../contracts/type";
+import useMint from "../utils/mint";
+import mintNFT from "../utils/mint";
 
 const FormatDate = new Intl.DateTimeFormat("en-GB", { dateStyle: "full" })
   .format;
+
+const MINT_PRICE = 0.25;
 
 const Mint: NextPage = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -22,8 +29,9 @@ const Mint: NextPage = () => {
   const [mintClicked, setMintClicked] = useState(false);
   const [showError, setShowError] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
-  const { account } = useWallet();
-  const availableMints = "3456";
+  const { account, provider } = useWallet();
+  const [result, setResult] = useState<string>();
+  const availableMints = "8888";
 
   useEffect(() => {
     if (account && mintClicked) {
@@ -31,12 +39,19 @@ const Mint: NextPage = () => {
     }
   }, [account, mintClicked]);
 
-  const mint = () => {
-    setStep("MINTING");
-    // setTimeout(() => {
-    //   setShowError(true);
-    // }, 4000);
-    setTimeout(() => setStep("SUCCESS"), 14000);
+  const mint = async () => {
+    if (!account || !provider) {
+      return;
+    }
+
+    try {
+      setStep("MINTING");
+      await mintNFT(true, 2, account, provider);
+      setStep("SUCCESS");
+    } catch (error) {
+      setShowError(true);
+      setStep("INITIAL");
+    }
   };
 
   const dateMsg = useMemo(
@@ -87,11 +102,9 @@ const Mint: NextPage = () => {
                       </Button>
                     </div>
                     <div>
-                      <Text className="text-[24px]">
-                        0.5 ETH PER COLLECTABLE
-                      </Text>
+                      <Text className="text-[24px]">0.25 ETH PER NFT</Text>
                       <Text className="text-[24px] mb-[5vh]">
-                        1 MINT PER COLLECTOR
+                        2 MINT PER COLLECTOR
                       </Text>
                       <Text className="text-[24px] font-light mb-5">
                         LIMITED EDITION
@@ -107,7 +120,9 @@ const Mint: NextPage = () => {
                       Connecting
                     </Text>
                     <div className="flex">
-                      <Text className="md:text-[32px] text-[24px]">You</Text>
+                      <Text className="md:text-[32px] text-[24px] font-medium">
+                        You
+                      </Text>
                       <span className="w-2"> </span>
                       <Text className="whitespace-nowrap md:text-[32px] text-[24px] font-medium">
                         are being connected
@@ -177,14 +192,16 @@ const Mint: NextPage = () => {
                       Congratulations
                     </Text>
                     <div className="flex">
-                      <Text className="md:text-[32px] text-[24px]">You</Text>
+                      <Text className="md:text-[32px] text-[24px] font-medium">
+                        You
+                      </Text>
                       <span className="w-2"> </span>
                       <Text className="whitespace-nowrap md:text-[32px] text-[24px] font-medium">
                         are a collector
                       </Text>
                     </div>
                     <div className="mt-[5vh] mb-[6vh]">
-                      <Button>SEE YOUR PIECE</Button>
+                      <Button>SEE YOUR NFT</Button>
                     </div>
                     <Text className="text-[24px]">{dateMsg}</Text>
                   </div>

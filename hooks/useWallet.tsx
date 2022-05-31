@@ -7,7 +7,7 @@ const { useIsActive: useMetamaskIsActive, useAccount: useMetamaskAccount } =
   metaMaskHooks;
 
 const useWallet = () => {
-  const { connector } = useWeb3React();
+  const { connector, ...rest } = useWeb3React();
   const account = useMetamaskAccount();
   const isActive = useMetamaskIsActive();
 
@@ -24,7 +24,7 @@ const useWallet = () => {
     connector.connectEagerly?.();
   }, [connector, isActive]);
 
-  return { connectWallet, account, isActive };
+  return { connectWallet, connector, ...rest, account, isActive };
 };
 
 export default useWallet;
