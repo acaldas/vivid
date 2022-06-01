@@ -74,7 +74,7 @@ const Header: React.FC<IProps> = ({ className, ...props }) => {
           <Link href="/mint">
             <a
               className={`header-button py-2 inline-block mb-1 ${
-                "/mint".includes(path) ? "text-gradient" : ""
+                "/mint" === path ? "text-gradient" : ""
               }`}
             >
               Mint
@@ -83,7 +83,7 @@ const Header: React.FC<IProps> = ({ className, ...props }) => {
           <Link href="/gallery">
             <a
               className={`header-button py-2 inline-block ${
-                "/gallery".includes(path) ? "text-gradient" : ""
+                "/gallery" === path ? "text-gradient" : ""
               }`}
             >
               Gallery
