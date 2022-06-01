@@ -26,7 +26,7 @@ const Mint: NextPage = () => {
   const [step, setStep] = useState<"INITIAL" | "ERROR" | "MINTING" | "SUCCESS">(
     "INITIAL"
   );
-  const [mintClicked, setMintClicked] = useState(false);
+  const [mintClicked, setMintClicked] = useState(0);
   const [showError, setShowError] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
   const { account, provider } = useWallet();
@@ -35,22 +35,24 @@ const Mint: NextPage = () => {
 
   useEffect(() => {
     if (account && mintClicked) {
-      mint();
+      mint(mintClicked);
     }
   }, [account, mintClicked]);
 
-  const mint = async () => {
+  const mint = async (mints: number) => {
     if (!account || !provider) {
       return;
     }
 
     try {
       setStep("MINTING");
-      await mintNFT(true, 2, account, provider);
+      await mintNFT(true, mints, account, provider);
       setStep("SUCCESS");
     } catch (error) {
       setShowError(true);
       setStep("INITIAL");
+    } finally {
+      setMintClicked(0);
     }
   };
 
@@ -95,10 +97,20 @@ const Mint: NextPage = () => {
                           if (!account) {
                             setShowDialog(true);
                           }
-                          setMintClicked(true);
+                          setMintClicked(1);
                         }}
                       >
-                        GET YOURS
+                        GET ONE
+                      </Button>
+                      <Button
+                        onClick={() => {
+                          if (!account) {
+                            setShowDialog(true);
+                          }
+                          setMintClicked(2);
+                        }}
+                      >
+                        GET TWO
                       </Button>
                     </div>
                     <div>
@@ -237,7 +249,7 @@ const Mint: NextPage = () => {
       <ErrorDialog
         open={showError}
         setOpen={setShowError}
-        onTryAgain={() => mint()}
+        onTryAgain={() => mint(mintClicked)}
       />
     </Page>
   );

@@ -79,18 +79,20 @@ const Cards: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center w-full h-[calc(100%-100px)]">
       <button
         onClick={showNext}
-        className="bg-white rounded-[2px] border-2 border-black w-[77px] h-[77px] relative pt-1"
+        className="bg-white rounded-[2px] border-2 border-gradient drop-gradient w-[53px] h-[47px] relative px-3 py-2"
       >
-        <Image src={Arrow} alt="Next" layout="fixed" width="60" height="60" />
+        <Image
+          src={Arrow}
+          alt="Next"
+          layout="responsive"
+          width="60"
+          height="60"
+        />
       </button>
-      <div
-        className={`cards ${
-          active ? "cards--active" : ""
-        } ml-[120px] mr-[110px]`}
-      >
+      <div className={`flex-1 cards ${active ? "cards--active" : ""} h-full`}>
         {Object.keys(CardImages).map((key, index) => (
           <div
             onClick={() => {
@@ -103,16 +105,17 @@ const Cards: React.FC = () => {
                 ref.current[index] = r;
               }
             }}
-            className="card w-[342px] h-[384px]"
+            className="card max-w-full h-full"
           >
-            <div className="flex flex-col justify-between h-full border border-black bg-white">
-              <div className="border-b border-black px-[14px] py-[10px]">
-                <p className="text-[36px] font-exo">
-                  Collection item #643{index}
-                </p>
-              </div>
-              <div className="flex-1 relative">
-                <Image src={(CardImages as any)[key]} alt={key} layout="fill" />
+            <div className="flex flex-col justify-between h-full border border-black bg-white overflow-hidden aspect-square">
+              <div className="relative h-full">
+                <Image
+                  src={(CardImages as any)[key]}
+                  alt={key}
+                  width="500"
+                  height="500"
+                  objectFit="contain"
+                />
               </div>
             </div>
           </div>
@@ -120,12 +123,12 @@ const Cards: React.FC = () => {
       </div>
       <button
         onClick={showPrevious}
-        className="bg-white rounded-[2px] border-2 border-black w-[77px] h-[77px] pt-1 rotate-180"
+        className="bg-white rounded-[2px] border-2 border-gradient drop-gradient w-[53px] h-[47px] relative px-3 py-2 rotate-180"
       >
         <Image
           src={Arrow}
           alt="Previous"
-          layout="fixed"
+          layout="responsive"
           width="60"
           height="60"
         />

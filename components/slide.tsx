@@ -66,7 +66,7 @@ const Slide: React.FC = () => {
           ))}
           <button
             onClick={() => setPlay((play) => !play)}
-            className="bg-white rounded-[2px] border-2 border-black xl:w-[40px] xl:h-[40px] sm:w-[24px] sm:h-[24px] w-[19px] h-[19px]"
+            className="bg-white rounded-[2px] border-2 border-gradient drop-gradient xl:w-[40px] xl:h-[40px] sm:w-[24px] sm:h-[24px] w-[19px] h-[19px]"
           >
             {play ? (
               <div className="flex justify-center items-center">
@@ -74,7 +74,7 @@ const Slide: React.FC = () => {
                 <span className="bg-black xl:w-[4.44px] w-[3px] xl:h-[20px] sm:h-[13px] h-[10px]" />
               </div>
             ) : (
-              <div className="rotate-90 w-[80%] ml-[12%]">
+              <div className="rotate-90 w-[60%] ml-[22%]">
                 <Image
                   src={Arrow}
                   alt="Previous"
