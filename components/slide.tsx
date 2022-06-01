@@ -115,7 +115,7 @@ const Slide: React.FC = () => {
                 width={533}
                 height={800}
                 objectFit="contain"
-                priority
+                priority={currentLook.id === 0}
               />
             </div>
             <div className="sm:flex hidden w-[28%] flex-col justify-between">
@@ -124,6 +124,7 @@ const Slide: React.FC = () => {
                   src={currentLook.photos[1]}
                   alt="photo 2"
                   layout="fill"
+                  priority={currentLook.id === 0}
                 />
               </div>
               <div className="w-full h-[32%] relative">
@@ -131,11 +132,17 @@ const Slide: React.FC = () => {
                   src={currentLook.photos[2]}
                   alt="photo 3"
                   layout="fill"
+                  priority={currentLook.id === 0}
                 />
               </div>
             </div>
             <div className="sm:block hidden w-[28%] relative">
-              <Image src={currentLook.photos[3]} alt="photo 4" layout="fill" />
+              <Image
+                src={currentLook.photos[3]}
+                alt="photo 4"
+                layout="fill"
+                priority={currentLook.id === 0}
+              />
             </div>
             <div className="sm:hidden flex w-full mt-[1%] items-stretch justify-between">
               <div className="w-[49.5%] relative flex flex-col justify-between">
@@ -145,6 +152,7 @@ const Slide: React.FC = () => {
                     alt="photo 2"
                     layout="fill"
                     objectFit="fill"
+                    priority={currentLook.id === 0}
                   />
                 </div>
                 <div className="relative h-[29.5%]">
@@ -153,6 +161,7 @@ const Slide: React.FC = () => {
                     alt="photo 2"
                     layout="fill"
                     objectFit="fill"
+                    priority={currentLook.id === 0}
                   />
                 </div>
               </div>
@@ -164,6 +173,7 @@ const Slide: React.FC = () => {
                   width={340}
                   height={801}
                   objectFit="contain"
+                  priority={currentLook.id === 0}
                 />
               </div>
             </div>

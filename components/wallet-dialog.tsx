@@ -38,7 +38,7 @@ const WalletDialog: React.FC<IProps> = ({ open, setOpen }) => {
           style={{ backdropFilter: "blur(4px)" }}
         />
         <div className="fixed inset-0 flex items-center justify-center p-4">
-          <Dialog.Panel className="w-full max-w-2xl rounded-[20px] bg-whitelg:border-[5px] border-[3px] border-black p-[40px]">
+          <Dialog.Panel className="w-full max-w-2xl rounded-[20px] bg-white border-[5px] border-black p-[40px]">
             <Dialog.Title className="text-[40px] text-center font-exo">
               Connect a wallet
             </Dialog.Title>

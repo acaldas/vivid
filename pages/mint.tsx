@@ -64,7 +64,7 @@ const Mint: NextPage = () => {
   return (
     <Page>
       <div className="flex w-full h-full">
-        <div className="flex flex-0 md:pl-[75px] p-[24px] w-[500px] overflow-visible relative z-10">
+        <div className="flex flex-0 md:pl-[75px] p-[24px] w-[540px] max-w-full overflow-visible relative z-10">
           <SwitchTransition>
             <CSSTransition
               key={step}
@@ -91,8 +91,9 @@ const Mint: NextPage = () => {
                         </Text>
                       </div>
                     </div>
-                    <div className="mb-[6vh]">
+                    <div>
                       <Button
+                        className="mr-[24px] mb-[6vh]"
                         onClick={() => {
                           if (!account) {
                             setShowDialog(true);
@@ -103,6 +104,7 @@ const Mint: NextPage = () => {
                         GET ONE
                       </Button>
                       <Button
+                        className="mb-[6vh]"
                         onClick={() => {
                           if (!account) {
                             setShowDialog(true);
