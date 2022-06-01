@@ -118,7 +118,7 @@ const Mint: NextPage = () => {
                     <div>
                       <Text className="text-[24px]">0.25 ETH PER NFT</Text>
                       <Text className="text-[24px] mb-[5vh]">
-                        2 MINT PER COLLECTOR
+                        2 MINTS PER COLLECTOR
                       </Text>
                       <Text className="text-[24px] font-light mb-5">
                         LIMITED EDITION

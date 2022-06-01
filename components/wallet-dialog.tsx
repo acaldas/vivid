@@ -39,14 +39,14 @@ const WalletDialog: React.FC<IProps> = ({ open, setOpen }) => {
         />
         <div className="fixed inset-0 flex items-center justify-center p-4">
           <Dialog.Panel className="w-full max-w-2xl rounded-[20px] bg-white border-[5px] border-black p-[40px]">
-            <Dialog.Title className="text-[40px] text-center font-exo">
+            <Dialog.Title className="sm:text-[40px] text-[32px] text-center font-exo">
               Connect a wallet
             </Dialog.Title>
-            <div className="flex justify-center my-[80px] gap-[150px]">
+            <div className="flex sm:justify-center justify-around my-[80px] sm:gap-[150px] gap-[20px]">
               <button onClick={() => connectWallet()}>
                 <Image src={Metamask} alt="metamask" width={80} height={80} />
               </button>
-              <button>
+              <button onClick={() => connectWallet("WALLET_CONNECT")}>
                 <Image
                   src={WalletConnect}
                   alt="wallet connect"

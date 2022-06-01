@@ -3,11 +3,12 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import Script from "next/script";
 import { Web3ReactProvider } from "@web3-react/core";
-import { metamaskConnector } from "../hooks/useMetamask";
+import {
+  metamaskConnector,
+  walletconnectConnector,
+} from "../hooks/useMetamask";
 
-const connectors = [metamaskConnector];
-
-declare let dataLayer: Array<any>;
+const connectors = [metamaskConnector, walletconnectConnector];
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

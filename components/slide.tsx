@@ -29,7 +29,7 @@ const Looks = new Array(LooksCount).fill("").map((_, index) => {
   };
 });
 
-const SLIDE_DURATION = 8000;
+const SLIDE_DURATION = 5000;
 
 const Slide: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);

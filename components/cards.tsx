@@ -110,7 +110,7 @@ const Cards: React.FC = () => {
 
   return (
     <div className="flex items-start sm:items-center justify-center w-full h-full flex-wrap">
-      <div className="sm:block flex sm:w-auto w-full justify-around sm:mt-0 mt-[20px] sm:mb-0 mb-[50px]">
+      <div className="sm:block flex sm:w-auto w-full justify-around sm:mt-0 mt-[28px] sm:mb-0 mb-[50px]">
         {buttonNext}
         <div className="sm:hidden block">{buttonPrevious}</div>
       </div>
@@ -119,7 +119,7 @@ const Cards: React.FC = () => {
           active ? "cards--active" : ""
         } w-full`}
       >
-        {Object.keys(CardImages).map((key, index) => (
+        {Object.keys(CardImages).map((key, index, array) => (
           <div
             key={key}
             data-index={index}
@@ -144,6 +144,7 @@ const Cards: React.FC = () => {
                   height="500"
                   objectFit="contain"
                   layout="fill"
+                  priority={[0, 1, array.length - 1].includes(index)}
                 />
               </div>
             </div>

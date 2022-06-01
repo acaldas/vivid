@@ -23,7 +23,7 @@ const Gallery: NextPage = () => {
       </div>
       <div className="flex flex-1 w-full lg:px-[75px] px-[32px] py-[24px] flex-wrap">
         <div className="sm:w-[420px] mr-[50px] max-w-full">
-          <div className="mb-[9vh]">
+          <div className="xl:mb-[9vh] mb-[5vh]">
             <Text className="block lg:text-[56px] text-[40px] sm:mb-[8px] mb-[1vh] lg:pr-0 pr-1 lg:leading-none leading-[1.1em]">
               NFT collection
             </Text>
@@ -46,14 +46,18 @@ const Gallery: NextPage = () => {
             </div>
           </div>
           <div>
-            <Text className="text-[40px]">6 unique characters</Text>
-            <Text className="text-[40px]">200 hand-drawn traits</Text>
-            <Text className="text-[40px] font-medium">
+            <Text className="xl:text-[40px] text-[32px]">
+              6 unique characters
+            </Text>
+            <Text className="xl:text-[40px] text-[32px]">
+              200 hand-drawn traits
+            </Text>
+            <Text className="xl:text-[40px] text-[32px] font-medium">
               8888 pieces available
             </Text>
           </div>
         </div>
-        <div className="xl:flex-1 xl:max-w-[90%] lg:max-w-[90%] w-full mx-auto xl:aspect-auto md:aspect-3/2 aspect-square">
+        <div className="xl:flex-1 xl:max-w-[60%] lg:max-w-[90%] w-full mx-auto xl:aspect-auto md:aspect-3/2 aspect-square">
           <Cards />
         </div>
       </div>

@@ -1,7 +1,7 @@
 import { useWeb3React } from "@web3-react/core";
 import { useState, useEffect } from "react";
 import { CHAIN_ID } from "../config";
-import { metaMaskHooks } from "./useMetamask";
+import { metaMaskHooks, walletconnectConnector } from "./useMetamask";
 
 const { useIsActive: useMetamaskIsActive, useAccount: useMetamaskAccount } =
   metaMaskHooks;
@@ -14,7 +14,8 @@ const useWallet = () => {
   const connectWallet = async (
     wallet: "METAMASK" | "WALLET_CONNECT" = "METAMASK"
   ) => {
-    await connector.activate(CHAIN_ID);
+    const method = wallet == "METAMASK" ? connector : walletconnectConnector[0];
+    await method.activate(CHAIN_ID);
   };
 
   useEffect(() => {

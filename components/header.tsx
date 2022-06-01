@@ -62,7 +62,7 @@ const Header: React.FC<IProps> = ({ className, ...props }) => {
     <Popover key="NFT" className="relative ml-[32px]">
       <Popover.Button>
         <div
-          className={`header-button font-exo ${
+          className={`header-button text-[18px] font-exo ${
             ["/gallery", "/mint"].includes(path) ? "text-gradient" : ""
           }`}
         >

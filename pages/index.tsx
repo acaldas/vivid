@@ -1,12 +1,12 @@
 import type { NextPage } from "next";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import Background from "../components/background";
-import Header from "../components/header";
 import Page from "../components/page";
 import Logo from "../components/logo";
 import Mico from "../components/mico";
 import Text from "../components/text";
+import Link from "next/link";
+import Button from "../components/button";
 
 const LOADING_TIME = 5000;
 
@@ -43,34 +43,22 @@ const Home: NextPage = () => {
               Bright
             </Text>
             <div className="lg:mt-[24px] mt-[4vh] lg:static flex w-full">
-              <a
-                href="https://twitter.com/vividcojp"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="button glitch-hover mr-[26px] lg:w-auto w-1/2 border-gradient drop-gradient text-gradient-hover"
-              >
-                <Text
-                  className="font-bold flex items-center"
-                  delay={LOADING_TIME}
-                  textGradient
+              <Link href="/mint">
+                <Button
+                  className="lg:w-auto w-1/2 mr-[26px]"
+                  textProps={{ delay: LOADING_TIME, textGradient: true }}
                 >
-                  Twitter
-                </Text>
-              </a>
-              <a
-                href="https://discord.com/invite/vividcojp"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="button glitch-hover lg:w-auto w-1/2 border-gradient drop-gradient text-gradient-hover"
-              >
-                <Text
-                  className="font-bold flex items-center"
-                  delay={LOADING_TIME}
-                  textGradient
+                  MINT
+                </Button>
+              </Link>
+              <Link href="/gallery">
+                <Button
+                  className="lg:w-auto w-1/2"
+                  textProps={{ delay: LOADING_TIME, textGradient: true }}
                 >
-                  Discord
-                </Text>
-              </a>
+                  GALLERY
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

@@ -6,8 +6,8 @@ import Text from "../components/text";
 const Gallery: NextPage = () => {
   return (
     <Page>
-      <div className="lg:pl-[75px] p-[24px]">
-        <Text className="lg:text-[56px] text-[40px] sm:mb-[8px] mb-[1vh] lg:pr-0 pr-1 lg:leading-none leading-[1.1em]">
+      <div className="px-[6vw]">
+        <Text className="lg:text-[56px] sm:text-[40px] text-[30px] sm:mb-[8px] mb-[1vh] lg:pr-0 pr-1 lg:leading-none leading-[1.1em]">
           43 Cut-and-sew pieces
         </Text>
         <Text className="lg:text-[32px] text-[24px] font-medium lg:pr-[10%]">
@@ -17,7 +17,7 @@ const Gallery: NextPage = () => {
           Designed by Acky & Zap
         </Text>
       </div>
-      <div className="mt-14">
+      <div className="sm:mt-14 mt-0">
         <Slide />
       </div>
     </Page>
