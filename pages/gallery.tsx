@@ -21,8 +21,8 @@ const Gallery: NextPage = () => {
           height="789"
         />
       </div>
-      <div className="flex flex-1 w-full lg:pl-[75px] p-[24px]">
-        <div className="w-[420px] mr-[50px]">
+      <div className="flex flex-1 w-full lg:px-[75px] px-[32px] py-[24px] flex-wrap">
+        <div className="sm:w-[420px] mr-[50px] max-w-full">
           <div className="mb-[9vh]">
             <Text className="block lg:text-[56px] text-[40px] sm:mb-[8px] mb-[1vh] lg:pr-0 pr-1 lg:leading-none leading-[1.1em]">
               NFT collection
@@ -34,7 +34,7 @@ const Gallery: NextPage = () => {
               <span className="w-3"> </span>
               <Text className="lg:text-[32px] text-[24px]">Acky Bright</Text>
             </div>
-            <div className="relative w-[358px]">
+            <div className="relative w-[358px] max-w-full">
               <Image
                 src={Autograph}
                 alt="Acky autograph"
@@ -53,7 +53,7 @@ const Gallery: NextPage = () => {
             </Text>
           </div>
         </div>
-        <div className="flex-1 max-w-[60%] mx-auto">
+        <div className="xl:flex-1 xl:max-w-[90%] lg:max-w-[90%] w-full mx-auto xl:aspect-auto md:aspect-3/2 aspect-square">
           <Cards />
         </div>
       </div>

@@ -78,20 +78,42 @@ const Cards: React.FC = () => {
     (previous.querySelector(".card-image") as HTMLDivElement).click();
   };
 
+  const buttonNext = (
+    <button
+      onClick={showNext}
+      className="bg-white rounded-[2px] border-2 border-gradient drop-gradient w-[53px] h-[47px] relative px-3 py-2"
+    >
+      <Image
+        src={Arrow}
+        alt="Next"
+        layout="responsive"
+        width="60"
+        height="60"
+      />
+    </button>
+  );
+
+  const buttonPrevious = (
+    <button
+      onClick={showPrevious}
+      className="bg-white rounded-[2px] border-2 border-gradient drop-gradient w-[53px] h-[47px] relative px-3 py-2 rotate-180"
+    >
+      <Image
+        src={Arrow}
+        alt="Previous"
+        layout="responsive"
+        width="60"
+        height="60"
+      />
+    </button>
+  );
+
   return (
-    <div className="flex items-center justify-center w-full h-full">
-      <button
-        onClick={showNext}
-        className="bg-white rounded-[2px] border-2 border-gradient drop-gradient w-[53px] h-[47px] relative px-3 py-2"
-      >
-        <Image
-          src={Arrow}
-          alt="Next"
-          layout="responsive"
-          width="60"
-          height="60"
-        />
-      </button>
+    <div className="flex items-start sm:items-center justify-center w-full h-full flex-wrap">
+      <div className="sm:block flex sm:w-auto w-full justify-around sm:mt-0 mt-[20px] sm:mb-0 mb-[50px]">
+        {buttonNext}
+        <div className="sm:hidden block">{buttonPrevious}</div>
+      </div>
       <div
         className={`flex-1 mx-[40px] cards ${
           active ? "cards--active" : ""
@@ -108,7 +130,7 @@ const Cards: React.FC = () => {
             }}
             className="card w-full pointer-events-none"
           >
-            <div className="flex flex-col justify-between w-2/3 mx-auto aspect-square">
+            <div className="flex flex-col justify-between md:w-2/3 w-[90%] mx-auto aspect-square">
               <div
                 onClick={() => {
                   showCard(index);
@@ -128,18 +150,7 @@ const Cards: React.FC = () => {
           </div>
         ))}
       </div>
-      <button
-        onClick={showPrevious}
-        className="bg-white rounded-[2px] border-2 border-gradient drop-gradient w-[53px] h-[47px] relative px-3 py-2 rotate-180"
-      >
-        <Image
-          src={Arrow}
-          alt="Previous"
-          layout="responsive"
-          width="60"
-          height="60"
-        />
-      </button>
+      <div className="sm:block hidden">{buttonPrevious}</div>
     </div>
   );
 };
