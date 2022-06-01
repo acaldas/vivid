@@ -29,7 +29,7 @@ const WalletDialog: React.FC<IProps> = ({ open, setOpen, onTryAgain }) => {
           style={{ backdropFilter: "blur(4px)" }}
         />
         <div className="fixed inset-0 flex items-center justify-center p-4">
-          <Dialog.Panel className="w-full max-w-[335px] rounded-[20px] bg-white border-[5px] border-black p-[30px]">
+          <Dialog.Panel className="w-full max-w-[335px] rounded-[20px] bg-white lg:border-[5px] border-[3px] border-black p-[30px]">
             <Dialog.Title className="text-[24px] text-center font-exo">
               Something went wrong!
             </Dialog.Title>

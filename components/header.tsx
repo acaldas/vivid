@@ -108,7 +108,9 @@ const Header: React.FC<IProps> = ({ className, ...props }) => {
   return (
     <>
       <div
-        className={`flex justify-between relative lg:p-[40px] lg:pl-[75px] p-[24px] items-center ${className}`}
+        className={`z-20 flex justify-between relative lg:p-[40px] lg:pl-[75px] p-[24px] items-center ${
+          open ? "bg-white" : "bg-transparent"
+        } ${className}`}
         {...props}
       >
         <Link href="/">

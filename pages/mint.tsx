@@ -222,7 +222,7 @@ const Mint: NextPage = () => {
             objectPosition="bottom"
           />
         </div>
-        <div className="md:hidden fixed left-0 bottom-[3px] w-full h-full opacity-25">
+        <div className="pointer-events-none md:hidden fixed left-0 bottom-[3px] w-full h-full opacity-25">
           <Image
             priority
             src={BackgroundMint}
