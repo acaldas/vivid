@@ -53,7 +53,7 @@ const Gallery: NextPage = () => {
             </Text>
           </div>
         </div>
-        <div className="flex-1 px-10">
+        <div className="flex-1 max-w-[60%] mx-auto">
           <Cards />
         </div>
       </div>

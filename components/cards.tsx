@@ -17,7 +17,7 @@ const Cards: React.FC = () => {
     if (current === undefined) {
       setCurrent(cards.length - 1);
       requestAnimationFrame(() => {
-        cards[0].click();
+        (cards[0].querySelector(".card-image") as HTMLDivElement).click();
       });
     }
 
@@ -64,7 +64,7 @@ const Cards: React.FC = () => {
     }
     const currentCard = ref.current[current];
     const next = currentCard.nextElementSibling || ref.current[0];
-    (next as HTMLDivElement).click();
+    (next.querySelector(".card-image") as HTMLDivElement).click();
   };
 
   const showPrevious = () => {
@@ -75,11 +75,11 @@ const Cards: React.FC = () => {
     const currentCard = ref.current[current];
     const previous =
       currentCard.previousElementSibling || ref.current[ref.current.length - 1];
-    (previous as HTMLDivElement).click();
+    (previous.querySelector(".card-image") as HTMLDivElement).click();
   };
 
   return (
-    <div className="flex items-center justify-center w-full h-[calc(100%-100px)]">
+    <div className="flex items-center justify-center w-full h-full">
       <button
         onClick={showNext}
         className="bg-white rounded-[2px] border-2 border-gradient drop-gradient w-[53px] h-[47px] relative px-3 py-2"
@@ -92,12 +92,13 @@ const Cards: React.FC = () => {
           height="60"
         />
       </button>
-      <div className={`flex-1 cards ${active ? "cards--active" : ""} h-full`}>
+      <div
+        className={`flex-1 mx-[40px] cards ${
+          active ? "cards--active" : ""
+        } w-full`}
+      >
         {Object.keys(CardImages).map((key, index) => (
           <div
-            onClick={() => {
-              showCard(index);
-            }}
             key={key}
             data-index={index}
             ref={(r) => {
@@ -105,16 +106,22 @@ const Cards: React.FC = () => {
                 ref.current[index] = r;
               }
             }}
-            className="card max-w-full h-full"
+            className="card w-full pointer-events-none"
           >
-            <div className="flex flex-col justify-between h-full border border-black bg-white overflow-hidden aspect-square">
-              <div className="relative h-full">
+            <div className="flex flex-col justify-between w-2/3 mx-auto aspect-square">
+              <div
+                onClick={() => {
+                  showCard(index);
+                }}
+                className="cursor-pointer pointer-events-auto card-image relative w-full h-full border border-black bg-white"
+              >
                 <Image
                   src={(CardImages as any)[key]}
                   alt={key}
                   width="500"
                   height="500"
                   objectFit="contain"
+                  layout="fill"
                 />
               </div>
             </div>
