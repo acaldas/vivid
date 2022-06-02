@@ -7,9 +7,15 @@ interface IProps {
   open: boolean;
   setOpen: (open: boolean) => void;
   onTryAgain: () => void;
+  error?: string;
 }
 
-const ErrorDialog: React.FC<IProps> = ({ open, setOpen, onTryAgain }) => {
+const ErrorDialog: React.FC<IProps> = ({
+  open,
+  setOpen,
+  onTryAgain,
+  error,
+}) => {
   return (
     <Transition
       appear
@@ -30,7 +36,7 @@ const ErrorDialog: React.FC<IProps> = ({ open, setOpen, onTryAgain }) => {
         <div className="fixed inset-0 flex items-center justify-center p-4">
           <Dialog.Panel className="w-full max-w-[335px] rounded-[20px] bg-white lg:border-[5px] border-[3px] border-black p-[30px]">
             <Dialog.Title className="text-[24px] text-center font-exo">
-              Something went wrong!
+              {error || "Something went wrong!"}
             </Dialog.Title>
             <div>
               <p className="font-exo font-light text-[16px] mt-[24px] mb-[30px] px-2">

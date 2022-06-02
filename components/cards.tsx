@@ -140,8 +140,6 @@ const Cards: React.FC = () => {
                 <Image
                   src={(CardImages as any)[key]}
                   alt={key}
-                  width="500"
-                  height="500"
                   objectFit="contain"
                   layout="fill"
                   priority={[0, 1, array.length - 1].includes(index)}

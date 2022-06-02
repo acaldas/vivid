@@ -1,4 +1,4 @@
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import { useEffect, useState } from "react";
 import Background from "../components/background";
 import Page from "../components/page";
@@ -7,10 +7,15 @@ import Mico from "../components/mico";
 import Text from "../components/text";
 import Link from "next/link";
 import Button from "../components/button";
+import { MINT_ENABLED } from "../config";
 
 const LOADING_TIME = 5000;
 
-const Home: NextPage = () => {
+interface IProps {
+  mintEnabled: boolean;
+}
+
+const Home: NextPage<IProps> = ({ mintEnabled }) => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => {
@@ -43,12 +48,12 @@ const Home: NextPage = () => {
               Bright
             </Text>
             <div className="lg:mt-[24px] mt-[4vh] lg:static flex w-full">
-              <Link href="/mint">
+              <Link href={mintEnabled ? "/mint" : "/fashion"}>
                 <Button
                   className="lg:w-auto w-1/2 mr-[26px]"
                   textProps={{ delay: LOADING_TIME, textGradient: true }}
                 >
-                  MINT
+                  {`${mintEnabled ? "MINT" : "FASHION"}`}
                 </Button>
               </Link>
               <Link href="/gallery">
@@ -65,6 +70,14 @@ const Home: NextPage = () => {
       </div>
     </Page>
   );
+};
+
+export const getStaticProps: GetStaticProps<IProps> = async () => {
+  return {
+    props: {
+      mintEnabled: MINT_ENABLED,
+    },
+  };
 };
 
 export default Home;

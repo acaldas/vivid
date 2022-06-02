@@ -7,10 +7,14 @@ import TwitterIcon from "../public/images/twitter.svg";
 import DiscordIcon from "../public/images/discord.svg";
 import { useRouter } from "next/router";
 import useWallet from "../hooks/useWallet";
+import { GetStaticProps } from "next";
+import { MINT_ENABLED } from "../config";
 
-interface IProps extends React.HTMLProps<HTMLDivElement> {}
+interface IProps extends React.HTMLProps<HTMLDivElement> {
+  mintEnabled: boolean;
+}
 
-const Header: React.FC<IProps> = ({ className, ...props }) => {
+const Header: React.FC<IProps> = ({ mintEnabled, className, ...props }) => {
   const [open, setOpen] = useState(false);
   const { connectWallet, account, isActive } = useWallet();
   const router = useRouter();
@@ -56,42 +60,54 @@ const Header: React.FC<IProps> = ({ className, ...props }) => {
         Fashion
       </a>
     </Link>,
-    <Popover key="NFT" className="relative ml-[32px]">
-      <Popover.Button>
-        <div
-          className={`header-button text-[18px] font-exo ${
-            ["/gallery", "/mint"].includes(path) ? "text-gradient" : ""
+    mintEnabled ? (
+      <Popover key="NFT" className="relative ml-[32px]">
+        <Popover.Button>
+          <div
+            className={`header-button text-[18px] font-exo ${
+              ["/gallery", "/mint"].includes(path) ? "text-gradient" : ""
+            }`}
+          >
+            NFT
+          </div>
+        </Popover.Button>
+        <Popover.Panel className="absolute z-50 mt-2 p-3 border border-[rgba(0,0,0,0.8)] shadow-md rounded-md lg:left-1/2 left-auto -translate-x-1/2 bg-white">
+          <div>
+            <Link href="/mint">
+              <a
+                className={`header-button py-2 inline-block mb-1 ${
+                  "/mint" === path ? "text-gradient" : ""
+                }`}
+              >
+                Mint
+              </a>
+            </Link>
+            <Link href="/gallery">
+              <a
+                className={`header-button py-2 inline-block ${
+                  "/gallery" === path ? "text-gradient" : ""
+                }`}
+              >
+                Gallery
+              </a>
+            </Link>
+          </div>
+        </Popover.Panel>
+      </Popover>
+    ) : (
+      <Link href="/gallery" key="gallery">
+        <a
+          className={`header-button ml-[32px] ${
+            path === "/gallery" ? "text-gradient" : ""
           }`}
         >
-          NFT
-        </div>
-      </Popover.Button>
-      <Popover.Panel className="absolute z-50 mt-2 p-3 border border-[rgba(0,0,0,0.8)] shadow-md rounded-md lg:left-1/2 left-auto -translate-x-1/2 bg-white">
-        <div>
-          <Link href="/mint">
-            <a
-              className={`header-button py-2 inline-block mb-1 ${
-                "/mint" === path ? "text-gradient" : ""
-              }`}
-            >
-              Mint
-            </a>
-          </Link>
-          <Link href="/gallery">
-            <a
-              className={`header-button py-2 inline-block ${
-                "/gallery" === path ? "text-gradient" : ""
-              }`}
-            >
-              Gallery
-            </a>
-          </Link>
-        </div>
-      </Popover.Panel>
-    </Popover>,
+          Gallery
+        </a>
+      </Link>
+    ),
     <button
       key="wallet"
-      className="header-button ml-[32px]"
+      className="header-button ml-[32px] pt-[1px]"
       onClick={() => (isActive && account ? undefined : connectWallet())}
     >
       {isActive && account ? `${account.substring(0, 7)}...` : "CONNECT WALLET"}
@@ -159,6 +175,14 @@ const Header: React.FC<IProps> = ({ className, ...props }) => {
       </div>
     </>
   );
+};
+
+export const getStaticProps: GetStaticProps<IProps> = async () => {
+  return {
+    props: {
+      mintEnabled: MINT_ENABLED,
+    },
+  };
 };
 
 export default Header;

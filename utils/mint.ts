@@ -1,34 +1,40 @@
 import { ethers } from "ethers";
 import keccak256 from "keccak256";
 import MerkleTree from "merkletreejs";
-import { CONTRACT_ADDRESS } from "../config";
 import { Vivid } from "../contracts/vivid";
 import abi from "../contracts/vivid.abi.json";
-
-const MINT_PRICE = 0.25;
 
 const mintNFT = async (
   whitelist: boolean,
   tokens: number,
   account: string,
-  provider: ethers.providers.Web3Provider
+  provider: ethers.providers.Web3Provider,
+  contractAddress: string,
+  mintPrice: number
 ) => {
   const signer = provider.getSigner(account);
   const contract = new ethers.Contract(
-    CONTRACT_ADDRESS,
+    contractAddress,
     abi,
     signer
   ) as any as Vivid;
 
-  const value = ethers.utils.parseEther((tokens * MINT_PRICE).toString());
+  const value = ethers.utils.parseEther((tokens * mintPrice).toString());
 
+  let contractTransaction: ethers.ContractTransaction;
   if (!whitelist) {
-    await contract.mint(tokens, { value });
+    contractTransaction = await contract.mint(tokens, { value });
   } else {
-    await contract.whitelistMint(tokens, generateMerkleProof(account), {
-      value,
-    });
+    contractTransaction = await contract.whitelistMint(
+      tokens,
+      generateMerkleProof(account),
+      {
+        value,
+      }
+    );
   }
+
+  return await contractTransaction.wait();
 };
 
 const generateMerkleProof = (address: string): [string, string] => {
@@ -48,9 +54,7 @@ const generateMerkleProof = (address: string): [string, string] => {
   const leafNodes = whitelistAddresses.map((addr) => keccak256(addr));
   const merkleTree = new MerkleTree(leafNodes, keccak256, { sortPairs: true });
 
-  const proof = merkleTree.getHexProof(
-    keccak256("0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266")
-  );
+  const proof = merkleTree.getHexProof(keccak256(address));
 
   return proof as [string, string];
 };

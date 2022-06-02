@@ -57,13 +57,18 @@
   transform: translateY(-50%) rotate(-1deg) scale(1);
 }
 
-.card-image {
-  box-shadow: 0;
-  transition: box-shadow 0.6s;
-}
-
-.card .card-image:hover,
-.card--current .card-image {
+.card .card-image:after {
   box-shadow: 8.13480281829834px 9.903237342834473px 9.54955005645752px
     8.84217643737793px #00000040;
+  opacity: 0;
+  transition: opacity 0.6s;
+  content: " ";
+  width: 100%;
+  display: block;
+  height: 100%;
+}
+
+.card .card-image:hover:after,
+.card--current .card-image:after {
+  opacity: 1;
 }

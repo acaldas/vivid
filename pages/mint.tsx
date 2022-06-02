@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import Image from "next/image";
 import { SwitchTransition, CSSTransition } from "react-transition-group";
 import Page from "../components/page";
@@ -10,19 +10,38 @@ import useWallet from "../hooks/useWallet";
 import { Transition } from "@headlessui/react";
 import ErrorDialog from "../components/error-dialog";
 import mintNFT from "../utils/mint";
+import Link from "next/link";
+import {
+  CONTRACT_ADDRESS,
+  MINT_ENABLED,
+  MINT_PRICE,
+  OPENSEA_URL,
+  WHITELIST_ENABLED,
+} from "../config";
 
 const FormatDate = new Intl.DateTimeFormat("en-GB", { dateStyle: "full" })
   .format;
 
-const MINT_PRICE = 0.25;
+interface IProps {
+  mintEnabled: boolean;
+  whitelistEnabled: boolean;
+  contractAddress: string;
+  mintPrice: number;
+}
 
-const Mint: NextPage = () => {
+const Mint: NextPage<IProps> = ({
+  mintEnabled,
+  whitelistEnabled,
+  contractAddress,
+  mintPrice,
+}) => {
   const ref = useRef<HTMLDivElement>(null);
   const [step, setStep] = useState<"INITIAL" | "ERROR" | "MINTING" | "SUCCESS">(
     "INITIAL"
   );
   const [mintClicked, setMintClicked] = useState(0);
   const [showError, setShowError] = useState(false);
+  const [showNoProviderError, setShowNoProviderError] = useState(false);
   const { connectWallet, account, provider } = useWallet();
   const availableMints = "8888";
 
@@ -39,7 +58,14 @@ const Mint: NextPage = () => {
 
     try {
       setStep("MINTING");
-      await mintNFT(true, mints, account, provider);
+      const result = await mintNFT(
+        whitelistEnabled,
+        mints,
+        account,
+        provider,
+        contractAddress,
+        mintPrice
+      );
       setStep("SUCCESS");
       setMintClicked(0);
     } catch (error) {
@@ -47,6 +73,16 @@ const Mint: NextPage = () => {
       setStep("INITIAL");
     } finally {
     }
+  };
+
+  const handleMintClick = async (mints: number) => {
+    if (!provider) {
+      setShowNoProviderError(true);
+    }
+    if (!account) {
+      await connectWallet();
+    }
+    setMintClicked(mints);
   };
 
   const dateMsg = useMemo(
@@ -86,30 +122,22 @@ const Mint: NextPage = () => {
                     </div>
                     <div>
                       <Button
+                        disabled={!mintEnabled}
                         className="mr-[24px] mb-[6vh]"
-                        onClick={async () => {
-                          if (!account) {
-                            await connectWallet();
-                          }
-                          setMintClicked(1);
-                        }}
+                        onClick={() => handleMintClick(1)}
                       >
                         GET ONE
                       </Button>
                       <Button
+                        disabled={!mintEnabled}
                         className="mb-[6vh]"
-                        onClick={async () => {
-                          if (!account) {
-                            await connectWallet();
-                          }
-                          setMintClicked(2);
-                        }}
+                        onClick={() => handleMintClick(2)}
                       >
                         GET TWO
                       </Button>
                     </div>
                     <div>
-                      <Text className="text-[24px]">0.25 ETH PER NFT</Text>
+                      <Text className="text-[24px]">{`${mintPrice} ETH PER NFT`}</Text>
                       <Text className="text-[24px] mb-[5vh]">
                         2 MINTS PER COLLECTOR
                       </Text>
@@ -208,7 +236,13 @@ const Mint: NextPage = () => {
                       </Text>
                     </div>
                     <div className="mt-[5vh] mb-[6vh]">
-                      <Button>SEE YOUR NFT</Button>
+                      <Link
+                        href={OPENSEA_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Button>SEE YOUR NFT</Button>
+                      </Link>
                     </div>
                     <Text className="text-[24px]">{dateMsg}</Text>
                   </div>
@@ -245,8 +279,25 @@ const Mint: NextPage = () => {
         setOpen={setShowError}
         onTryAgain={() => mint(mintClicked)}
       />
+      <ErrorDialog
+        error="Metamask not detected!"
+        open={showNoProviderError}
+        setOpen={setShowNoProviderError}
+        onTryAgain={() => connectWallet()}
+      />
     </Page>
   );
+};
+
+export const getStaticProps: GetStaticProps<IProps> = async () => {
+  return {
+    props: {
+      mintEnabled: MINT_ENABLED,
+      whitelistEnabled: WHITELIST_ENABLED,
+      contractAddress: CONTRACT_ADDRESS ?? "",
+      mintPrice: MINT_PRICE,
+    },
+  };
 };
 
 export default Mint;
