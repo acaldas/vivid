@@ -24,7 +24,7 @@ const Home: NextPage<IProps> = ({ mintEnabled }) => {
   }, [loading]);
 
   return (
-    <Page loading={loading}>
+    <Page loading={loading} mintEnabled={mintEnabled}>
       <Background loading={loading} />
       <div className="lg:px-[5.6vw] px-[3.5vh] lg:py-[10.5vh] py-[7vh] relative flex-grow">
         <div

@@ -4,9 +4,14 @@ import Header from "../components/header";
 
 interface IProps {
   loading?: boolean;
+  mintEnabled: boolean;
 }
 
-const Page: NextPage<PropsWithChildren<IProps>> = ({ loading, children }) => {
+const Page: NextPage<PropsWithChildren<IProps>> = ({
+  mintEnabled,
+  loading,
+  children,
+}) => {
   return (
     <div
       className={`lg:[5px] border-[3px] border-black h-full relative ${
@@ -16,6 +21,7 @@ const Page: NextPage<PropsWithChildren<IProps>> = ({ loading, children }) => {
       <Header
         className="transition-opacity duration-1000 delay-700"
         style={{ opacity: loading ? 0 : 1 }}
+        mintEnabled={mintEnabled}
       />
       {children}
     </div>

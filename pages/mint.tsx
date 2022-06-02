@@ -91,7 +91,7 @@ const Mint: NextPage<IProps> = ({
   );
 
   return (
-    <Page>
+    <Page mintEnabled={mintEnabled}>
       <div className="flex w-full h-full">
         <div className="flex flex-0 md:pl-[75px] p-[24px] w-[540px] max-w-full overflow-visible relative z-10">
           <SwitchTransition>

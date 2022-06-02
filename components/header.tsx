@@ -177,12 +177,4 @@ const Header: React.FC<IProps> = ({ mintEnabled, className, ...props }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<IProps> = async () => {
-  return {
-    props: {
-      mintEnabled: MINT_ENABLED,
-    },
-  };
-};
-
 export default Header;

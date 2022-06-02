@@ -1,14 +1,19 @@
-import { NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import Image from "next/image";
 import Cards from "../components/cards";
 import Page from "../components/page";
 import Text from "../components/text";
 import GalleryBackground from "../public/images/background_gallery.png";
 import Autograph from "../public/images/autograph_acky.png";
+import { MINT_ENABLED } from "../config";
 
-const Gallery: NextPage = () => {
+interface IProps {
+  mintEnabled: boolean;
+}
+
+const Gallery: NextPage<IProps> = ({ mintEnabled }) => {
   return (
-    <Page>
+    <Page mintEnabled={mintEnabled}>
       <div className="overflow-hidden flex items-end fixed top-[0px] left-0 bottom-0 bg-red h-full pointer-events-none opacity-25">
         <Image
           className="h-full"
@@ -63,6 +68,14 @@ const Gallery: NextPage = () => {
       </div>
     </Page>
   );
+};
+
+export const getStaticProps: GetStaticProps<IProps> = async () => {
+  return {
+    props: {
+      mintEnabled: MINT_ENABLED,
+    },
+  };
 };
 
 export default Gallery;
