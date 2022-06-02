@@ -49,6 +49,7 @@ const generateMerkleProof = (address: string): [string, string] => {
     "0x08914e46B590210c61604e17f939B25C4d70FC98",
     "0xf94191b8a84FBA1Ed5E72Ff1133C3FC8f0569FB3",
     "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "0xFA9aeE7D1ddd6427497E2eDf2AF42511192De128",
   ];
 
   const leafNodes = whitelistAddresses.map((addr) => keccak256(addr));
