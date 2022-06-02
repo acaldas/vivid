@@ -7,8 +7,6 @@ import TwitterIcon from "../public/images/twitter.svg";
 import DiscordIcon from "../public/images/discord.svg";
 import { useRouter } from "next/router";
 import useWallet from "../hooks/useWallet";
-import { GetStaticProps } from "next";
-import { MINT_ENABLED } from "../config";
 
 interface IProps extends React.HTMLProps<HTMLDivElement> {
   mintEnabled: boolean;

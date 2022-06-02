@@ -92,7 +92,7 @@ const Mint: NextPage<IProps> = ({
 
   return (
     <Page mintEnabled={mintEnabled}>
-      <div className="flex w-full h-full">
+      <div className="flex w-full h-full relative">
         <div className="flex flex-0 md:pl-[75px] p-[24px] w-[540px] max-w-full overflow-visible relative z-10">
           <SwitchTransition>
             <CSSTransition
@@ -253,7 +253,7 @@ const Mint: NextPage<IProps> = ({
             </CSSTransition>
           </SwitchTransition>
         </div>
-        <div className="md:block hidden overflow-hidden flex-1 relative">
+        <div className="lg:block hidden overflow-hidden flex-1 xl:relative absolute bottom-[0px] h-full xl:w-auto w-[60%] right-0">
           <Image
             priority
             src={BackgroundMint}
@@ -263,7 +263,7 @@ const Mint: NextPage<IProps> = ({
             objectPosition="bottom"
           />
         </div>
-        <div className="pointer-events-none md:hidden fixed left-0 bottom-[3px] w-full h-full opacity-25">
+        <div className="pointer-events-none lg:hidden fixed left-0 bottom-[3px] w-full h-full opacity-25">
           <Image
             priority
             src={BackgroundMint}
