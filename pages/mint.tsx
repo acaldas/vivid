@@ -225,7 +225,7 @@ const Mint: NextPage<IProps> = ({
                   <div>
                     <Text
                       className="block md:text-[56px] text-[40px] md:pr-0 pr-1 leading-[1.1em]"
-                      finishClassName="inline-block loading"
+                      finishClassName="inline-block"
                     >
                       Congratulations
                     </Text>
