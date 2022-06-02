@@ -5,15 +5,10 @@ import Page from "../components/page";
 import BackgroundMint from "../public/images/background_mint.png";
 import Text from "../components/text";
 import Button from "../components/button";
-import WalletDialog from "../components/wallet-dialog";
 import { useEffect, useMemo, useRef, useState } from "react";
 import useWallet from "../hooks/useWallet";
 import { Transition } from "@headlessui/react";
 import ErrorDialog from "../components/error-dialog";
-import { BigNumber, ethers } from "ethers";
-import { CONTRACT_ADDRESS } from "../config";
-import { Vivid } from "../contracts/type";
-import useMint from "../utils/mint";
 import mintNFT from "../utils/mint";
 
 const FormatDate = new Intl.DateTimeFormat("en-GB", { dateStyle: "full" })
@@ -28,9 +23,7 @@ const Mint: NextPage = () => {
   );
   const [mintClicked, setMintClicked] = useState(0);
   const [showError, setShowError] = useState(false);
-  const [showDialog, setShowDialog] = useState(false);
-  const { account, provider } = useWallet();
-  const [result, setResult] = useState<string>();
+  const { connectWallet, account, provider } = useWallet();
   const availableMints = "8888";
 
   useEffect(() => {
@@ -48,11 +41,11 @@ const Mint: NextPage = () => {
       setStep("MINTING");
       await mintNFT(true, mints, account, provider);
       setStep("SUCCESS");
+      setMintClicked(0);
     } catch (error) {
       setShowError(true);
       setStep("INITIAL");
     } finally {
-      setMintClicked(0);
     }
   };
 
@@ -94,9 +87,9 @@ const Mint: NextPage = () => {
                     <div>
                       <Button
                         className="mr-[24px] mb-[6vh]"
-                        onClick={() => {
+                        onClick={async () => {
                           if (!account) {
-                            setShowDialog(true);
+                            await connectWallet();
                           }
                           setMintClicked(1);
                         }}
@@ -105,9 +98,9 @@ const Mint: NextPage = () => {
                       </Button>
                       <Button
                         className="mb-[6vh]"
-                        onClick={() => {
+                        onClick={async () => {
                           if (!account) {
-                            setShowDialog(true);
+                            await connectWallet();
                           }
                           setMintClicked(2);
                         }}
@@ -247,7 +240,6 @@ const Mint: NextPage = () => {
           />
         </div>
       </div>
-      <WalletDialog open={showDialog} setOpen={setShowDialog} />
       <ErrorDialog
         open={showError}
         setOpen={setShowError}

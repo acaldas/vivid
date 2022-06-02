@@ -1,6 +1,7 @@
 import React, {
   ButtonHTMLAttributes,
   DetailedHTMLProps,
+  forwardRef,
   PropsWithChildren,
 } from "react";
 import Text, { IProps as TextProps } from "./text";
@@ -14,20 +15,19 @@ interface IProps
   textProps?: TextProps;
 }
 
-const Button: React.FC<PropsWithChildren<IProps>> = ({
-  className = "",
-  textProps,
-  children,
-  ...props
-}) => (
-  <button
-    className={`button glitch-hover border-gradient drop-gradient text-gradient-hover ${className}`}
-    {...props}
-  >
-    <Text className="font-bold flex items-center" textGradient {...textProps}>
-      {children}
-    </Text>
-  </button>
+const Button = forwardRef<HTMLButtonElement, PropsWithChildren<IProps>>(
+  ({ className = "", textProps, children, ...props }, ref) => (
+    <button
+      className={`button glitch-hover border-gradient drop-gradient text-gradient-hover ${className}`}
+      {...props}
+    >
+      <Text className="font-bold flex items-center" textGradient {...textProps}>
+        {children}
+      </Text>
+    </button>
+  )
 );
+
+Button.displayName = "Button";
 
 export default Button;

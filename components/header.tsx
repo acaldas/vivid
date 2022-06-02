@@ -7,15 +7,12 @@ import TwitterIcon from "../public/images/twitter.svg";
 import DiscordIcon from "../public/images/discord.svg";
 import { useRouter } from "next/router";
 import useWallet from "../hooks/useWallet";
-import WalletDialog from "./wallet-dialog";
 
 interface IProps extends React.HTMLProps<HTMLDivElement> {}
 
 const Header: React.FC<IProps> = ({ className, ...props }) => {
   const [open, setOpen] = useState(false);
-  const [nftOpen, setNFTOpen] = useState(false);
-  const [showWalletDialog, setShowWalletDialog] = useState(false);
-  const { account, isActive } = useWallet();
+  const { connectWallet, account, isActive } = useWallet();
   const router = useRouter();
   const path = router.pathname;
 
@@ -95,9 +92,7 @@ const Header: React.FC<IProps> = ({ className, ...props }) => {
     <button
       key="wallet"
       className="header-button ml-[32px]"
-      onClick={() =>
-        isActive && account ? undefined : setShowWalletDialog(true)
-      }
+      onClick={() => (isActive && account ? undefined : connectWallet())}
     >
       {isActive && account ? `${account.substring(0, 7)}...` : "CONNECT WALLET"}
     </button>,
@@ -162,7 +157,6 @@ const Header: React.FC<IProps> = ({ className, ...props }) => {
           </Menu>
         </div>
       </div>
-      <WalletDialog open={showWalletDialog} setOpen={setShowWalletDialog} />
     </>
   );
 };

@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import useWallet from "../hooks/useWallet";
 import Metamask from "../public/images/metamask.png";
-import WalletConnect from "../public/images/wallet_connect.png";
+// import WalletConnect from "../public/images/wallet_connect.png";
 import Button from "./button";
 
 interface IProps {
@@ -46,14 +46,14 @@ const WalletDialog: React.FC<IProps> = ({ open, setOpen }) => {
               <button onClick={() => connectWallet()}>
                 <Image src={Metamask} alt="metamask" width={80} height={80} />
               </button>
-              <button onClick={() => connectWallet("WALLET_CONNECT")}>
+              {/* <button onClick={() => connectWallet("WALLET_CONNECT")}>
                 <Image
                   src={WalletConnect}
                   alt="wallet connect"
                   width={80}
                   height={80}
                 />
-              </button>
+              </button> */}
             </div>
             <Button
               className="block mx-auto"

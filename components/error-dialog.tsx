@@ -2,7 +2,6 @@ import { Dialog, Transition } from "@headlessui/react";
 import Link from "next/link";
 import React from "react";
 import Button from "./button";
-import Text from "./text";
 
 interface IProps {
   open: boolean;
@@ -10,7 +9,7 @@ interface IProps {
   onTryAgain: () => void;
 }
 
-const WalletDialog: React.FC<IProps> = ({ open, setOpen, onTryAgain }) => {
+const ErrorDialog: React.FC<IProps> = ({ open, setOpen, onTryAgain }) => {
   return (
     <Transition
       appear
@@ -57,4 +56,4 @@ const WalletDialog: React.FC<IProps> = ({ open, setOpen, onTryAgain }) => {
   );
 };
 
-export default WalletDialog;
+export default ErrorDialog;
