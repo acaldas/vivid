@@ -1,7 +1,4 @@
-const chainId =
-  process.env.NODE_ENV === "development"
-    ? 31337
-    : parseInt(process.env.CHAIN_ID || "");
+const chainId = parseInt(process.env.CHAIN_ID || "");
 export const CHAIN_ID = !isNaN(chainId) ? chainId : 1;
 
 export const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS;
