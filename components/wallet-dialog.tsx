@@ -7,12 +7,13 @@ import Metamask from "../public/images/metamask.png";
 import Button from "./button";
 
 interface IProps {
+  chainId: number;
   open: boolean;
   setOpen: (open: boolean) => void;
 }
 
-const WalletDialog: React.FC<IProps> = ({ open, setOpen }) => {
-  const { connectWallet, account } = useWallet();
+const WalletDialog: React.FC<IProps> = ({ chainId, open, setOpen }) => {
+  const { connectWallet, account } = useWallet(chainId);
 
   useEffect(() => {
     if (account) {

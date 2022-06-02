@@ -2,15 +2,16 @@ import { GetStaticProps, NextPage } from "next";
 import Page from "../components/page";
 import Slide from "../components/slide";
 import Text from "../components/text";
-import { MINT_ENABLED } from "../config";
+import { CHAIN_ID, MINT_ENABLED } from "../config";
 
 interface IProps {
+  chainId: number;
   mintEnabled: boolean;
 }
 
-const Fashion: NextPage<IProps> = ({ mintEnabled }) => {
+const Fashion: NextPage<IProps> = ({ chainId, mintEnabled }) => {
   return (
-    <Page mintEnabled={mintEnabled}>
+    <Page chainId={chainId} mintEnabled={mintEnabled}>
       <div className="px-[6vw]">
         <Text className="lg:text-[56px] sm:text-[40px] text-[30px] sm:mb-[8px] mb-[1vh] lg:pr-0 pr-1 lg:leading-none leading-[1.1em]">
           43 Cut-and-sew pieces
@@ -32,6 +33,7 @@ const Fashion: NextPage<IProps> = ({ mintEnabled }) => {
 export const getStaticProps: GetStaticProps<IProps> = async () => {
   return {
     props: {
+      chainId: CHAIN_ID,
       mintEnabled: MINT_ENABLED,
     },
   };

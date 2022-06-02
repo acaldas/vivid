@@ -12,6 +12,7 @@ import ErrorDialog from "../components/error-dialog";
 import mintNFT from "../utils/mint";
 import Link from "next/link";
 import {
+  CHAIN_ID,
   CONTRACT_ADDRESS,
   MINT_ENABLED,
   MINT_PRICE,
@@ -23,6 +24,7 @@ const FormatDate = new Intl.DateTimeFormat("en-GB", { dateStyle: "full" })
   .format;
 
 interface IProps {
+  chainId: number;
   mintEnabled: boolean;
   whitelistEnabled: boolean;
   contractAddress: string;
@@ -30,6 +32,7 @@ interface IProps {
 }
 
 const Mint: NextPage<IProps> = ({
+  chainId,
   mintEnabled,
   whitelistEnabled,
   contractAddress,
@@ -42,7 +45,7 @@ const Mint: NextPage<IProps> = ({
   const [mintClicked, setMintClicked] = useState(0);
   const [showError, setShowError] = useState(false);
   const [showNoProviderError, setShowNoProviderError] = useState(false);
-  const { connectWallet, account, provider } = useWallet();
+  const { connectWallet, account, provider } = useWallet(chainId);
   const availableMints = "8888";
 
   useEffect(() => {
@@ -91,7 +94,7 @@ const Mint: NextPage<IProps> = ({
   );
 
   return (
-    <Page mintEnabled={mintEnabled}>
+    <Page chainId={chainId} mintEnabled={mintEnabled}>
       <div className="flex w-full h-full relative">
         <div className="flex flex-0 md:pl-[75px] p-[24px] w-[540px] max-w-full overflow-visible relative z-10">
           <SwitchTransition>
@@ -292,6 +295,7 @@ const Mint: NextPage<IProps> = ({
 export const getStaticProps: GetStaticProps<IProps> = async () => {
   return {
     props: {
+      chainId: CHAIN_ID,
       mintEnabled: MINT_ENABLED,
       whitelistEnabled: WHITELIST_ENABLED,
       contractAddress: CONTRACT_ADDRESS ?? "",

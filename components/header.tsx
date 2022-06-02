@@ -10,11 +10,17 @@ import useWallet from "../hooks/useWallet";
 
 interface IProps extends React.HTMLProps<HTMLDivElement> {
   mintEnabled: boolean;
+  chainId: number;
 }
 
-const Header: React.FC<IProps> = ({ mintEnabled, className, ...props }) => {
+const Header: React.FC<IProps> = ({
+  mintEnabled,
+  chainId,
+  className,
+  ...props
+}) => {
   const [open, setOpen] = useState(false);
-  const { connectWallet, account, isActive } = useWallet();
+  const { connectWallet, account } = useWallet(chainId);
   const router = useRouter();
   const path = router.pathname;
 
@@ -106,9 +112,9 @@ const Header: React.FC<IProps> = ({ mintEnabled, className, ...props }) => {
     <button
       key="wallet"
       className="header-button ml-[32px] pt-[1px]"
-      onClick={() => (isActive && account ? undefined : connectWallet())}
+      onClick={() => (account ? undefined : connectWallet())}
     >
-      {isActive && account ? `${account.substring(0, 7)}...` : "CONNECT WALLET"}
+      {account ? `${account.substring(0, 7)}...` : "CONNECT WALLET"}
     </button>,
   ];
   const [twitterOption, discordOption, ...restOptions] = options;

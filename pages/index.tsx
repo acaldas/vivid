@@ -7,15 +7,16 @@ import Mico from "../components/mico";
 import Text from "../components/text";
 import Link from "next/link";
 import Button from "../components/button";
-import { MINT_ENABLED } from "../config";
+import { CHAIN_ID, MINT_ENABLED } from "../config";
 
 const LOADING_TIME = 5000;
 
 interface IProps {
+  chainId: number;
   mintEnabled: boolean;
 }
 
-const Home: NextPage<IProps> = ({ mintEnabled }) => {
+const Home: NextPage<IProps> = ({ chainId, mintEnabled }) => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => {
@@ -24,7 +25,7 @@ const Home: NextPage<IProps> = ({ mintEnabled }) => {
   }, [loading]);
 
   return (
-    <Page loading={loading} mintEnabled={mintEnabled}>
+    <Page chainId={chainId} loading={loading} mintEnabled={mintEnabled}>
       <Background loading={loading} />
       <div className="lg:px-[5.6vw] px-[3.5vh] lg:py-[10.5vh] py-[7vh] relative flex-grow">
         <div
@@ -75,6 +76,7 @@ const Home: NextPage<IProps> = ({ mintEnabled }) => {
 export const getStaticProps: GetStaticProps<IProps> = async () => {
   return {
     props: {
+      chainId: CHAIN_ID,
       mintEnabled: MINT_ENABLED,
     },
   };

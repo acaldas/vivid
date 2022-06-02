@@ -5,15 +5,16 @@ import Page from "../components/page";
 import Text from "../components/text";
 import GalleryBackground from "../public/images/background_gallery.png";
 import Autograph from "../public/images/autograph_acky.png";
-import { MINT_ENABLED } from "../config";
+import { CHAIN_ID, MINT_ENABLED } from "../config";
 
 interface IProps {
+  chainId: number;
   mintEnabled: boolean;
 }
 
-const Gallery: NextPage<IProps> = ({ mintEnabled }) => {
+const Gallery: NextPage<IProps> = ({ chainId, mintEnabled }) => {
   return (
-    <Page mintEnabled={mintEnabled}>
+    <Page chainId={chainId} mintEnabled={mintEnabled}>
       <div className="overflow-hidden flex items-end fixed top-[0px] left-0 bottom-0 bg-red h-full pointer-events-none opacity-25">
         <Image
           className="h-full"
@@ -73,6 +74,7 @@ const Gallery: NextPage<IProps> = ({ mintEnabled }) => {
 export const getStaticProps: GetStaticProps<IProps> = async () => {
   return {
     props: {
+      chainId: CHAIN_ID,
       mintEnabled: MINT_ENABLED,
     },
   };
