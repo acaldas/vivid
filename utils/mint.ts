@@ -40,6 +40,8 @@ const mintNFT = async (
 const generateMerkleProof = (address: string): [string, string] => {
   const whitelistAddresses = [
     "0x92eCfa97aBe6f32594f378D63da00326DeC270fD",
+    "0x0298c38972Fdb817608642E30B107887C9842887",
+    "0x2306D49377bb3af4947113725ba656c816Eab496",
     "0xb40cd7DBFc9C4f0AF15a831e7f0eA1D0981a35D6"
   ];
 
