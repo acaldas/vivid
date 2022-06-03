@@ -39,17 +39,8 @@ const mintNFT = async (
 
 const generateMerkleProof = (address: string): [string, string] => {
   const whitelistAddresses = [
-    "0xe8409e4bF1EA6e07b65ea3707D1fdbb48CDc5f06",
-    "0x9f4c10AcfB6F7f09c2D403471e9a96Bbd010693d",
-    "0x2634cdc8FcA9DaD954Fd57d164C7Df771278c705",
-    "0x926C55b33DAef22dFa02B43D94746741e6Ae9983",
-    "0x2Ec00d273f29faD639Ad21858921EF973fD10961",
-    "0x8fa71b31d41ef7E778F06E3011172b19ec215c53",
-    "0xebcEbc0d2af4B578cCca2a61f66512b713B7Da8d",
-    "0x08914e46B590210c61604e17f939B25C4d70FC98",
-    "0xf94191b8a84FBA1Ed5E72Ff1133C3FC8f0569FB3",
-    "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
-    "0xFA9aeE7D1ddd6427497E2eDf2AF42511192De128",
+    "0x92eCfa97aBe6f32594f378D63da00326DeC270fD",
+    "0xb40cd7DBFc9C4f0AF15a831e7f0eA1D0981a35D6"
   ];
 
   const leafNodes = whitelistAddresses.map((addr) => keccak256(addr));
