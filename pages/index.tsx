@@ -1,16 +1,22 @@
-import type { NextPage } from "next";
-import Image from "next/image";
+import type { GetStaticProps, NextPage } from "next";
 import { useEffect, useState } from "react";
 import Background from "../components/background";
-import Header from "../components/header";
+import Page from "../components/page";
 import Logo from "../components/logo";
+import Mico from "../components/mico";
 import Text from "../components/text";
-import MicoImg from "../public/images/front_image.png";
-import MicoMobileImg from "../public/images/front_image_mobile.png";
+import Link from "next/link";
+import Button from "../components/button";
+import { CHAIN_ID, MINT_ENABLED } from "../config";
 
 const LOADING_TIME = 5000;
 
-const Home: NextPage = () => {
+interface IProps {
+  chainId: number;
+  mintEnabled: boolean;
+}
+
+const Home: NextPage<IProps> = ({ chainId, mintEnabled }) => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => {
@@ -19,41 +25,14 @@ const Home: NextPage = () => {
   }, [loading]);
 
   return (
-    <div
-      className={`lg:[5px] border-[3px] border-black h-full relative ${
-        loading ? "overflow-hidden" : "overflow-auto"
-      } flex flex-col`}
-    >
-      <Header
-        className="transition-opacity duration-1000 delay-700"
-        style={{ opacity: loading ? 0 : 1 }}
-      />
+    <Page chainId={chainId} loading={loading} mintEnabled={mintEnabled}>
       <Background loading={loading} />
       <div className="lg:px-[5.6vw] px-[3.5vh] lg:py-[10.5vh] py-[7vh] relative flex-grow">
         <div
           className="transition-opacity duration-1000 delay-700"
           style={{ opacity: loading ? 0 : 1 }}
         >
-          <div className="lg:block hidden absolute bottom-0 right-0 h-full w-1/2 pointer-events-none">
-            <Image
-              src={MicoImg}
-              priority
-              alt="Mico"
-              layout="fill"
-              objectFit="contain"
-              objectPosition="bottom"
-            />
-          </div>
-          <div className="lg:hidden block fixed bottom-[3px] right-0 h-[82vh] w-full pointer-events-none">
-            <Image
-              src={MicoMobileImg}
-              priority
-              alt="Mico"
-              layout="fill"
-              objectFit="contain"
-              objectPosition="bottom"
-            />
-          </div>
+          <Mico />
           <Logo />
           <div className="lg:w-2/3 lg:max-w-[620px] lg:mt-[40px] mt-[3vh] z-10 relative">
             <Text
@@ -70,40 +49,37 @@ const Home: NextPage = () => {
               Bright
             </Text>
             <div className="lg:mt-[24px] mt-[4vh] lg:static flex w-full">
-              <a
-                href="https://twitter.com/vividcojp"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="button glitch-hover mr-[26px] lg:w-auto w-1/2 border-gradient drop-gradient text-gradient-hover"
-              >
-                <Text
-                  className="font-bold flex items-center"
-                  delay={LOADING_TIME}
-                  textGradient
+              <Link href={mintEnabled ? "/mint" : "/fashion"}>
+                <Button
+                  className="lg:w-auto w-1/2 mr-[26px]"
+                  textProps={{ delay: LOADING_TIME, textGradient: true }}
                 >
-                  Twitter
-                </Text>
-              </a>
-              <a
-                href="https://discord.com/invite/vividcojp"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="button glitch-hover lg:w-auto w-1/2 border-gradient drop-gradient text-gradient-hover"
-              >
-                <Text
-                  className="font-bold flex items-center"
-                  delay={LOADING_TIME}
-                  textGradient
+                  {`${mintEnabled ? "MINT" : "FASHION"}`}
+                </Button>
+              </Link>
+              <Link href="/gallery">
+                <Button
+                  className="lg:w-auto w-1/2"
+                  textProps={{ delay: LOADING_TIME, textGradient: true }}
                 >
-                  Discord
-                </Text>
-              </a>
+                  GALLERY
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </Page>
   );
+};
+
+export const getStaticProps: GetStaticProps<IProps> = async () => {
+  return {
+    props: {
+      chainId: CHAIN_ID,
+      mintEnabled: MINT_ENABLED,
+    },
+  };
 };
 
 export default Home;

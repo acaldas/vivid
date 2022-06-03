@@ -7,8 +7,6 @@ import { metamaskConnector } from "../hooks/useMetamask";
 
 const connectors = [metamaskConnector];
 
-declare let dataLayer: Array<any>;
-
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <div className="h-full">

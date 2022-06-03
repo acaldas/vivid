@@ -15,6 +15,9 @@ module.exports = {
       screens: {
         lg: "860px",
       },
+      aspectRatio: {
+        "3/2": "3 / 2",
+      },
     },
   },
   plugins: [],

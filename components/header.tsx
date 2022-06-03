@@ -1,34 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
-import { Menu } from "@headlessui/react";
+import { Menu, Popover } from "@headlessui/react";
 import LogoSmall from "../public/images/logo_small.svg";
 import TwitterIcon from "../public/images/twitter.svg";
 import DiscordIcon from "../public/images/discord.svg";
-import CloseIcon from "../public/images/close.svg";
-import { useWeb3React } from "@web3-react/core";
-import { CHAIN_ID } from "../config";
-import { metaMaskHooks } from "../hooks/useMetamask";
+import { useRouter } from "next/router";
+import useWallet from "../hooks/useWallet";
 
-interface IProps extends React.HTMLProps<HTMLDivElement> {}
+interface IProps extends React.HTMLProps<HTMLDivElement> {
+  mintEnabled: boolean;
+  chainId: number;
+}
 
-const { useIsActive, useAccount } = metaMaskHooks;
-
-const Header: React.FC<IProps> = ({ className, ...props }) => {
+const Header: React.FC<IProps> = ({
+  mintEnabled,
+  chainId,
+  className,
+  ...props
+}) => {
   const [open, setOpen] = useState(false);
-  const { connector } = useWeb3React();
-  const account = useAccount();
-  const isActive = useIsActive();
-
-  const connectWallet = async () => {
-    await connector.activate(CHAIN_ID);
-  };
-
-  useEffect(() => {
-    if (isActive) {
-      return;
-    }
-    connector.connectEagerly?.();
-  }, [connector, isActive]);
+  const { connectWallet, account } = useWallet(chainId);
+  const router = useRouter();
+  const path = router.pathname;
 
   const options = [
     <a
@@ -61,72 +55,129 @@ const Header: React.FC<IProps> = ({ className, ...props }) => {
         draggable={false}
       />
     </a>,
-    // <button key="item 1" className="header-button ml-[32px]">
-    //   Menu item 1
-    // </button>,
-    // <button
-    //   key="item 2"
-    //   className="header-button ml-[32px]"
-    //   onClick={connectWallet}
-    // >
-    //   {isActive && account ? `${account.substring(0, 7)}...` : "Connect wallet"}
-    // </button>,
+    <Link href="/fashion" key="fashion">
+      <a
+        className={`header-button ml-[32px] ${
+          path === "/fashion" ? "text-gradient" : ""
+        }`}
+      >
+        Fashion
+      </a>
+    </Link>,
+    mintEnabled ? (
+      <Popover key="NFT" className="relative ml-[32px]">
+        <Popover.Button>
+          <div
+            className={`header-button text-[18px] font-exo ${
+              ["/gallery", "/mint"].includes(path) ? "text-gradient" : ""
+            }`}
+          >
+            NFT
+          </div>
+        </Popover.Button>
+        <Popover.Panel className="absolute z-50 mt-2 p-3 border border-[rgba(0,0,0,0.8)] shadow-md rounded-md lg:left-1/2 left-auto -translate-x-1/2 bg-white">
+          <div>
+            <Link href="/mint">
+              <a
+                className={`header-button py-2 inline-block mb-1 ${
+                  "/mint" === path ? "text-gradient" : ""
+                }`}
+              >
+                Mint
+              </a>
+            </Link>
+            <Link href="/gallery">
+              <a
+                className={`header-button py-2 inline-block ${
+                  "/gallery" === path ? "text-gradient" : ""
+                }`}
+              >
+                Gallery
+              </a>
+            </Link>
+          </div>
+        </Popover.Panel>
+      </Popover>
+    ) : (
+      <Link href="/gallery" key="gallery">
+        <a
+          className={`header-button ml-[32px] ${
+            path === "/gallery" ? "text-gradient" : ""
+          }`}
+        >
+          Gallery
+        </a>
+      </Link>
+    ),
+    <button
+      key="wallet"
+      className="header-button ml-[32px] pt-[1px]"
+      onClick={() => (account ? undefined : connectWallet())}
+    >
+      {account ? `${account.substring(0, 7)}...` : "CONNECT WALLET"}
+    </button>,
   ];
-  const optionsMobile = [options[2], options[3], options[0], options[1]];
+  const [twitterOption, discordOption, ...restOptions] = options;
+  const optionsMobile = [twitterOption, discordOption, ...restOptions];
 
   return (
-    <div
-      className={`flex justify-between relative lg:p-[40px] lg:pl-[75px] p-[24px] items-center ${className}`}
-      {...props}
-    >
-      <div className="lg:w-auto w-[75px]">
-        <Image src={LogoSmall} alt="Vivid logo" width="100" height="18" />
-      </div>
-      <div className="flex">{options}</div>
-      {/* <div className="lg:flex hidden">{options}</div> */}
-      {/* <div className="lg:hidden">
-        <Menu>
-          <Menu.Button onClick={() => setOpen((open) => !open)}>
-            <div className="w-[16px]">
-              {open ? (
-                <span className="text-[24px] leading-tight">&times;</span>
-              ) : (
-                <>
-                  <div className="bg-black h-[2px] w-full mb-[4px]"></div>
-                  <div className="bg-black h-[2px] w-full mb-[4px]"></div>
-                  <div className="bg-black h-[2px] w-full"></div>
-                </>
-              )}
-            </div>
-          </Menu.Button>
-          {open ? (
-            <Menu.Items
-              static
-              className="fixed top-[66px] left-0 right-0 bottom-0 z-50"
-            >
-              <div className="flex flex-col items-stretch h-full">
-                <div className="flex flex-col items-end bg-white border-[3px] border-black border-t-0">
-                  {optionsMobile.map((option, i) => (
-                    <Menu.Item key={i}>
-                      <div className="px-[24px] py-[7px] mb-[4px]">
-                        {option}
-                      </div>
-                    </Menu.Item>
-                  ))}
-                </div>
-                <div
-                  className="bg-overlay flex-1 flex-grow mx-[3px] mb-[3px]"
-                  style={{ backdropFilter: "blur(4px)" }}
-                  onClick={() => setOpen(false)}
-                ></div>
+    <>
+      <div
+        className={`z-20 flex justify-between relative lg:p-[40px] lg:pl-[75px] p-[24px] items-center ${
+          open ? "bg-white" : "bg-transparent"
+        } ${className}`}
+        {...props}
+      >
+        <Link href="/">
+          <a className="block lg:w-auto w-[75px]">
+            <Image src={LogoSmall} alt="Vivid logo" width="100" height="18" />
+          </a>
+        </Link>
+        <div className="lg:flex hidden">{options}</div>
+        <div className="lg:hidden">
+          <Menu>
+            <Menu.Button onClick={() => setOpen((open) => !open)}>
+              <div className="w-[16px]">
+                {open ? (
+                  <span className="text-[24px] leading-tight">&times;</span>
+                ) : (
+                  <>
+                    <div className="bg-black h-[2px] w-full mb-[4px]"></div>
+                    <div className="bg-black h-[2px] w-full mb-[4px]"></div>
+                    <div className="bg-black h-[2px] w-full"></div>
+                  </>
+                )}
               </div>
-            </Menu.Items>
-          ) : (
-            <></>
-          )}
-        </Menu>
-      </div> */}
-    </div>
+            </Menu.Button>
+            {open ? (
+              <Menu.Items
+                static
+                className="fixed top-[66px] left-0 right-0 bottom-0 z-50"
+              >
+                <div className="flex flex-col items-stretch h-full">
+                  <div className="flex flex-col items-end bg-white border-[3px] border-black border-t-0">
+                    {optionsMobile.map((option, i) => (
+                      <Menu.Item key={i}>
+                        <div className="px-[24px] py-[7px] mb-[4px]">
+                          {option}
+                        </div>
+                      </Menu.Item>
+                    ))}
+                  </div>
+                  <div
+                    className="bg-overlay flex-1 flex-grow mx-[3px] mb-[3px]"
+                    style={{ backdropFilter: "blur(4px)" }}
+                    onClick={() => setOpen(false)}
+                  ></div>
+                </div>
+              </Menu.Items>
+            ) : (
+              <></>
+            )}
+          </Menu>
+        </div>
+      </div>
+    </>
   );
 };
 

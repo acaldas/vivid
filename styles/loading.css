@@ -12,6 +12,13 @@
   font-size: 0.7em;
 }
 
+.loading.loading-exo.font-light:after {
+  font-family: Exo2;
+  font-weight: 300;
+  left: 100.5%;
+  bottom: 5px;
+}
+
 @keyframes dots {
   0% {
     content: "";
