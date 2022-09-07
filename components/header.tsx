@@ -27,7 +27,7 @@ const Header: React.FC<IProps> = ({
   const options = [
     <a
       key="twitter"
-      href="https://twitter.com/vividcojp"
+      href="https://twitter.com/vividlimited"
       target="_blank"
       rel="noopener noreferrer"
       className="px-2 header-button select-none"
