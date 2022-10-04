@@ -8,7 +8,7 @@ import Mico from "../components/mico";
 import Text from "../components/text";
 import Link from "next/link";
 import Button from "../components/button";
-import { CHAIN_ID, MINT_ENABLED, LOADING_ENABLED } from "../config";
+import { CHAIN_ID, MINT_ENABLED, FASHION_URL, LOADING_ENABLED } from "../config";
 
 import StoreImg from "../public/images/announcement.jpg";
 
@@ -61,7 +61,7 @@ const Home: NextPage<IProps> = ({ chainId, mintEnabled }) => {
                 {StoreImgComponent}
               </div>
               <div className="lg:mt-[24px] mt-[4vh] lg:static flex w-full">
-                <Link href={mintEnabled ? "/mint" : "/fashion"}>
+                <Link href={mintEnabled ? "/mint" : FASHION_URL}>
                   <Button
                     className="lg:w-auto w-1/2 mr-[26px]"
                     textProps={{ delay: LOADING_TIME, textGradient: true }}

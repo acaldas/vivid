@@ -25,4 +25,6 @@ export const MINT_PRICE = WHITELIST_ENABLED
 
 export const OPENSEA_URL = process.env.OPENSEA_URL || "https://opensea.io/";
 
+export const FASHION_URL = process.env.FASHION_URL || "https://drip.vivid.limited/";
+
 export const LOADING_ENABLED = process.env.LOADING_ENABLED === "true";
