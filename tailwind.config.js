@@ -13,6 +13,7 @@ module.exports = {
         overlay: "rgba(0,0,0,0.15)",
       },
       screens: {
+        lg2: "1025px",
         lg: "860px",
       },
       aspectRatio: {

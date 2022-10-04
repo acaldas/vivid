@@ -41,9 +41,9 @@ const Home: NextPage<IProps> = ({ chainId, mintEnabled }) => {
           style={{ opacity: loading ? 0 : 1 }}
         >
           {/* <Mico /> */}
-          <div className="lg:w-2/3">
+          <div className="lg2:w-2/3">
             <Logo />
-            <div className="lg:max-w-[620px] lg:mt-[40px] mt-[3vh] z-10 relative">
+            <div className="lg2:max-w-[620px] lg2:mt-[40px] mt-[3vh] z-10 relative">
               <Text
                 className="lg:text-[56px] text-[40px] sm:mb-[8px] mb-[1vh] lg:pr-0 pr-1 lg:leading-none leading-[1.1em]"
                 delay={LOADING_TIME * 1.1}
@@ -57,7 +57,7 @@ const Home: NextPage<IProps> = ({ chainId, mintEnabled }) => {
                 Set in the kawakakkoii (cool and cute) cyberpunk universe of Acky
                 Bright
               </Text>
-              <div className="lg:hidden ml-10">
+              <div className="lg2:hidden mt-[4vh]">
                 {StoreImgComponent}
               </div>
               <div className="lg:mt-[24px] mt-[4vh] lg:static flex w-full">
@@ -80,7 +80,7 @@ const Home: NextPage<IProps> = ({ chainId, mintEnabled }) => {
               </div>
             </div>
           </div>
-          <div className="lg:block hidden ml-10">
+          <div className="lg2:block hidden ml-[4vw]">
             {StoreImgComponent}
           </div>
         </div>
