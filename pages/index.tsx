@@ -57,7 +57,7 @@ const Home: NextPage<IProps> = ({ chainId, mintEnabled }) => {
                 Set in the kawakakkoii (cool and cute) cyberpunk universe of Acky
                 Bright
               </Text>
-              <div className="lg2:hidden mt-[4vh]">
+              <div className="lg2:hidden mt-[4vh] drop-shadow-[0_8px_24px_rgba(0,0,0,0.15)]">
                 {StoreImgComponent}
               </div>
               <div className="lg:mt-[24px] mt-[4vh] lg:static flex w-full">
@@ -80,7 +80,7 @@ const Home: NextPage<IProps> = ({ chainId, mintEnabled }) => {
               </div>
             </div>
           </div>
-          <div className="lg2:block hidden ml-[4vw]">
+          <div className="lg2:block hidden ml-[4vw]  drop-shadow-[0_8px_24px_rgba(0,0,0,0.15)]">
             {StoreImgComponent}
           </div>
         </div>
