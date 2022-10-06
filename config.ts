@@ -24,3 +24,7 @@ export const MINT_PRICE = WHITELIST_ENABLED
   : PUBLIC_MINT_PRICE;
 
 export const OPENSEA_URL = process.env.OPENSEA_URL || "https://opensea.io/";
+
+export const FASHION_URL = process.env.FASHION_URL || "/fashion";
+
+export const LOADING_ENABLED = process.env.LOADING_ENABLED === "true";
