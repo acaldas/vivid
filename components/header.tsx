@@ -7,6 +7,7 @@ import TwitterIcon from "../public/images/twitter.svg";
 import DiscordIcon from "../public/images/discord.svg";
 import { useRouter } from "next/router";
 import useWallet from "../hooks/useWallet";
+import { FASHION_URL } from "../config";
 
 interface IProps extends React.HTMLProps<HTMLDivElement> {
   mintEnabled: boolean;
@@ -55,7 +56,7 @@ const Header: React.FC<IProps> = ({
         draggable={false}
       />
     </a>,
-    <Link href="/fashion" key="fashion">
+    <Link href={FASHION_URL} key="fashion">
       <a
         className={`header-button ml-[32px] ${
           path === "/fashion" ? "text-gradient" : ""
