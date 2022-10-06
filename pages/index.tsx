@@ -35,7 +35,7 @@ const Home: NextPage<IProps> = ({ chainId, mintEnabled }) => {
   return (
     <Page chainId={chainId} loading={loading} mintEnabled={mintEnabled}>
       <Background loading={loading}   />
-      <div className="lg:px-[5.6vw] px-[3.5vh] lg:py-[10.5vh] py-[7vh] relative flex-grow flex">
+      <div className="lg:px-[5.6vw] px-[3.5vh] lg:py-[10vh] py-[7vh] relative flex-grow flex">
         <div
           className="transition-opacity duration-1000 delay-700 flex flex-grow justify-between"
           style={{ opacity: loading ? 0 : 1 }}
