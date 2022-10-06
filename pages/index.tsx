@@ -80,7 +80,7 @@ const Home: NextPage<IProps> = ({ chainId, mintEnabled }) => {
               </div>
             </div>
           </div>
-          <div className="xl:block hidden relative overflow-hidden flex-grow  ml-[4vw] drop-shadow-[0_8px_24px_rgba(0,0,0,0.15)]">
+          <div className="xl:block hidden relative overflow-hidden flex-grow max-h-[1280px] ml-[4vw] drop-shadow-[0_8px_24px_rgba(0,0,0,0.15)]">
             <StoreImgComponent layout="fill"/>
           </div>
         </div>
