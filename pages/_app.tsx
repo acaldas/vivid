@@ -1,9 +1,9 @@
 import "../styles/globals.css";
-import type { AppProps } from "next/app";
 import Head from "next/head";
 import Script from "next/script";
 import { Web3ReactProvider } from "@web3-react/core";
 import { metamaskConnector } from "../hooks/useMetamask";
+import { AppProps } from "next/dist/shared/lib/router/router";
 
 const connectors = [metamaskConnector];
 
