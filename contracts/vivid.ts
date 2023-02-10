@@ -2,10 +2,9 @@ import {
   ContractTransaction,
   ContractInterface,
   BytesLike as Arrayish,
-  BigNumber,
   BigNumberish,
-} from 'ethers';
-import { EthersContractContextV5 } from 'ethereum-abi-types-generator';
+} from "ethers";
+import { EthersContractContextV5 } from "ethereum-abi-types-generator";
 
 export type ContractContext = EthersContractContextV5<
   Vivid,
@@ -29,7 +28,7 @@ export interface ContractTransactionOverrides {
   /**
    * The price (in wei) per unit of gas
    */
-  gasPrice?: BigNumber | string | number | Promise<any>;
+  gasPrice?: BigNumberish | string | number | Promise<any>;
   /**
    * The nonce to use in the transaction
    */
@@ -37,7 +36,7 @@ export interface ContractTransactionOverrides {
   /**
    * The amount to send with the transaction (i.e. msg.value)
    */
-  value?: BigNumber | string | number | Promise<any>;
+  value?: BigNumberish | string | number | Promise<any>;
   /**
    * The chain ID (or network ID) to use
    */
@@ -55,10 +54,10 @@ export interface ContractCallOverrides {
   gasLimit?: number;
 }
 export type VividEvents =
-  | 'Approval'
-  | 'ApprovalForAll'
-  | 'OwnershipTransferred'
-  | 'Transfer';
+  | "Approval"
+  | "ApprovalForAll"
+  | "OwnershipTransferred"
+  | "Transfer";
 export interface VividEventsContext {
   Approval(...parameters: any): EventFilter;
   ApprovalForAll(...parameters: any): EventFilter;
@@ -66,45 +65,45 @@ export interface VividEventsContext {
   Transfer(...parameters: any): EventFilter;
 }
 export type VividMethodNames =
-  | 'new'
-  | '_whitelistClaimed'
-  | 'airdrop'
-  | 'approve'
-  | 'balanceOf'
-  | 'baseURI'
-  | 'getApproved'
-  | 'isApprovedForAll'
-  | 'maxMint'
-  | 'maxWlMint'
-  | 'merkleRoot'
-  | 'mint'
-  | 'name'
-  | 'owner'
-  | 'ownerOf'
-  | 'price'
-  | 'publicSale'
-  | 'renounceOwnership'
-  | 'safeTransferFrom'
-  | 'safeTransferFrom'
-  | 'setApprovalForAll'
-  | 'setBaseURI'
-  | 'setMaxMint'
-  | 'setMaxWlMint'
-  | 'setMerkleRoot'
-  | 'setPrice'
-  | 'setSupply'
-  | 'supportsInterface'
-  | 'symbol'
-  | 'togglePublicSale'
-  | 'toggleWhitelistSale'
-  | 'tokenSupply'
-  | 'tokenURI'
-  | 'totalSupply'
-  | 'transferFrom'
-  | 'transferOwnership'
-  | 'whitelistMint'
-  | 'whitelistSale'
-  | 'withdraw';
+  | "new"
+  | "_whitelistClaimed"
+  | "airdrop"
+  | "approve"
+  | "balanceOf"
+  | "baseURI"
+  | "getApproved"
+  | "isApprovedForAll"
+  | "maxMint"
+  | "maxWlMint"
+  | "merkleRoot"
+  | "mint"
+  | "name"
+  | "owner"
+  | "ownerOf"
+  | "price"
+  | "publicSale"
+  | "renounceOwnership"
+  | "safeTransferFrom"
+  | "safeTransferFrom"
+  | "setApprovalForAll"
+  | "setBaseURI"
+  | "setMaxMint"
+  | "setMaxWlMint"
+  | "setMerkleRoot"
+  | "setPrice"
+  | "setSupply"
+  | "supportsInterface"
+  | "symbol"
+  | "togglePublicSale"
+  | "toggleWhitelistSale"
+  | "tokenSupply"
+  | "tokenURI"
+  | "totalSupply"
+  | "transferFrom"
+  | "transferOwnership"
+  | "whitelistMint"
+  | "whitelistSale"
+  | "withdraw";
 export interface ApprovalEventEmittedResponse {
   owner: string;
   approved: string;
@@ -131,7 +130,7 @@ export interface Vivid {
    * StateMutability: nonpayable
    * Type: constructor
    */
-  'new'(overrides?: ContractTransactionOverrides): Promise<ContractTransaction>;
+  "new"(overrides?: ContractTransactionOverrides): Promise<ContractTransaction>;
   /**
    * Payable: false
    * Constant: true
@@ -142,7 +141,7 @@ export interface Vivid {
   _whitelistClaimed(
     parameter0: string,
     overrides?: ContractCallOverrides
-  ): Promise<BigNumber>;
+  ): Promise<BigNumberish>;
   /**
    * Payable: false
    * Constant: false
@@ -179,7 +178,7 @@ export interface Vivid {
   balanceOf(
     owner: string,
     overrides?: ContractCallOverrides
-  ): Promise<BigNumber>;
+  ): Promise<BigNumberish>;
   /**
    * Payable: false
    * Constant: true
@@ -217,14 +216,14 @@ export interface Vivid {
    * StateMutability: view
    * Type: function
    */
-  maxMint(overrides?: ContractCallOverrides): Promise<BigNumber>;
+  maxMint(overrides?: ContractCallOverrides): Promise<BigNumberish>;
   /**
    * Payable: false
    * Constant: true
    * StateMutability: view
    * Type: function
    */
-  maxWlMint(overrides?: ContractCallOverrides): Promise<BigNumber>;
+  maxWlMint(overrides?: ContractCallOverrides): Promise<BigNumberish>;
   /**
    * Payable: false
    * Constant: true
@@ -274,7 +273,7 @@ export interface Vivid {
    * StateMutability: view
    * Type: function
    */
-  price(overrides?: ContractCallOverrides): Promise<BigNumber>;
+  price(overrides?: ContractCallOverrides): Promise<BigNumberish>;
   /**
    * Payable: false
    * Constant: true
@@ -444,7 +443,7 @@ export interface Vivid {
    * StateMutability: view
    * Type: function
    */
-  tokenSupply(overrides?: ContractCallOverrides): Promise<BigNumber>;
+  tokenSupply(overrides?: ContractCallOverrides): Promise<BigNumberish>;
   /**
    * Payable: false
    * Constant: true
@@ -462,7 +461,7 @@ export interface Vivid {
    * StateMutability: view
    * Type: function
    */
-  totalSupply(overrides?: ContractCallOverrides): Promise<BigNumber>;
+  totalSupply(overrides?: ContractCallOverrides): Promise<BigNumberish>;
   /**
    * Payable: false
    * Constant: false

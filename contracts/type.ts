@@ -2,7 +2,6 @@ import {
   ContractTransaction,
   ContractInterface,
   BytesLike as Arrayish,
-  BigNumber,
   BigNumberish,
 } from "ethers";
 import { EthersContractContextV5 } from "ethereum-abi-types-generator";
@@ -29,7 +28,7 @@ export interface ContractTransactionOverrides {
   /**
    * The price (in wei) per unit of gas
    */
-  gasPrice?: BigNumber | string | number | Promise<any>;
+  gasPrice?: BigNumberish | string | number | Promise<any>;
   /**
    * The nonce to use in the transaction
    */
@@ -37,7 +36,7 @@ export interface ContractTransactionOverrides {
   /**
    * The amount to send with the transaction (i.e. msg.value)
    */
-  value?: BigNumber | string | number | Promise<any>;
+  value?: BigNumberish | string | number | Promise<any>;
   /**
    * The chain ID (or network ID) to use
    */
@@ -142,7 +141,7 @@ export interface Vivid {
   _whitelistClaimed(
     parameter0: string,
     overrides?: ContractCallOverrides
-  ): Promise<BigNumber>;
+  ): Promise<BigNumberish>;
   /**
    * Payable: false
    * Constant: false
@@ -179,7 +178,7 @@ export interface Vivid {
   balanceOf(
     owner: string,
     overrides?: ContractCallOverrides
-  ): Promise<BigNumber>;
+  ): Promise<BigNumberish>;
   /**
    * Payable: false
    * Constant: true
@@ -217,14 +216,14 @@ export interface Vivid {
    * StateMutability: view
    * Type: function
    */
-  maxMint(overrides?: ContractCallOverrides): Promise<BigNumber>;
+  maxMint(overrides?: ContractCallOverrides): Promise<BigNumberish>;
   /**
    * Payable: false
    * Constant: true
    * StateMutability: view
    * Type: function
    */
-  maxWlMint(overrides?: ContractCallOverrides): Promise<BigNumber>;
+  maxWlMint(overrides?: ContractCallOverrides): Promise<BigNumberish>;
   /**
    * Payable: false
    * Constant: true
@@ -274,7 +273,7 @@ export interface Vivid {
    * StateMutability: view
    * Type: function
    */
-  price(overrides?: ContractCallOverrides): Promise<BigNumber>;
+  price(overrides?: ContractCallOverrides): Promise<BigNumberish>;
   /**
    * Payable: false
    * Constant: true
@@ -444,7 +443,7 @@ export interface Vivid {
    * StateMutability: view
    * Type: function
    */
-  tokenSupply(overrides?: ContractCallOverrides): Promise<BigNumber>;
+  tokenSupply(overrides?: ContractCallOverrides): Promise<BigNumberish>;
   /**
    * Payable: false
    * Constant: true
@@ -462,7 +461,7 @@ export interface Vivid {
    * StateMutability: view
    * Type: function
    */
-  totalSupply(overrides?: ContractCallOverrides): Promise<BigNumber>;
+  totalSupply(overrides?: ContractCallOverrides): Promise<BigNumberish>;
   /**
    * Payable: false
    * Constant: false

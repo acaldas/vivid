@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.10",
+    "@headlessui/tailwindcss": "^0.1.2",
+    "@next/font": "^13.1.6",
     "@web3-react/core": "^8.0.30-beta.0",
     "@web3-react/metamask": "^8.0.30-beta.0",
     "@web3-react/types": "^8.0.17-beta.0",
