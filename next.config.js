@@ -9,6 +9,9 @@ const nextConfig = {
 
     return config;
   },
+  images: {
+    domains: ["vivid.mypinata.cloud"],
+  },
   experimental: {
     appDir: true,
   },

@@ -1,0 +1,169 @@
+{
+  "character": {
+    "name": "Character",
+    "values": ["Ren", "Miko", "Izumo", "Johnny", "Sacha", "Takeru", ""]
+  },
+  "face": {
+    "name": "Face",
+    "values": [
+      "Eyebrow",
+      "Closed Eyes",
+      "Normal",
+      "Angry",
+      "Smile",
+      "Smirk",
+      "Blank",
+      "Teeth Smile",
+      "Sad",
+      "",
+      "normal",
+      "angry"
+    ]
+  },
+  "hairType": {
+    "name": "Hair Type",
+    "values": ["Ponytail", "Long", "Short", "", "long", "short"]
+  },
+  "mask": {
+    "name": "Mask",
+    "values": [
+      "Vivid Mask Prototype V.002",
+      "",
+      "Wagmeow Redacted Mask",
+      "Tots Spike Mask",
+      "Vivid Mask Prototype V.003",
+      "Wagmeow Prototype v.01",
+      "Wagmeow Prototype_Unlimited",
+      "Wagmeow Prototype.Weaponized",
+      "Wagmeow_Bedroom",
+      "Mask V-tech_Survival Air Filter",
+      "Vivid Mask Prototype V.001",
+      "Demon Grin"
+    ]
+  },
+  "ear": {
+    "name": "Ear",
+    "values": ["", "Spiked earrings", "White Spiked", "stars"]
+  },
+  "eyeCover": {
+    "name": "Eye Cover",
+    "values": ["", "Eyepatch", "AR Visor"]
+  },
+  "apparel": {
+    "name": "Apparel",
+    "values": [
+      "Shogunate Battle Kimono",
+      "",
+      "Hive Scarf",
+      "Tots Gravrunner Jacket",
+      "DinoCore Zealot Uniform",
+      "Shogunate Traditional",
+      "VividCorp Dress",
+      "Tots Puffer",
+      "Tots Crew Vibes",
+      "VividCorp Security Mech",
+      "VividCorp Fixer High-Neck",
+      "Vivid Fixer Uniform",
+      "Tots UltraSpike jacket"
+    ]
+  },
+  "headwear": {
+    "name": "Headwear",
+    "values": [
+      "",
+      "Cranial V-Tech_Horns",
+      "DinoCore Zealot Helm",
+      "Supersize Headgear",
+      "Samurai Cap",
+      "Cranial V-tech_v.backalley",
+      "Wagmeow Ears",
+      "Full Helmet",
+      "Cranial V-tech_Hive AR",
+      "DinoCore Tech_Horns",
+      "Cranial V-Tech_Vivid Fixer",
+      "Cranial V-Tech_GravRunner",
+      "Seeing L(eye)zard",
+      "Dinocore Bone helm",
+      "Cranial V-tech_Drill Prototype",
+      "Cranial V-Tech_Helper Prototype",
+      "Lizard Sidekick",
+      "Dinocore Avatar",
+      "Shogunate Demon Mask",
+      "null"
+    ]
+  },
+  "tattoo": {
+    "name": "Tattoo",
+    "values": [
+      "",
+      "Blackout",
+      "Black Skull",
+      "Choker",
+      "Vivid Tribal",
+      "Dragon",
+      "Spiderweb",
+      "White Skull"
+    ]
+  },
+  "weapon": {
+    "name": "Weapon",
+    "values": [
+      "",
+      "Greatsword",
+      "Mech Arm Right",
+      "Axe",
+      "Katana",
+      "Cybersword",
+      "Giant shuriken",
+      "Double-Sword",
+      "Mech Arm Left",
+      "Nanotech Tendrils",
+      "Vivid ArmPrototype_Open",
+      "Corrupted Nanotech Tendrils",
+      "Vivid ArmPrototype_Closed"
+    ]
+  },
+  "effect": {
+    "name": "Effect",
+    "values": ["", "Smoke", "Fog", "Lightning", "fog", "smoke"]
+  },
+  "background": {
+    "name": "Background",
+    "values": [
+      "The Hive_GreenBlue",
+      "The Hive_PinkBlue",
+      "The Hive_Red",
+      "The Abyssal Deep_Red",
+      "Earths Surface_Green",
+      "The Hive_RedBlue",
+      "The Abyssal Deep_RedBlue",
+      "The Hive_Green",
+      "The Abyssal Deep_PinkBlue",
+      "Earths Surface_RedBlue",
+      "The Abyssal Deep_GreenBlue",
+      "The Abyssal Deep_Green",
+      "Earths Surface_PinkBlue",
+      "Earths Surface_GreenBlue",
+      "The Abyssal Deep_Gold",
+      "Earths Surface_Red",
+      "The Surface_Foil",
+      "Vivid Corp_Green",
+      "",
+      "The Abyssal Deep_Foil",
+      "Vivid Corp_Gold",
+      "The Hive_Foil",
+      "Vivid Corp_PinkBlue",
+      "Vivid Corp_RedBlue",
+      "Vivid Corp_Foil",
+      "The Hive_Gold",
+      "The Surface_Gold",
+      "Vivid Corp_GreenBlue",
+      "Vivid Corp_Red",
+      "The Hive_gold"
+    ]
+  },
+  "hero": {
+    "name": "Hero",
+    "values": ["Hero"]
+  }
+}

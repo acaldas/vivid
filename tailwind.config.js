@@ -27,8 +27,12 @@ module.exports = {
       },
       fontSize: {
         lg: ["1.5rem", { lineHeight: "1.75rem", fontWeight: "500" }],
+        xl: ["2rem", { lineHeight: "2.375rem", fontWeight: "800" }],
+        h1: ["150px", { lineHeight: "8rem", fontWeight: "800" }],
+        h2: ["124px", { lineHeight: "9.5rem", fontWeight: "600" }],
+        h3: ["60px", { lineHeight: "4.5rem", fontWeight: "800" }],
       },
     },
   },
-  plugins: [require("@headlessui/tailwindcss")],
+  plugins: [require("@headlessui/tailwindcss"), require("tailwind-scrollbar")],
 };

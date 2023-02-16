@@ -2,7 +2,7 @@ import localFont from "@next/font/local";
 import { Exo_2 } from "@next/font/google";
 
 const fontExo = Exo_2({
-  weight: ["300", "400", "500", "600", "800"],
+  weight: "variable",
   style: ["normal"],
   subsets: ["latin"],
   variable: "--font-exo",

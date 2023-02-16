@@ -7,8 +7,8 @@ const links = [
   {
     title: "Products",
     link: [
-      { title: "NFT", link: "/product/nft" },
-      { title: "Fashion", link: "/product/fashion" },
+      { title: "NFT", link: "/products/nft" },
+      { title: "Fashion", link: "/products/fashion" },
     ],
   },
   {
@@ -25,9 +25,9 @@ const links = [
   },
 ];
 
-export default function Navbar() {
+export default function Navbar({ className }: { className?: string }) {
   return (
-    <div className="flex">
+    <div className={`flex ${className}`}>
       {links.map((value) => (
         <Fragment key={value.title}>
           {Array.isArray(value.link) ? (
