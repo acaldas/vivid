@@ -1,14 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import NftFilter from "#/components/nft-filter";
 import NFTList from "#/components/nft-list";
 import { defaultFilters, TraitKey } from "#/hooks/useNFTGraph";
+import ReadMore from "#/components/read-more";
 
 export default function Page() {
   const [filters, setFilters] = useState(defaultFilters);
-
+  const [text, setText] = useState("");
   function toggleTrait(trait: TraitKey, value: string) {
     setFilters((filters) => {
       const filter = filters[trait];
@@ -31,21 +31,28 @@ export default function Page() {
       </h3>
       <div className="flex justify-between relative items-stretch">
         <div className="max-w-[440px]">
-          <p className="text-lg">
-            VIVID's NFT collection is a must-see for art enthusiasts and fans of
-            the VIVID universe. The collection features 8888 unique works of art
-            created by the talented Japanese artist, Acky Bright.
-            <Link href="" className="text-red block">
-              Read more
-            </Link>
-          </p>
-          <div>
-            <NftFilter filters={filters} toggleTrait={toggleTrait} />
+          <ReadMore
+            className="text-lg"
+            small="VIVID's NFT collection is a must-see for art enthusiasts and fans
+              of the VIVID universe. The collection features 8888 unique works
+              of art created by the talented Japanese artist, Acky Bright."
+            large="The pieces showcase the vibrant and colorful kawaii cyberpunk
+              world of VIVID and offer a glimpse into the imagination of the
+              artist. Each piece is one-of-a-kind and serves as a testament to
+              the skill and creativity of Acky Bright."
+          />
+          <div className="mt-5">
+            <NftFilter
+              filters={filters}
+              toggleTrait={toggleTrait}
+              text={text}
+              setText={setText}
+            />
           </div>
         </div>
         <div className="flex-1 relative ml-8">
           <div className="max-w-[1050px] h-full left-0 right-0 mx-auto bottom-8 absolute overflow-auto scrollbar-thumb-overlay scrollbar-thin scrollbar-rounded-lg pr-4 scrollbar-h-[240px]">
-            <NFTList filters={filters} />
+            <NFTList filters={filters} text={text} />
           </div>
         </div>
       </div>

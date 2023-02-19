@@ -3,7 +3,7 @@ import { Popover, Transition } from "@headlessui/react";
 import Link from "next/link";
 import { Fragment } from "react";
 
-const links = [
+export const links = [
   {
     title: "Products",
     link: [
@@ -17,11 +17,17 @@ const links = [
   },
   {
     title: "News",
-    link: "/news",
+    link: [
+      { title: "Events", link: "/events" },
+      { title: "Roadmap", link: "/roadmap" },
+    ],
   },
   {
-    title: "Team",
-    link: "/team",
+    title: "About",
+    link: [
+      { title: "Team", link: "/team" },
+      { title: "Contact", link: "/contact" },
+    ],
   },
 ];
 

@@ -5,7 +5,7 @@ export default function Loading() {
   return (
     <div className="flex w-full h-full items-center justify-center">
       <div className="max-h-[24vh] relative w-full h-full">
-        <Image src={LogoBig} alt="Vivid logo" priority fill />
+        <Image src={LogoBig} alt="Vivid logo" priority />
       </div>
     </div>
   );
