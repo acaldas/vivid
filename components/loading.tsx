@@ -6,7 +6,14 @@ import ProgressBar from "#/components/progress-bar";
 import { useRouter } from "next/navigation";
 import { startTransition, useEffect, useRef, useState } from "react";
 
-const ROUTES = ["/home"];
+const ROUTES = [
+  "/home",
+  "/contact",
+  "/events",
+  "/login",
+  "/products/nft",
+  "/team",
+];
 
 export default function Loading() {
   const router = useRouter();
@@ -18,54 +25,80 @@ export default function Loading() {
     | undefined
   >(undefined);
   const [revokeProxy, setRevokeProxy] = useState<() => void>();
-  const [isReady, setIsReady] = useState(!routes.length);
+  const [isReady, setIsReady] = useState<boolean | undefined>(true);
+  const first = useRef<boolean>();
 
   useEffect(() => {
-    if (fetchBackupRef.current) {
+    if (first.current) {
       return;
     }
-    fetchBackupRef.current = window.fetch;
-    const fetchProxy = Proxy.revocable(window.fetch, {
-      apply(fetch, that, args) {
-        // @ts-expect-error
-        const result = fetch.apply(that, args);
+    first.current = true;
+    // const prefetched = localStorage.getItem("prefetched") === "true";
+    // if (prefetched) {
+    //   setIsReady(true);
+    //   setTimeout(() => {
+    //     router.replace("/home");
+    //   });
+    //   return;
+    // }
 
-        // listen for prefetch requests to finish
-        result.then(() => {
-          const [url, req] = args;
-          const route = routes.find(
-            (r) => `${location.origin}${r.route}` === url
-          );
-          if (route && req.headers?.["Next-Router-Prefetch"] == "1") {
-            console.log(route.route, "prefetched!");
-            setRoutes((routes) =>
-              routes.map((r) =>
-                r.route === route.route ? { ...r, prefetched: true } : r
-              )
-            );
-          }
-        });
-        console.log("PASSOU AQUI");
-        return result;
-      },
-    });
-    window.fetch = fetchProxy.proxy;
-    setRevokeProxy(() => fetchProxy.revoke);
-
-    // prefetch all routes
-    routes.forEach((r) => router.prefetch(r.route));
+    setIsReady(false);
+    ROUTES.forEach((r) => router.prefetch(r));
+    const index = setTimeout(() => {
+      setIsReady(true);
+      localStorage.setItem("prefetched", "true");
+      setTimeout(() => {
+        router.replace("/home");
+      }, 250);
+    }, 2000);
   }, []);
 
-  useEffect(() => {
-    if (fetchBackupRef.current && !routes.find((r) => !r.prefetched)) {
-      startTransition(() => {
-        revokeProxy?.();
-        window.fetch = fetchBackupRef.current!;
-        setIsReady(true);
-        router.replace("/home");
-      });
-    }
-  }, [fetch, routes]);
+  // useEffect(() => {
+  //   if (fetchBackupRef.current) {
+  //     return;
+  //   }
+  //   fetchBackupRef.current = window.fetch;
+  //   const fetchProxy = Proxy.revocable(window.fetch, {
+  //     apply(fetch, that, args) {
+  //       // @ts-expect-error
+  //       const result = fetch.apply(that, args);
+
+  //       // listen for prefetch requests to finish
+  //       result.then(() => {
+  //         const [url, req] = args;
+  //         const route = routes.find(
+  //           (r) => `${location.origin}${r.route}` === url
+  //         );
+  //         if (route && req.headers?.["Next-Router-Prefetch"] == "1") {
+  //           console.log(route.route, "prefetched!");
+  //           setRoutes((routes) =>
+  //             routes.map((r) =>
+  //               r.route === route.route ? { ...r, prefetched: true } : r
+  //             )
+  //           );
+  //         }
+  //       });
+  //       console.log("PASSOU AQUI");
+  //       return result;
+  //     },
+  //   });
+  //   window.fetch = fetchProxy.proxy;
+  //   setRevokeProxy(() => fetchProxy.revoke);
+
+  //   // prefetch all routes
+  //   routes.forEach((r) => router.prefetch(r.route));
+  // }, []);
+
+  // useEffect(() => {
+  //   if (fetchBackupRef.current && !routes.find((r) => !r.prefetched)) {
+  //     startTransition(() => {
+  //       revokeProxy?.();
+  //       window.fetch = fetchBackupRef.current!;
+  //       setIsReady(true);
+  //       router.replace("/home");
+  //     });
+  //   }
+  // }, [fetch, routes]);
 
   return (
     <div
@@ -73,12 +106,16 @@ export default function Loading() {
         isReady ? 0 : 100
       }`}
     >
-      <div className="max-h-[24vh] relative w-full h-full">
-        <Image src={LogoBig} alt="Vivid logo" priority fill />
-      </div>
-      <div className="flex justify-center mt-[5vh] max-w-full">
-        <ProgressBar />
-      </div>
+      {isReady !== undefined && (
+        <>
+          <div className="max-h-[24vh] relative w-full h-full">
+            <Image src={LogoBig} alt="Vivid logo" priority fill />
+          </div>
+          <div className="flex justify-center mt-[5vh] max-w-full">
+            <ProgressBar />
+          </div>
+        </>
+      )}
     </div>
   );
 }

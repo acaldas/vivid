@@ -10,7 +10,7 @@ import SocialIcons from "./social-icons";
 
 export default function Header() {
   return (
-    <div className="h-[80px] px-[40px] flex items-center justify-between py-[27px] bg-modal backdrop-blur-[30px] relative z-10">
+    <div className="h-[80px] px-[40px] flex items-center justify-between py-[27px] bg-overlay backdrop-blur-[30px] relative z-10">
       <div className="flex-1">
         <Link href="/">
           <Image src={Logo} alt="Vivid logo" width={140} height={25} />

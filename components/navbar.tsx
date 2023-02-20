@@ -49,7 +49,7 @@ export default function Navbar({ className }: { className?: string }) {
                 leaveFrom="transform scale-100 opacity-100"
                 leaveTo="transform scale-95 opacity-0"
               >
-                <Popover.Panel className="absolute z-10 top-[calc(100%+6px)] w-full bg-overlay backdrop-blur-[30px]">
+                <Popover.Panel className="absolute z-10 top-[calc(100%+6px)] min-w-full bg-overlay backdrop-blur-[30px]">
                   <div className="flex flex-col">
                     {value.link.map((l) => (
                       <Link

@@ -38,7 +38,7 @@ export default function Page() {
           </div>
         </div>
         <div className="flex-1 relative ml-8">
-          <div className="max-w-[935px] h-full left-0 right-0 mx-auto bottom-8 absolute overflow-auto scrollbar-thumb-overlay scrollbar-thin scrollbar-rounded-lg pr-4 scrollbar-h-[240px]">
+          <div className="max-w-[935px] h-full left-0 right-0 top-0 mx-auto bottom-8 absolute overflow-auto scrollbar-thumb-overlay scrollbar-thin scrollbar-rounded-lg pr-4 scrollbar-h-[240px]">
             <div className="bg-overlay rounded-md px-7 py-8 mb-10">
               <h4 className="text-[2.5rem] leading-none font-bold">
                 14th of January 2023
