@@ -2,8 +2,7 @@ import Image from "next/image";
 import { forwardRef, useState } from "react";
 
 // const NFT_IMAGE_URL = process.env.NEXT_PUBLIC_NFT_IMAGE_URL;
-
-export default forwardRef<
+const NFTCard = forwardRef<
   HTMLDivElement,
   { id: string; image: string; onClick: () => void }
 >(({ id, image, onClick }, ref) => {
@@ -30,3 +29,7 @@ export default forwardRef<
     </div>
   );
 });
+
+NFTCard.displayName = "NFTCard";
+
+export default NFTCard;

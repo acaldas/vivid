@@ -6,7 +6,7 @@ import Image from "next/image";
 import { NFTFilters, TraitKey, traitKeys } from "#/hooks/useNFTGraph";
 import { useState } from "react";
 
-export default function ({
+const NFTFilter = function ({
   filters,
   toggleTrait,
   text,
@@ -100,4 +100,8 @@ export default function ({
       })}
     </div>
   );
-}
+};
+
+NFTFilter.displayName = "NFTFilter";
+
+export default NFTFilter;
