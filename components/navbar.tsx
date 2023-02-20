@@ -76,6 +76,12 @@ export default function Navbar({ className }: { className?: string }) {
           )}
         </Fragment>
       ))}
+      <Link
+        href="/login"
+        className="bg-red rounded-md h-11 px-10 pb-2 pt-1 text-lg leading-tight ml-[3vw]"
+      >
+        Login
+      </Link>
     </div>
   );
 }

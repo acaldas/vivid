@@ -16,7 +16,7 @@ export default function Header() {
           <Image src={Logo} alt="Vivid logo" width={140} height={25} />
         </Link>
       </div>
-      <div className="hidden xl:block">
+      <div className="hidden xl:block mx-10">
         <SocialIcons />
       </div>
       <Navbar className="hidden xl:flex flex-1 justify-end" />
