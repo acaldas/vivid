@@ -66,6 +66,42 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
+.text-h1 {
+  font-size: 50px;
+  line-height: 1;
+}
+.text-h2 {
+  font-size: 40px;
+  line-height: 1;
+}
+.text-h3 {
+  font-size: 40px;
+  line-height: 1.2;
+}
+
+@screen md {
+  .text-h1 {
+    font-size: 110px;
+  }
+  .text-h2 {
+    font-size: 75px;
+  }
+  .text-h3 {
+    font-size: 60px;
+  }
+}
+
+@screen xl {
+  .text-h1 {
+    font-size: 150px;
+    line-height: 0.912;
+  }
+  .text-h2 {
+    font-size: 124px;
+    line-height: 1.2;
+  }
+}
+
 @layer utilities {
   button {
     outline: none;
@@ -94,6 +130,18 @@ body {
   button.header-button:hover:after,
   a.header-button:hover:after {
     width: 102%;
+  }
+
+  .test-blur:before {
+    backdrop-filter: blur(30px);
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
   }
 }
 

@@ -15,7 +15,7 @@ export default function NavbarMobile({ className }: { className?: string }) {
             <Disclosure>
               {({ open }) => (
                 <>
-                  <Disclosure.Button className="flex items-center justify-between text-lg font-light px-5 w-full hover:text-red transition mt-6">
+                  <Disclosure.Button className="flex items-center justify-between text-lg font-light px-[40px] w-full hover:text-red transition mt-6">
                     <span>{value.title}</span>
                     <Image
                       src={IconArrow}
