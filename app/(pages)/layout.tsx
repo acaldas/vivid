@@ -8,7 +8,9 @@ export default async function Layout({
   return (
     <div className="h-full flex flex-col">
       <Header />
-      <div id="portal-content">&nbsp;</div>
+      <div id="portal-content">
+        <span className="hidden">&nbsp;</span>
+      </div>
       <div className="flex-1 overflow-hidden">{children}</div>
     </div>
   );

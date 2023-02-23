@@ -34,7 +34,7 @@ export default function NavbarMobile({ className }: { className?: string }) {
                     leaveTo="transform scale-95 opacity-0"
                   >
                     <Disclosure.Panel className="flex items-start">
-                      <div className="flex flex-col pl-5 pt-4">
+                      <div className="flex flex-col pl-11 pt-4">
                         {value.link.map((l) => (
                           <Link
                             prefetch={false}

@@ -35,7 +35,7 @@ export default function Header() {
               <>
                 {ref.current
                   ? createPortal(
-                      <div className="fixed w-full h-full backdrop-blur-[30px]" />,
+                      <div className="fixed w-full h-full z-[1] bg-overlay backdrop-blur-[30px]" />,
                       ref.current
                     )
                   : null}

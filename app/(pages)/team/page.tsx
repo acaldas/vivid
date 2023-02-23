@@ -38,45 +38,49 @@ const friendMembers = FRIENDS.map((member, index) => ({
 export default function Page() {
   const [selected, setSelected] = useState(0);
   return (
-    <div className="flex flex-wrap px-[6.5vw] w-full h-full overflow-auto scrollbar-thumb-overlay scrollbar-thin items-stretch">
+    <div className="flex flex-wrap pt-[7vh] px-[6.5vw] w-full h-full overflow-auto scrollbar-thumb-overlay scrollbar-thin items-stretch">
       <div>
         <h2 className="text-h2">VIVID</h2>
         <h1 className="text-h1">TEAM</h1>
         <h3 className="my-6 text-red text-[60px] font-extrabold leading-[4.5rem]">
           チーム
         </h3>
-        <div className="flex justify-between items-stretch pb-10">
-          <div className="max-w-[490px]">
+        <div className="xl:flex justify-between items-stretch pb-10">
+          <div className="xl:max-w-[490px]">
             <ReadMore
               className="text-lg mb-8"
               small="VIVID is a dynamic and diverse team made up of individuals from different cultural backgrounds and expertise in a variety of fields. The team members bring a wealth of skills and knowledge to the table, allowing for a unique and creative approach."
               large="The team dynamics at VIVID promote collaboration, open communication, and continuous learning, enabling the team to continuously improve and achieve great things together. With such a strong team and a pro-active community, VIVID is poised for success."
             />
-            <TeamSelector
-              members={teamMembers}
-              selected={selected}
-              onSelected={setSelected}
-            />
-            <div className="mt-8 mb-6">
-              <h5 className="text-[40px] font-extrabold leading-none">VIVID</h5>
-              <h4 className="text-[60px] font-bold leading-none">FRIENDS</h4>
+            <div className="hidden xl:block">
+              <TeamSelector
+                members={teamMembers}
+                selected={selected}
+                onSelected={setSelected}
+              />
+              <div className="mt-8 mb-6">
+                <h5 className="text-[40px] font-extrabold leading-none">
+                  VIVID
+                </h5>
+                <h4 className="text-[60px] font-bold leading-none">FRIENDS</h4>
+              </div>
+              <TeamSelector
+                members={friendMembers}
+                selected={selected}
+                onSelected={setSelected}
+              />
             </div>
-            <TeamSelector
-              members={friendMembers}
-              selected={selected}
-              onSelected={setSelected}
-            />
           </div>
         </div>
       </div>
-      <div className="relative flex-1 ml-8">
-        <div className="absolute h-full overflow-auto scrollbar-thumb-overlay scrollbar-thin pr-3">
+      <div className="relative flex-1 xl:ml-8 w-full">
+        <div className="xl:absolute h-full overflow-auto scrollbar-thumb-overlay scrollbar-thin xl:pr-3">
           <TeamViewer
             members={teamMembers}
             selected={selected}
             onSelected={setSelected}
           />
-          <div className="mb-3 pl-8">
+          <div className="mb-4 pl-8">
             <h5 className="text-[34px] font-extrabold leading-none">VIVID</h5>
             <h4 className="text-[54px] font-bold leading-none">FRIENDS</h4>
             <p className="mt-3 max-w-[680px] text-[20px] leading-tight font-normal">
