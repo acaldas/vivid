@@ -1,8 +1,6 @@
 import { request } from "graphql-request";
 import useSWRInfinite from "swr/infinite";
-import useSWR from "swr";
 import Traits from "#/utils/traits.json";
-import { useMemo } from "react";
 
 export const traitKeys = Object.keys(Traits).sort() as Array<TraitKey>;
 export type TraitKey = keyof typeof Traits;

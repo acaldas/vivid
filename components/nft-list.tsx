@@ -7,14 +7,13 @@ import { useEffect, useMemo, useState } from "react";
 import { NFTModal } from "./nft-modal";
 
 export default function NFTList({
-  filters,
-  text,
+  tokens,
+  setSize,
 }: {
-  filters: NFTFilters;
-  text: string;
+  tokens: { tokenID: string; image: string }[];
+  setSize: (arg: (size: number) => number) => void;
 }) {
   const { ref, inView } = useInView();
-  const { data, setSize } = useGraph(filters, text);
   const [selectedNFT, setSelectedNFT] = useState<
     | {
         tokenID: string;
@@ -29,20 +28,9 @@ export default function NFTList({
     }
   }, [inView]);
 
-  const tokens = useMemo(() => {
-    if (!data) return [];
-    return data.reduce(
-      (acc, curr) => [...acc, ...curr.tokens],
-      [] as {
-        tokenID: string;
-        image: string;
-      }[]
-    );
-  }, [data]);
-
   return (
     <>
-      <div className="grid grid-cols-4 gap-8">
+      <div className="grid grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-8">
         {tokens.map((nft, index) => {
           return (
             <NFTCard

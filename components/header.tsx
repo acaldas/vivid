@@ -13,10 +13,10 @@ import { useRef, useState, useEffect } from "react";
 
 export default function Header() {
   const ref = useRef<Element | null>(null);
-
   useEffect(() => {
     ref.current = document.querySelector<HTMLElement>("#portal-content");
   }, []);
+
   return (
     <div className="h-[80px] px-[40px] flex items-center justify-between py-[27px] bg-overlay backdrop-blur-[30px] relative z-10">
       <div className="flex-1">

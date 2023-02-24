@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function Page() {
   return (
-    <div className="flex flex-col px-[6.5vw] h-full w-full overflow-auto scrollbar-thumb-overlay scrollbar-thin">
+    <div className="flex flex-col px-[6.5vw] pt-[7vh] h-full w-full overflow-auto scrollbar-thumb-overlay scrollbar-thin">
       <div className="flex flex-col xl:flex-row flex-1 justify-between relative items-stretch pb-8">
         <div className="max-w-[670px] mr-8">
           <h2 className="text-h2">VIVID</h2>
