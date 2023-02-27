@@ -39,6 +39,15 @@ module.exports = {
         h3: ["60px", { lineHeight: "4.5rem", fontWeight: "800" }],
         "h3-small": ["40px", { lineHeight: "3.75rem", fontWeight: "800" }],
       },
+      animation: {
+        fadeIn: "fadeIn 3.6s forwards",
+      },
+      keyframes: (theme) => ({
+        fadeIn: {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
+      }),
     },
   },
   plugins: [require("@headlessui/tailwindcss"), require("tailwind-scrollbar")],

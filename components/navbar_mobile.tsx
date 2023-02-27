@@ -36,14 +36,16 @@ export default function NavbarMobile({ className }: { className?: string }) {
                     <Disclosure.Panel className="flex items-start">
                       <div className="flex flex-col pl-11 pt-4">
                         {value.link.map((l) => (
-                          <Link
-                            prefetch={false}
-                            key={l.title}
-                            href={l.link}
-                            className="text-lg font-light hover:text-red transition leading-[3rempx] px-4 mb-4 last:mb-1"
-                          >
-                            {l.title}
-                          </Link>
+                          <div className=" px-4 mb-4 last:mb-1" key={l.title}>
+                            <Link
+                              prefetch={false}
+                              key={l.title}
+                              href={l.link}
+                              className="hover:text-red animate-underline text-lg font-light transition leading-[3rempx]"
+                            >
+                              {l.title}
+                            </Link>
+                          </div>
                         ))}
                       </div>
                     </Disclosure.Panel>

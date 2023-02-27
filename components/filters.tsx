@@ -1,5 +1,5 @@
 "use client";
-import { Dialog, Popover } from "@headlessui/react";
+import { Dialog, Popover, Transition } from "@headlessui/react";
 import IconOpen from "#/public/images/icon_open.svg";
 import IconClose from "#/public/images/icon_close.svg";
 import IconOpenDark from "#/public/images/icon_open_dark.svg";
@@ -7,7 +7,14 @@ import IconCloseDark from "#/public/images/icon_close_dark.svg";
 import IconCrossDark from "#/public/images/icon_cross_dark.svg";
 import IconFilter from "#/public/images/icon_filter.svg";
 import Image from "next/image";
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import {
+  Dispatch,
+  Fragment,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 type Filters<T extends string> = Record<
   T,
@@ -190,40 +197,58 @@ const FiltersContainer = function <T extends string>({
         >
           <Image src={IconFilter} alt="Filter" width={24} height={21} />
         </button>
-        <Dialog
-          open={open}
-          onClose={() => setOpen(false)}
-          className="relative z-50"
-        >
-          <div
-            className="fixed inset-0 bg-overlay backdrop-blur-[30px]"
-            aria-hidden="true"
-          />
-          <div className="fixed w-full flex items-center justify-center bottom-0">
-            <Dialog.Panel className="flex flex-col py-4 px-6 rounded-t-md bg-white text-black w-full h-[60vh]">
-              <div className="flex items-center justify-between mb-7">
-                <p className="text-lg font-extrabold">
-                  Showing <span className="text-red">{count}</span> results
-                </p>
-                <button
-                  className="bg-black rounded-full w-6 h-6 flex items-center justify-center"
-                  onClick={() => setOpen(false)}
-                >
-                  <Image src={IconCrossDark} alt="" />
-                </button>
-              </div>
-              <div className="flex-1 pr-5 mr-[-1.5rem] overflow-auto scrollbar-thumb-overlay scrollbar-thin">
-                <FilterList<T>
-                  dark
-                  filters={filters}
-                  toggleFilter={toggleFilter}
-                  textFilter={textFilter}
-                  setTextFilter={setTextFilter}
-                />
-              </div>
-            </Dialog.Panel>
-          </div>
-        </Dialog>
+        <Transition show={open} as={Fragment}>
+          <Dialog onClose={() => setOpen(false)}>
+            <Transition.Child
+              enter="transition-opacity ease-out"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="transition-opacity ease-out"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+              as={Fragment}
+            >
+              <div
+                className="fixed z-50 inset-0 bg-overlay backdrop-blur-[9px]"
+                aria-hidden="true"
+              />
+            </Transition.Child>
+            <Transition.Child
+              enter="transition ease-out"
+              enterFrom="transform translate-y-full"
+              enterTo="transform translate-y-0"
+              leave="transition ease-out"
+              leaveFrom="transform translate-y-0"
+              leaveTo="transform translate-y-full"
+              as={Fragment}
+            >
+              {/* <div className="fixed w-full flex items-center justify-center"> */}
+              <Dialog.Panel className="fixed z-50 bottom-0 flex flex-col py-4 px-6 rounded-t-md bg-white text-black w-full h-[60vh]">
+                <div className="flex items-center justify-between mb-7">
+                  <p className="text-lg font-extrabold">
+                    Showing <span className="text-red">{count}</span> results
+                  </p>
+                  <button
+                    className="bg-black rounded-full w-6 h-6 flex items-center justify-center"
+                    onClick={() => setOpen(false)}
+                  >
+                    <Image src={IconCrossDark} alt="" />
+                  </button>
+                </div>
+                <div className="flex-1 pr-5 mr-[-1.5rem] overflow-auto scrollbar-thumb-overlay scrollbar-thin">
+                  <FilterList<T>
+                    dark
+                    filters={filters}
+                    toggleFilter={toggleFilter}
+                    textFilter={textFilter}
+                    setTextFilter={setTextFilter}
+                  />
+                </div>
+              </Dialog.Panel>
+              {/* </div> */}
+            </Transition.Child>
+          </Dialog>
+        </Transition>
       </div>
       <div className="hidden xl:block">
         <p className="text-[40px] font-extrabold leading-tight mt-8 mb-6">

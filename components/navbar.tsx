@@ -1,6 +1,7 @@
 "use client";
 import { Popover, Transition } from "@headlessui/react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Fragment } from "react";
 
 export const links = [
@@ -32,6 +33,7 @@ export const links = [
 ];
 
 export default function Navbar({ className }: { className?: string }) {
+  const pathname = usePathname();
   return (
     <div className={`flex ${className}`}>
       {links.map((value) => (
@@ -52,14 +54,21 @@ export default function Navbar({ className }: { className?: string }) {
                 <Popover.Panel className="absolute z-10 top-[calc(100%+6px)] min-w-full bg-overlay backdrop-blur-[30px]">
                   <div className="flex flex-col">
                     {value.link.map((l) => (
-                      <Link
-                        prefetch={false}
-                        key={l.title}
-                        href={l.link}
-                        className="text-lg font-light hover:text-red transition h-[60px] leading-[60px] px-4"
-                      >
-                        {l.title}
-                      </Link>
+                      <div className="p-4" key={l.title}>
+                        <Link
+                          prefetch={false}
+                          href={l.link}
+                          className="text-lg font-light transition h-[60px]"
+                        >
+                          <span
+                            className={`hover:text-red animate-underline ${
+                              pathname === l.link && "selected text-red"
+                            }`}
+                          >
+                            {l.title}
+                          </span>
+                        </Link>
+                      </div>
                     ))}
                   </div>
                 </Popover.Panel>
