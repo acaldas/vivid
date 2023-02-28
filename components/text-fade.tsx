@@ -10,10 +10,11 @@ const TextFade: React.FC<IProps> = ({ className, children, ...props }) => {
     if (typeof children !== "string") {
       return [];
     } else {
-      return children.split("").map((l) => {
+      return children.split("").map((l, i) => {
         const delay = 200 + Math.floor(Math.random() * MAX_DELAY_TIME);
         return (
           <span
+            key={i}
             className="transition-opacity opacity-0 animate-fadeIn"
             style={{
               animationDelay: `${delay}ms`,

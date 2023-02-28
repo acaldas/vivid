@@ -11,7 +11,12 @@ export default async function Layout({
       <div id="portal-content">
         <span className="hidden">&nbsp;</span>
       </div>
-      <div className="flex-1 overflow-hidden">{children}</div>
+      <div
+        className="flex-1 overflow-hidden animate-fadeIn delay opacity-0"
+        style={{ animationDelay: "250ms", animationDuration: "1.5s" }}
+      >
+        {children}
+      </div>
     </div>
   );
 }

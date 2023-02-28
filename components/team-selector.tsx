@@ -8,7 +8,7 @@ interface IProps {
     name: string;
     image: StaticImageData;
   }[];
-  selected: number;
+  selected: number | undefined;
   onSelected: (member: number) => void;
 }
 

@@ -36,7 +36,7 @@ const friendMembers = FRIENDS.map((member, index) => ({
 }));
 
 export default function Page() {
-  const [selected, setSelected] = useState(0);
+  const [selected, setSelected] = useState<number | undefined>();
   return (
     <div className="flex flex-wrap pt-[7vh] px-[6.5vw] w-full h-full overflow-auto scrollbar-thumb-overlay scrollbar-thin items-stretch">
       <div>

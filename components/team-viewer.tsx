@@ -10,7 +10,7 @@ interface IProps {
     image: StaticImageData;
     description: string;
   }[];
-  selected: number;
+  selected: number | undefined;
   onSelected: (member: number) => void;
 }
 
@@ -18,14 +18,17 @@ export default function TeamViewer({ members, selected, onSelected }: IProps) {
   const itemsRef = useRef<Array<HTMLButtonElement | null>>([]);
 
   useEffect(() => {
+    if (selected === undefined) {
+      return;
+    }
     const ref = itemsRef.current[selected];
     if (ref) {
       ref.scrollIntoView({ behavior: "smooth" });
     }
-  }, [selected, itemsRef.current]);
+  }, [selected, itemsRef]);
   return (
     <div className="flex flex-col">
-      {members.map((member) => (
+      {members.map((member, index) => (
         <button
           ref={(el) => {
             itemsRef.current[member.id] = el;
@@ -33,7 +36,9 @@ export default function TeamViewer({ members, selected, onSelected }: IProps) {
           key={member.name}
           onClick={() => onSelected(member.id)}
           className={`transition p-8 mb-10 rounded-md overflow-hidden hover:opacity-100 hover:bg-overlay ${
-            member.id === selected ? "opacity-100 bg-overlay" : "opacity-40"
+            member.id === selected || (!selected && index === 0)
+              ? "opacity-100 bg-overlay"
+              : "opacity-40"
           } cursor-pointer`}
         >
           <div className="flex items-center">

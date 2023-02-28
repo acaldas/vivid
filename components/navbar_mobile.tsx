@@ -6,7 +6,13 @@ import Link from "next/link";
 import { links } from "./navbar";
 import IconArrow from "#/public/images/icon_arrow.svg";
 
-export default function NavbarMobile({ className }: { className?: string }) {
+export default function NavbarMobile({
+  close,
+  className,
+}: {
+  close: () => void;
+  className?: string;
+}) {
   return (
     <div className={`flex flex-col items-start ${className}`}>
       {links.map((value) => (
@@ -41,6 +47,7 @@ export default function NavbarMobile({ className }: { className?: string }) {
                               prefetch={false}
                               key={l.title}
                               href={l.link}
+                              onClick={close}
                               className="hover:text-red animate-underline text-lg font-light transition leading-[3rempx]"
                             >
                               {l.title}
