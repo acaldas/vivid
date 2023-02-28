@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "./bubbles";
 @import "./cards";
 @import "./glitch";
 @import "./loading";

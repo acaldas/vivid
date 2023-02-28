@@ -21,7 +21,7 @@ module.exports = {
       colors: {
         overlay: "rgba(0,0,0,0.5)",
         modal: "rgba(0,0,0,0.01)",
-        red: "#FF0000",
+        red: "#E60013",
       },
       screens: {
         lg: "860px",
