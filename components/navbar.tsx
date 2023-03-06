@@ -25,10 +25,7 @@ export const links = [
   },
   {
     title: "About",
-    link: [
-      { title: "Team", link: "/team" },
-      { title: "Contact", link: "/contact" },
-    ],
+    link: [{ title: "Contact", link: "/contact" }],
   },
 ];
 

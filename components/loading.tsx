@@ -6,14 +6,7 @@ import ProgressBar from "#/components/progress-bar";
 import { useRouter } from "next/navigation";
 import { startTransition, useEffect, useRef, useState } from "react";
 
-const ROUTES = [
-  "/home",
-  "/contact",
-  "/events",
-  "/login",
-  "/products/nft",
-  "/team",
-];
+const ROUTES = ["/home", "/contact", "/events", "/login", "/products/nft"];
 
 export default function Loading() {
   const router = useRouter();
