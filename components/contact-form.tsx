@@ -16,7 +16,7 @@ export default function ContactForm() {
         method: "POST",
         body: JSON.stringify({ email, subject, message }),
       }).then(() => {
-        router.push("/");
+        location.reload();
       });
     }
     e.preventDefault();
