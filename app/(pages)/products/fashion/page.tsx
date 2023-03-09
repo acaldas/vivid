@@ -14,6 +14,7 @@ import fashion5 from "#/public/images/fashion/imagery/5.png";
 import fashion6 from "#/public/images/fashion/imagery/6.png";
 import fashion7 from "#/public/images/fashion/imagery/7.png";
 import fashion8 from "#/public/images/fashion/imagery/8.png";
+import Link from "next/link";
 
 export default function Page() {
   const [image, setImage] = useState<StaticImageData | null>(null);
@@ -69,9 +70,12 @@ export default function Page() {
             }
           />
           <div className="mt-5">
-            <button className="bg-red rounded-md h-11 px-10 pb-2 pt-1 text-lg leading-tight w-full max-w-[506px]">
+            <Link
+              href="https://drip.vivid.limited/"
+              className="bg-red rounded-md h-11 px-10 pb-2 pt-1 text-lg leading-tight w-full max-w-[506px]"
+            >
               Buy Fashion
-            </button>
+            </Link>
           </div>
         </div>
         <div className="flex-1 relative w-full xl:ml-8">
