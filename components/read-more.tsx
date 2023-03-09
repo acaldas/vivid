@@ -1,9 +1,9 @@
 "use client";
-import { useState } from "react";
+import { ReactElement, useState } from "react";
 
 interface IProps {
   small: string;
-  large: string;
+  large: string | ReactElement | ReactElement[];
   className?: string;
 }
 
