@@ -1,4 +1,8 @@
 {
+  "collection": {
+    "name": "Collection",
+    "values": ["Vivid", "LZD7"]
+  },
   "character": {
     "name": "Character",
     "values": ["Ren", "Miko", "Izumo", "Johnny", "Sacha", "Takeru", ""]

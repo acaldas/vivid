@@ -11,12 +11,16 @@ export function NFTModal({
   open,
   onClose,
   id,
+  tokenID,
   image,
+  collection,
 }: {
   open: boolean;
   onClose: () => void;
   id?: string;
+  tokenID?: string;
   image?: string;
+  collection?: string;
 }) {
   const [loaded, setLoaded] = useState(false);
 
@@ -32,14 +36,19 @@ export function NFTModal({
         aria-hidden="true"
       />
       <div className="fixed inset-0 flex items-center justify-center p-4">
-        <Dialog.Panel className="mx-auto rounded-[18px] overflow-hidden shadow-xl border-[3px] border-black w-[720px] max-w-[60%]">
+        <Dialog.Panel className="mx-auto rounded-[18px] overflow-hidden shadow-xl border-[3px] border-black w-[720px] max-w-[60%] max-h-[90vh]">
           <Dialog.Title className="bg-black py-4 pl-6 flex items-stretch justify-between">
             <div className="flex items-center">
               <Link href={`${OPENSEA_URL}${id}`} className="outline-none mr-4">
                 <Image src={IconOpensea} width={24} height={24} alt="Opensea" />
               </Link>
-              <p className="text-xl text-red mr-4">#{id}</p>
-              <p className="font-medium">ORIGINAL COLLECTION</p>
+              <p className="text-xl text-red mr-4">#{tokenID}</p>
+              <p className="font-medium">
+                {collection === "Vivid"
+                  ? "ORIGINAL"
+                  : collection?.toUpperCase()}{" "}
+                COLLECTION
+              </p>
             </div>
             <button className="block px-4" onClick={handleClose}>
               <Image src={IconClose} alt="close" className="" />

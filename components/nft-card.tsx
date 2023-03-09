@@ -1,17 +1,18 @@
 import Image from "next/image";
 import { forwardRef, useState } from "react";
 
-// const NFT_IMAGE_URL = process.env.NEXT_PUBLIC_NFT_IMAGE_URL;
 const NFTCard = forwardRef<
   HTMLDivElement,
-  { id: string; image: string; onClick: () => void }
->(({ id, image, onClick }, ref) => {
+  { id: string; image: string; collection: string; onClick: () => void }
+>(({ id, image, collection, onClick }, ref) => {
   const [loaded, setLoaded] = useState(false);
   return (
     <div ref={ref} onClick={onClick} className="cursor-pointer">
       <div className="relative rounded-md overflow-hidden">
         <Image
-          className={`opacity-${loaded ? 100 : 0} transition-opacity`}
+          className={`object-cover opacity-${
+            loaded ? 100 : 0
+          } transition-opacity w-[240px] h-[240px]`}
           src={image}
           width={240}
           height={240}
@@ -24,7 +25,10 @@ const NFTCard = forwardRef<
       </div>
       <div className="pl-2">
         <b className="text-red text-xl mt-2 block">#{id}</b>
-        <p className="mt-1">ORIGINAL COLLECTION</p>
+        <p className="mt-1">
+          {collection === "Vivid" ? "ORIGINAL" : collection.toUpperCase()}{" "}
+          COLLECTION
+        </p>
       </div>
     </div>
   );

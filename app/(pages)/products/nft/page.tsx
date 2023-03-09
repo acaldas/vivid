@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Filters from "#/components/filters";
 import NFTList from "#/components/nft-list";
-import { defaultFilters, TraitKey } from "#/hooks/useNFTGraph";
+import { defaultFilters, NFTItem, TraitKey } from "#/hooks/useNFTGraph";
 import ReadMore from "#/components/read-more";
 import useGraph from "#/hooks/useNFTGraph";
 
@@ -28,10 +28,7 @@ export default function Page() {
     if (!data) return [];
     return data.reduce(
       (acc, curr) => [...acc, ...curr.tokens],
-      [] as {
-        tokenID: string;
-        image: string;
-      }[]
+      [] as NFTItem[]
     );
   }, [data]);
 

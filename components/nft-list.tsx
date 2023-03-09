@@ -1,32 +1,28 @@
 "use client";
 
-import useGraph, { NFTFilters } from "#/hooks/useNFTGraph";
+import { NFTItem } from "#/hooks/useNFTGraph";
 import NFTCard from "./nft-card";
 import { useInView } from "react-intersection-observer";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { NFTModal } from "./nft-modal";
 
 export default function NFTList({
   tokens,
   setSize,
 }: {
-  tokens: { tokenID: string; image: string }[];
+  tokens: NFTItem[];
   setSize: (arg: (size: number) => number) => void;
 }) {
   const { ref, inView } = useInView();
-  const [selectedNFT, setSelectedNFT] = useState<
-    | {
-        tokenID: string;
-        image: string;
-      }
-    | undefined
-  >(undefined);
+  const [selectedNFT, setSelectedNFT] = useState<NFTItem | undefined>(
+    undefined
+  );
 
   useEffect(() => {
     if (inView) {
       setSize((size) => size + 1);
     }
-  }, [inView]);
+  }, [inView, setSize]);
 
   return (
     <>
@@ -34,9 +30,10 @@ export default function NFTList({
         {tokens.map((nft, index) => {
           return (
             <NFTCard
-              key={nft.tokenID}
+              key={nft.id}
               id={nft.tokenID}
               image={nft.image}
+              collection={nft.collection}
               ref={index === tokens.length - 5 ? ref : undefined}
               onClick={() => setSelectedNFT(nft)}
             />
@@ -45,7 +42,8 @@ export default function NFTList({
       </div>
       <NFTModal
         open={!!selectedNFT}
-        id={selectedNFT?.tokenID}
+        id={selectedNFT?.id}
+        tokenID={selectedNFT?.tokenID}
         image={selectedNFT?.image}
         onClose={() => setSelectedNFT(undefined)}
       />

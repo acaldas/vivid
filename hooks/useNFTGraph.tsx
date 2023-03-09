@@ -2,7 +2,16 @@ import { request } from "graphql-request";
 import useSWRInfinite from "swr/infinite";
 import Traits from "#/utils/traits.json";
 
-export const traitKeys = Object.keys(Traits).sort() as Array<TraitKey>;
+export type NFTItem = {
+  id: string;
+  tokenID: string;
+  image: string;
+  collection: string;
+};
+
+export const traitKeys = Object.keys(Traits).sort((t1, t2) =>
+  t2 === "collection" ? Number.MAX_SAFE_INTEGER : t1.localeCompare(t2)
+) as Array<TraitKey>;
 export type TraitKey = keyof typeof Traits;
 export type NFTFilters = Record<
   TraitKey,
@@ -62,18 +71,19 @@ function filtersToQuery(filters: NFTFilters, page = 0, tokenIds?: string[]) {
       ? `, tokenID_in:[${tokenIds.map((id) => `"${id}"`).join(", ")}]`
       : ""
   }}) {
+    id
     tokenID
     image
+    collection
   }
 }`;
 }
 
 export default function (filters: NFTFilters, text: string) {
-  return useSWRInfinite<{ tokens: { tokenID: string; image: string }[] }>(
-    (pageIndex, previousPageData) => {
-      if (previousPageData && !previousPageData.tokens) return null;
-      return { filters, pageIndex, text };
-    },
-    fetcher
-  );
+  return useSWRInfinite<{
+    tokens: NFTItem[];
+  }>((pageIndex, previousPageData) => {
+    if (previousPageData && !previousPageData.tokens) return null;
+    return { filters, pageIndex, text };
+  }, fetcher);
 }
