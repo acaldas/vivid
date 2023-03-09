@@ -4,42 +4,77 @@ import { useMemo, useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import ReadMore from "#/components/read-more";
 import IconCross from "#/public/images/icon_cross_dark.svg";
-import Event10 from "#/public/images/events/1_0.jpg";
-import Event11 from "#/public/images/events/1_1.jpg";
-import Event12 from "#/public/images/events/1_2.jpg";
-import Event13 from "#/public/images/events/1_3.jpg";
-import Event14 from "#/public/images/events/1_4.jpg";
+import Event11 from "#/public/images/events/popup/1.png";
+import Event12 from "#/public/images/events/popup/2.png";
+import Event13 from "#/public/images/events/popup/3.png";
+import Event14 from "#/public/images/events/popup/4.png";
+import Event15 from "#/public/images/events/popup/5.png";
+import Event16 from "#/public/images/events/popup/6.png";
+import Event17 from "#/public/images/events/popup/7.png";
+import Event18 from "#/public/images/events/popup/8.png";
+import Event19 from "#/public/images/events/popup/9.png";
+import Event110 from "#/public/images/events/popup/10.png";
+import AnimeNyc1 from "#/public/images/events/anime_nyc/1.png";
+import AnimeNyc2 from "#/public/images/events/anime_nyc/2.png";
+import AnimeNyc3 from "#/public/images/events/anime_nyc/3.png";
+import AnimeNyc4 from "#/public/images/events/anime_nyc/4.png";
+import AnimeNyc5 from "#/public/images/events/anime_nyc/5.png";
+import AnimeNyc6 from "#/public/images/events/anime_nyc/6.png";
+import AnimeNyc7 from "#/public/images/events/anime_nyc/7.png";
 import Filters from "#/components/filters";
 import { Dialog } from "@headlessui/react";
 
 const Events = [
   {
-    date: "14th of January 2023",
-    title: "NEW YORK POP UP STORE",
+    date: "18th of November 2022",
+    title: "ANIME NYC",
     subtitle: "サイバーパンク",
-    text: `Aadjee is VIVID’s product designer with over 7 years of
-    experience in the fintech industry. He specializes in creating
-    visually appealing designs on iOS , Android and WEB with a
-    strong focus on user experience. Aadjee has a background in
-    fintech, giving him unique insights into the design challenges
-    of the financial industry.`,
+    text: "Vivid also recently attended Anime NYC with one of our collaborators; artist Acky Bright. It turned out to be an incredibly successful event. We met with many of our NFT holders and also made some new connections with people who fell in love with Vivid just as much as us. Anime NYC is an annual event that celebrates anime, manga, and Japanese culture, and it attracts thousands of enthusiasts from all over the world.",
+    textMore:
+      "The event is a perfect platform for companies like Vivid to showcase what we are about and connect with our audience. At the event, Vivid had the opportunity to engage with the community, show off our latest artwork, and educate people about the world of NFTs. With the help of Acky, we were able to create an immersive experience that resonated with our audience. One piece of this is Acky's 8'x8' live draw canvas, which took him 72 hours to complete. We as a company had an amazing time and hope to do more things like this in the future!!",
     meta: {
       country: ["USA"],
-      event: ["Pop Up Store"],
+      event: ["Convention"],
     },
+    details: ({
+      showImage,
+    }: {
+      showImage: (image: StaticImageData) => void;
+    }) => (
+      <div className="grid grid-cols-2 gap-4 mt-6">
+        <button className="col-span-2" onClick={() => showImage(AnimeNyc1)}>
+          <Image src={AnimeNyc1} alt="event 1 picture 0" className="h-full" />
+        </button>
+        <button className="col-span-2" onClick={() => showImage(AnimeNyc2)}>
+          <Image src={AnimeNyc2} alt="event 1 picture 1" className="h-full" />
+        </button>
+        <button className="col-span-2" onClick={() => showImage(AnimeNyc3)}>
+          <Image src={AnimeNyc3} alt="event 1 picture 2" className="h-full" />
+        </button>
+        <button className="col-span-1" onClick={() => showImage(AnimeNyc4)}>
+          <Image src={AnimeNyc4} alt="event 1 picture 3" className="h-full" />
+        </button>
+        <button className="col-span-1" onClick={() => showImage(AnimeNyc5)}>
+          <Image src={AnimeNyc5} alt="event 1 picture 4" className="h-full" />
+        </button>
+        <button className="col-span-2" onClick={() => showImage(AnimeNyc6)}>
+          <Image src={AnimeNyc6} alt="event 1 picture 5" className="h-full" />
+        </button>
+        <button className="col-span-2" onClick={() => showImage(AnimeNyc7)}>
+          <Image src={AnimeNyc7} alt="event 1 picture 6" className="h-full" />
+        </button>
+      </div>
+    ),
   },
   {
-    date: "14th of January 2023",
-    title: "NEW YORK POP UP STORE",
+    date: "15th of October 2022",
+    title: "LOS ANGELES POP UP STORE",
     subtitle: "サイバーパンク",
-    text: `Aadjee is VIVID’s product designer with over 7 years of
-    experience in the fintech industry. He specializes in creating
-    visually appealing designs on iOS , Android and WEB with a
-    strong focus on user experience. Aadjee has a background in
-    fintech, giving him unique insights into the design challenges
-    of the financial industry.`,
+    text: `We at Vivid are thrilled to have recently held a pop-up shop on Melrose in Los Angeles to showcase our latest line of anime-inspired fashion. We were excited to give fans and curious onlookers alike the chance to experience it for themselves. One of the highlights of the event was having our collaborative artist, Acky Bright, on site live-drawing on a canvas for three days straight. It was amazing to watch as he brought our character "Miko" to life, and fans were thrilled to be able to take pictures with him and see his creative process up close. Acky's art was a central part of our line so we were ecstatic to have him there all the way from Japan!`,
+    textMore:
+      "Of course, no pop-up shop would be complete without a party, and we were excited to host one for our fans and NFT holders. We're incredibly grateful to have such a passionate community supporting our brand and were thrilled to be able to celebrate with them in person. We had music, drinks, and of course, plenty of opportunities to show off our latest designs. We're incredibly proud of the work we've done so far, and we're excited to continue pushing the boundaries of what's possible with anime-inspired fashion and NFTs. Thank you to everyone who came out to support us on Melrose, and we can't wait to see what the future holds for Vivid.",
     meta: {
-      country: ["USA", "Japan"],
+      country: ["USA"],
       event: ["Pop Up Store"],
     },
     details: ({
@@ -47,40 +82,38 @@ const Events = [
     }: {
       showImage: (image: StaticImageData) => void;
     }) => (
-      <>
-        <div className="flex w-full overflow-hidden justify-between gap-5 mt-6">
-          <button
-            className="rounded-[27px] flex-1 overflow-hidden cursor-pointer"
-            onClick={() => showImage(Event10)}
-          >
-            <Image src={Event10} alt="event 1 picture 0" />
-          </button>
-          <button
-            className="rounded-[27px] flex-1 overflow-hidden cursor-pointer"
-            onClick={() => showImage(Event11)}
-          >
-            <Image src={Event11} alt="event 1 picture 1" />
-          </button>
-          <button
-            className="rounded-[27px] flex-1 overflow-hidden cursor-pointer"
-            onClick={() => showImage(Event12)}
-          >
-            <Image src={Event12} alt="event 1 picture 2" />
-          </button>
-        </div>
-        <button
-          className="w-full mt-6 rounded-[27px] overflow-hidden cursor-pointer"
-          onClick={() => showImage(Event13)}
-        >
-          <Image src={Event13} alt="event 1 picture 3" className="w-full" />
+      <div className="grid grid-cols-2 gap-4 mt-6">
+        <button className="row-span-2" onClick={() => showImage(Event11)}>
+          <Image src={Event11} alt="event 1 picture 0" className="h-full" />
         </button>
-        <button
-          className="w-full mt-6 rounded-[27px] overflow-hidden cursor-pointer"
-          onClick={() => showImage(Event14)}
-        >
-          <Image src={Event14} alt="event 1 picture 4" className="w-full" />
+        <button onClick={() => showImage(Event12)}>
+          <Image src={Event12} alt="event 1 picture 1" />
         </button>
-      </>
+        <button onClick={() => showImage(Event13)}>
+          <Image src={Event13} alt="event 1 picture 2" />
+        </button>
+        <button className="row-span-2" onClick={() => showImage(Event14)}>
+          <Image src={Event14} alt="event 1 picture 3" />
+        </button>
+        <button className="row-span-2" onClick={() => showImage(Event15)}>
+          <Image src={Event15} alt="event 1 picture 4" className="h-full" />
+        </button>
+        <button onClick={() => showImage(Event16)}>
+          <Image src={Event16} alt="event 1 picture 5" />
+        </button>
+        <button className="row-span-2" onClick={() => showImage(Event17)}>
+          <Image src={Event17} alt="event 1 picture 6" />
+        </button>
+        <button onClick={() => showImage(Event18)}>
+          <Image src={Event18} alt="event 1 picture 7" />
+        </button>
+        <button onClick={() => showImage(Event19)}>
+          <Image src={Event19} alt="event 1 picture 8" />
+        </button>
+        <button onClick={() => showImage(Event110)}>
+          <Image src={Event110} alt="event 1 picture 9" />
+        </button>
+      </div>
     ),
   },
 ];
@@ -209,8 +242,16 @@ export default function Page() {
                 <h5 className="text-red text-lg leading-tight mb-4">
                   {event.subtitle}
                 </h5>
-                <p className="text-lg font-normal">{event.text}</p>
-                {event.details && event.details({ showImage: setImage })}
+                <ReadMore
+                  className="text-lg font-normal"
+                  small={event.text}
+                  large={
+                    <>
+                      <p className="mt-2">{event.textMore}</p>
+                      {event.details && event.details({ showImage: setImage })}
+                    </>
+                  }
+                />
               </div>
             ))}
           </div>
