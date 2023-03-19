@@ -4,9 +4,16 @@ import Image from "next/image";
 import LogoBig from "#/public/images/logo_big.svg";
 import ProgressBar from "#/components/progress-bar";
 import { useRouter } from "next/navigation";
-import { startTransition, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-const ROUTES = ["/home", "/contact", "/events", "/login", "/products/nft"];
+const ROUTES = [
+  "/home",
+  "/contact",
+  "/events",
+  "/login",
+  "/products/nft",
+  "/products/fashion",
+];
 
 export default function Loading() {
   const router = useRouter();
@@ -37,7 +44,7 @@ export default function Loading() {
 
     setIsReady(false);
     ROUTES.forEach((r) => router.prefetch(r));
-    const index = setTimeout(() => {
+    setTimeout(() => {
       setIsReady(true);
       localStorage.setItem("prefetched", "true");
       setTimeout(() => {

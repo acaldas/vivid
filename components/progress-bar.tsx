@@ -29,7 +29,9 @@ export default function ProgressBar() {
           className="absolute left-0 h-full bg-red rounded-2xl transition-[width] duration-[2s]"
           style={{ width: `${progress}%` }}
         ></div>
-        <p className="relative text-center">{progressText}%</p>
+        <p className="relative text-center text-xs leading-3">
+          {progressText}%
+        </p>
       </div>
     </div>
   );
