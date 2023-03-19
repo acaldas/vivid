@@ -41,19 +41,20 @@ export default function NavbarMobile({
                   >
                     <Disclosure.Panel className="flex items-start">
                       <div className="flex flex-col pl-11 pt-4">
-                        {value.link.map((l) => (
-                          <div className=" px-4 mb-4 last:mb-1" key={l.title}>
-                            <Link
-                              prefetch={false}
-                              key={l.title}
-                              href={l.link}
-                              onClick={close}
-                              className="hover:text-red animate-underline text-lg font-light transition leading-[3rempx]"
-                            >
-                              {l.title}
-                            </Link>
-                          </div>
-                        ))}
+                        {Array.isArray(value.link) &&
+                          value.link.map((l) => (
+                            <div className="px-4 mb-4 last:mb-1" key={l.title}>
+                              <Link
+                                prefetch={false}
+                                key={l.title}
+                                href={l.link}
+                                onClick={close}
+                                className="hover:text-red animate-underline text-lg font-light transition leading-[3rempx]"
+                              >
+                                {l.title}
+                              </Link>
+                            </div>
+                          ))}
                       </div>
                     </Disclosure.Panel>
                   </Transition>
@@ -64,7 +65,7 @@ export default function NavbarMobile({
             <Link
               prefetch={false}
               href={value.link}
-              className="text-lg font-light p-5 hover:text-red transition"
+              className="text-lg font-light mt-6 px-[40px] hover:text-red transition"
             >
               {value.title}
             </Link>
