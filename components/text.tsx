@@ -150,7 +150,8 @@ const Text: React.FC<IProps> = ({
       originalStrings: props.children?.toString() || "",
     };
     setData(newData);
-
+    console.log("OLLAAA");
+    console.log(newData);
     divideLetters(newData);
 
     setTimeout(() => {
