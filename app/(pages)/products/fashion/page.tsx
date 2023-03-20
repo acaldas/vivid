@@ -5,7 +5,7 @@ import Image, { StaticImageData } from "next/image";
 import ReadMore from "#/components/read-more";
 import IconCross from "#/public/images/icon_cross_dark.svg";
 import { Dialog } from "@headlessui/react";
-import fashionGif from "#/public/images/fashion/imagery/fashion.gif";
+import fashionGif from "#/public/images/fashion/imagery/vivid_show_rack.png";
 import fashion1 from "#/public/images/fashion/imagery/1.png";
 import fashion2 from "#/public/images/fashion/imagery/2.png";
 import fashion3 from "#/public/images/fashion/imagery/3.png";
