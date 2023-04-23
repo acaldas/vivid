@@ -14,7 +14,7 @@ export const links = [
   },
   {
     title: "Collaborations",
-    link: [{ title: "Acky Bright", link: "/product/acky_bright" }],
+    link: [{ title: "Acky Bright", link: "/collaborations/acky_bright" }],
   },
   {
     title: "Events",
